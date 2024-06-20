@@ -4,6 +4,7 @@
  */
 package seahub.trabajofinaltorneo.logica;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -22,7 +23,7 @@ import javax.persistence.TemporalType;
  * @author tinov
  */
 @Entity
-public class Etapa {
+public class Etapa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

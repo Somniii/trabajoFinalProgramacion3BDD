@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.Participante;
@@ -31,6 +32,9 @@ public class ParticipanteJpaController implements Serializable {
 
     public ParticipanteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+    public ParticipanteJpaController(){
+        emf = Persistence.createEntityManagerFactory("torneoJPAPU");
     }
     private EntityManagerFactory emf = null;
 

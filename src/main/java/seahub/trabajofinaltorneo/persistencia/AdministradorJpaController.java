@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.ParticipanteAdministrador;
 import seahub.trabajofinaltorneo.logica.Etapa;
@@ -30,6 +31,10 @@ public class AdministradorJpaController implements Serializable {
 
     public AdministradorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+    
+    public AdministradorJpaController(){
+        emf = Persistence.createEntityManagerFactory("torneoJPAPU");
     }
     private EntityManagerFactory emf = null;
 

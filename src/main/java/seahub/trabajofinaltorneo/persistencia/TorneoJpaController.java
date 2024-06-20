@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import static javax.persistence.Persistence.createEntityManagerFactory;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.Torneo;
 import seahub.trabajofinaltorneo.persistencia.exceptions.IllegalOrphanException;

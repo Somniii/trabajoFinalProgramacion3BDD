@@ -4,6 +4,7 @@
  */
 package seahub.trabajofinaltorneo.logica;
 
+import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ import javax.persistence.OneToMany;
  * @author tinov
  */
 @Entity
-public class Torneo {
+public class Torneo implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id

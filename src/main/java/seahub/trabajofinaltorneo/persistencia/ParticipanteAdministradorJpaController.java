@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import seahub.trabajofinaltorneo.logica.Participante;
@@ -26,6 +27,10 @@ public class ParticipanteAdministradorJpaController implements Serializable {
 
     public ParticipanteAdministradorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+    
+    public ParticipanteAdministradorJpaController(){
+        emf = Persistence.createEntityManagerFactory("torneoJPAPU");
     }
     private EntityManagerFactory emf = null;
 

@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.persistencia.exceptions.IllegalOrphanException;
 import seahub.trabajofinaltorneo.persistencia.exceptions.NonexistentEntityException;
@@ -31,6 +32,10 @@ public class EtapaJpaController implements Serializable {
 
     public EtapaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
+    }
+    
+    public EtapaJpaController(){
+        emf = Persistence.createEntityManagerFactory("torneoJPAPU");
     }
     private EntityManagerFactory emf = null;
 

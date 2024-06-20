@@ -19,7 +19,7 @@ public class TrabajoFinalTorneo {
         
         Controladora control = new Controladora();
         
-        Participante parti = new Participante(3 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
+        Participante parti = new Participante(5 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
         
         control.crearParticipante(parti);
         //control.eliminarParticipante(3);

@@ -40,6 +40,9 @@ public class Torneo {
     @Basic(optional = false)
     @Column(name = "vigente")
     private boolean vigente;
+    @Basic(optional = false)
+    @Column(name = "inscripcionVigente")
+    private boolean inscripcionVigente;
     @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
     @ManyToOne(optional = false)
     private Administrador idAdministrador;
@@ -55,12 +58,13 @@ public class Torneo {
         this.idTorneo = idTorneo;
     }
 
-    public Torneo(Integer idTorneo, String nombre, int pisos, int pisosTotales, boolean vigente) {
+    public Torneo(Integer idTorneo, String nombre, int pisos, int pisosTotales, boolean vigente , boolean inscripcionVigente) {
         this.idTorneo = idTorneo;
         this.nombre = nombre;
         this.pisos = pisos;
         this.pisosTotales = pisosTotales;
         this.vigente = vigente;
+        this.inscripcionVigente = inscripcionVigente;
     }
 
     public Integer getIdTorneo() {
@@ -101,6 +105,14 @@ public class Torneo {
 
     public void setVigente(boolean vigente) {
         this.vigente = vigente;
+    }
+    
+    public boolean getInscripcionVigente(){
+        return inscripcionVigente;
+    }
+    
+    public void setInscripcionVigente(boolean inscripcionVigente){
+        this.inscripcionVigente = inscripcionVigente;
     }
 
     public Administrador getIdAdministrador() {

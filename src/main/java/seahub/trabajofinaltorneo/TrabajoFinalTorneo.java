@@ -4,7 +4,9 @@
 
 package seahub.trabajofinaltorneo;
 
-import seahub.trabajofinaltorneo.persistencia.ControladoraPersistencia;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Participante;
+
 
 /**
  *
@@ -12,8 +14,14 @@ import seahub.trabajofinaltorneo.persistencia.ControladoraPersistencia;
  */
 public class TrabajoFinalTorneo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Hello World!");
-        ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+        
+        Controladora control = new Controladora();
+        
+        Participante parti = new Participante(2 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
+        
+        control.crearParticipante(parti);
+        
     }
 }

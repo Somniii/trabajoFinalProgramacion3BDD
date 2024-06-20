@@ -15,6 +15,7 @@ seahub\trabajofinaltorneo\logica\ParticipanteAdministrador.class
 seahub\trabajofinaltorneo\logica\ParticipanteAdministrador_.class
 seahub\trabajofinaltorneo\TrabajoFinalTorneo.class
 seahub\trabajofinaltorneo\logica\Torneo.class
+seahub\trabajofinaltorneo\logica\Controladora.class
 seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.class
 seahub\trabajofinaltorneo\persistencia\exceptions\PreexistingEntityException.class
 seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.class

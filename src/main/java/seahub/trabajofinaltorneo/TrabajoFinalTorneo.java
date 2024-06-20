@@ -4,6 +4,7 @@
 
 package seahub.trabajofinaltorneo;
 
+import seahub.trabajofinaltorneo.igu.principal.Login;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Participante;
 
@@ -17,13 +18,16 @@ public class TrabajoFinalTorneo {
     public static void main(String[] args) throws Exception {
         //System.out.println("Hello World!");
         
-        Controladora control = new Controladora();
+        //Controladora control = new Controladora();
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        //Participante parti = new Participante(5 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
         
-        Participante parti = new Participante(5 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
-        
-        control.crearParticipante(parti);
+        //control.crearParticipante(parti);
         //control.eliminarParticipante(3);
         //Participante aux = control.traerParticipante(2);
+       
         
         //System.out.println("Nombre="+aux.getNombre());
         

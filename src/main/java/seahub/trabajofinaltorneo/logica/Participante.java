@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
@@ -23,6 +25,7 @@ public class Participante implements Serializable {
    
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // o IDENTITY para JPA 2.1+
     @Basic(optional = false)
     @Column(name = "idParticipante")
     private Integer idParticipante;
@@ -60,6 +63,12 @@ public class Participante implements Serializable {
 
     public Participante(Integer idParticipante, String nombre, String usuario, String contrasena, String email) {
         this.idParticipante = idParticipante;
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.email = email;
+    }
+    public Participante( String nombre, String usuario, String contrasena, String email) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contrasena = contrasena;

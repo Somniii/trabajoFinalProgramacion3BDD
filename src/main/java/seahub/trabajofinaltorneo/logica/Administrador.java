@@ -127,4 +127,9 @@ public class Administrador implements Serializable {
         this.etapaCollection = etapaCollection;
     }
 
+    @Override
+    public String toString() {
+        return "Administrador{" + "idAdministrador=" + idAdministrador + ", nombre=" + nombre + ", email=" + email + ", usuario=" + usuario + ", contrasena=" + contrasena + ", torneoCollection=" + torneoCollection + ", participanteAdministradorCollection=" + participanteAdministradorCollection + ", etapaCollection=" + etapaCollection + '}';
+    }
+    
 }

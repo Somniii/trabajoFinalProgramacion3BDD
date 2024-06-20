@@ -162,7 +162,9 @@ public class Torneo implements Serializable {
 
     @Override
     public String toString() {
-        return "seahub.tournament.logica.Torneo[ idTorneo=" + idTorneo + " ]";
+        return "Torneo{" + "idTorneo=" + idTorneo + ", nombre=" + nombre + ", pisos=" + pisos + ", pisosTotales=" + pisosTotales + ", vigente=" + vigente + ", inscripcionVigente=" + inscripcionVigente + ", idAdministrador=" + idAdministrador + ", participanteTorneoCollection=" + participanteTorneoCollection + ", etapaCollection=" + etapaCollection + '}';
     }
+
+
     
 }

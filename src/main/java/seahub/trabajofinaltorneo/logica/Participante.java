@@ -160,7 +160,9 @@ public class Participante implements Serializable {
 
     @Override
     public String toString() {
-        return "seahub.tournament.logica.Participante[ idParticipante=" + idParticipante + " ]";
+        return "Participante{" + "idParticipante=" + idParticipante + ", nombre=" + nombre + ", usuario=" + usuario + ", contrasena=" + contrasena + ", email=" + email + ", participanteAdministradorCollection=" + participanteAdministradorCollection + ", participanteTorneoCollection=" + participanteTorneoCollection + ", etapaCollection=" + etapaCollection + ", participanteEtapaCollection=" + participanteEtapaCollection + '}';
     }
+
+
   
 }

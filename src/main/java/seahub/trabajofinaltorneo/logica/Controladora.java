@@ -12,26 +12,26 @@ import seahub.trabajofinaltorneo.persistencia.ControladoraPersistencia;
  */
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
-    public void crearAdministrador(Administrador adm){
+    public void crearAdministrador(Administrador adm) throws Exception{
         controlPersis.crearAdministrador(adm);
     }
-    public void crearEtapa(Etapa eta){
+    public void crearEtapa(Etapa eta) throws Exception{
         controlPersis.crearEtapa(eta);
     }
-    public void crearParticipante(Participante par){
+    public void crearParticipante(Participante par) throws Exception{
         controlPersis.crearParticipante(par);
     }
-    public void crearTorneo(Torneo tor){
+    public void crearTorneo(Torneo tor) throws Exception{
         controlPersis.crearTorneo(tor);
     }
     //Creacion relaciones muchos a muchos
-    public void crearParticipanteAdministrador(ParticipanteAdministrador parAdm){
-        controlPersis.crearParticipanteAdminstrador();
+    public void crearParticipanteAdministrador(ParticipanteAdministrador parAdm) throws Exception{
+        controlPersis.crearParticipanteAdminstrador(parAdm);
     }
-    public void crearParticipanteEtapa(ParticipanteEtapa parEta){
-        controlPersis.crearParticipanteEtapa();
+    public void crearParticipanteEtapa(ParticipanteEtapa parEta) throws Exception{
+        controlPersis.crearParticipanteEtapa(parEta);
     }
-    public void crearParticipanteTorneo(ParticipanteTorneo parTor){
-        controlPersis.crearParticipanteTorneo();
+    public void crearParticipanteTorneo(ParticipanteTorneo parTor) throws Exception{
+        controlPersis.crearParticipanteTorneo(parTor);
     }
 }

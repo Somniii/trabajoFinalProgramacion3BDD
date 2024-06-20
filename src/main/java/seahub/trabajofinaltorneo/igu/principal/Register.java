@@ -203,23 +203,21 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
-       String nombre = txtNombre.getText();
-       String user = txtUser.getText();
-       String email = txtEmail.getText();
-       String pass = "asd";   
-       char [] password = PasswordClave.getPassword();
-       for(int x = 0 ; x<password.length ; x++){
-           pass += password[x];
-       }
-       //JOptionPane.showMessageDialog(null,pass);
-       Participante part = new Participante(nombre,user,pass,email);
-       System.out.println("Entra");
-       System.out.println(part.toString());
-       Controladora controlll = new Controladora();
-        try {
-          controlll.crearParticipante(part);
+      try {
+          String nombre = txtNombre.getText();
+          String user = txtUser.getText();
+          String email = txtEmail.getText();
+          String pass = "";
+          char [] password = PasswordClave.getPassword();
+          for(int x = 0 ; x<password.length ; x++){
+          pass += password[x];
+          }
+          //JOptionPane.showMessageDialog(null,pass);
+          Participante part = new Participante(nombre,user,pass,email);
+          System.out.println("Entra");
+          System.out.println(part.toString());
+          part.crearEnBase();
       } catch (Exception ex) {
-          System.out.println("Entra en exception");
           Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
       }
     }//GEN-LAST:event_btnRegisterUserActionPerformed

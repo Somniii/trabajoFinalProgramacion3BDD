@@ -22,7 +22,7 @@ public class TrabajoFinalTorneo {
         Login login = new Login();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
-        //Participante parti = new Participante(5 , "nico" ,"somni","somnielmejor", "somni@gmail.com" );
+        //Participante parti = new Participante( "nico" ,"somni","somnielmejor", "somni@gmail.com" );
         
         //control.crearParticipante(parti);
         //control.eliminarParticipante(3);

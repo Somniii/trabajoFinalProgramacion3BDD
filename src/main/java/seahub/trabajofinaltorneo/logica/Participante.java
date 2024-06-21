@@ -179,8 +179,8 @@ public class Participante implements Serializable {
         boolean valor;
         try{
             Query query = em.createQuery("SELECT p.usuario , p.contrasena FROM Participante p WHERE p.usuario = :usuario AND p.contrasena = :contrasena");
-            query.setParameter("usuario", usuario);
-            query.setParameter("contrasena", clave);
+            query.setParameter("Usuario", usuario);
+            query.setParameter("Contrasena", clave);
             List resultado = query.getResultList();
             if(!resultado.isEmpty()){
                 valor=true;

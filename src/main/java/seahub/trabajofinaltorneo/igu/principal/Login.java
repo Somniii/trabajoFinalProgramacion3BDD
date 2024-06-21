@@ -44,6 +44,8 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setMinimumSize(new java.awt.Dimension(260, 400));
+        jPanel1.setPreferredSize(new java.awt.Dimension(260, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -95,7 +97,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         );
 
         pack();
@@ -110,7 +112,8 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Los Campos estan Vacios");
         }else{
             boolean valor = parti.login(txtUser.getText(), txtClave.getText());
-            if(valor=true){
+            if(valor==true){
+                JOptionPane.showMessageDialog(null, "Se conecto");
                 HomeParticipante participante = new HomeParticipante();
                 participante.setVisible(true);
                 this.dispose();
@@ -124,7 +127,7 @@ public class Login extends javax.swing.JFrame {
         Register registro = new Register();
         this.setVisible(false);
         registro.setVisible(true);
-        registro.setLocationRelativeTo(null);        // TODO add your handling code here:
+        registro.setLocationRelativeTo(null);        
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**

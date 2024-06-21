@@ -124,7 +124,7 @@ public class Register extends javax.swing.JFrame {
         panelAdm1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm1.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm1.setText("Registro");
-        panelUser.add(panelAdm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 29, 120, 30));
+        panelUser.add(panelAdm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
 
         panelAdm2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm2.setForeground(new java.awt.Color(255, 255, 255));

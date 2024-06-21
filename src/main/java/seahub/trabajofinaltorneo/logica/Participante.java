@@ -6,16 +6,18 @@ package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-
+import javax.persistence.Query;
 /**
  *
  * @author tinov
@@ -169,6 +171,26 @@ public class Participante implements Serializable {
     public void crearEnBase() throws Exception{
         Controladora control = new Controladora();
         control.crearParticipante(this);
+    }
+    
+    public boolean login(String usuario, String clave){
+        Controladora control = new Controladora();
+        EntityManager em = control.getEntityManager();
+        boolean valor;
+        try{
+            Query query = em.createQuery("SELECT p.usuario , p.contrasena FROM Participante p WHERE p.usuario = :usuario AND p.contrasena = :contrasena");
+            query.setParameter("usuario", usuario);
+            query.setParameter("contrasena", clave);
+            List resultado = query.getResultList();
+            if(!resultado.isEmpty()){
+                valor=true;
+            }else{
+                valor=false;
+            }
+        }catch(Exception e){ 
+            valor=false;
+        }
+        return valor;
     }
     @Override
     public String toString() {

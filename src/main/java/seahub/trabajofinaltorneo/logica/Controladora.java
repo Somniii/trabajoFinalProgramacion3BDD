@@ -5,6 +5,7 @@
 package seahub.trabajofinaltorneo.logica;
 
 import java.util.ArrayList;
+import javax.persistence.EntityManager;
 import seahub.trabajofinaltorneo.persistencia.ControladoraPersistencia;
 import seahub.trabajofinaltorneo.persistencia.exceptions.IllegalOrphanException;
 import seahub.trabajofinaltorneo.persistencia.exceptions.NonexistentEntityException;
@@ -102,5 +103,9 @@ public class Controladora {
     }
     public void eliminarParticipanteTorneo(int id) throws NonexistentEntityException{
         controlPersis.eliminarParticipanteTorneo(id);
+    }
+
+    EntityManager getEntityManager() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

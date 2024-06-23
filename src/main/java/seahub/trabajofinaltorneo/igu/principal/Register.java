@@ -264,7 +264,7 @@ public class Register extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
           }else{
               //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
-              Administrador adm= new Administrador(nombre,user,pass,email);
+              Administrador adm= new Administrador(nombre,email,user,pass);
               //System.out.println(part.toString());
               Controladora control = new Controladora();
 

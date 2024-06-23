@@ -260,11 +260,11 @@ public class Login extends javax.swing.JFrame {
           //Hay un problema en contrasena , da numeros raros
         
           //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
-          int idAuxiliar;
           ArrayList<Administrador> admAux = control.traerTodoAdministrador();
           boolean usuarioEncontrado = false;
           boolean passwordIgual = false;
           //System.out.println("Apunto de entrar en el for");
+          Administrador admEnviar = new Administrador();
           for(Administrador aux : admAux){
               //System.out.println("Entra en el for");
               //System.out.println("COMPARA: "+ aux.getUsuario() + "CON "+usuario); 
@@ -275,6 +275,7 @@ public class Login extends javax.swing.JFrame {
                   usuarioEncontrado = true;
                   if(aux.getContrasena().compareTo(pass)==0){
                     passwordIgual = true;
+                    admEnviar = aux;
                   }
               }else{
                   //System.out.println("No es igual");
@@ -295,7 +296,7 @@ public class Login extends javax.swing.JFrame {
                     login.setLocationRelativeTo(null);
                     this.setVisible(false);   
               }else{
-                  AdministradorHome nuevoHome = new AdministradorHome();
+                  AdministradorHome nuevoHome = new AdministradorHome(admEnviar);
                   nuevoHome.setVisible(true);
                   nuevoHome.setLocationRelativeTo(null);
                   this.setVisible(false);

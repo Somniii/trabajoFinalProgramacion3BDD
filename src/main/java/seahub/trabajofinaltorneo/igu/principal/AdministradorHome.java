@@ -4,6 +4,8 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import seahub.trabajofinaltorneo.logica.Administrador;
+
 /**
  *
  * @author ianel
@@ -13,8 +15,13 @@ public class AdministradorHome extends javax.swing.JFrame {
     /**
      * Creates new form AdministradorHome
      */
+    private Administrador adm = new Administrador();
     public AdministradorHome() {
         initComponents();
+    }
+    public AdministradorHome(Administrador adm){
+        initComponents();
+        this.adm = adm;
     }
 
     /**
@@ -26,21 +33,113 @@ public class AdministradorHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnCrearT = new javax.swing.JButton();
+        cerrarSesion = new javax.swing.JButton();
+        torneoActual = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        nombreAdministrador = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
+        btnCrearT.setText("crearTorneo");
+        btnCrearT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearTActionPerformed(evt);
+            }
+        });
+
+        cerrarSesion.setText("cerrarSesion");
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
+
+        torneoActual.setText("torneoActual");
+        torneoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                torneoActualActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Bienvenido , administrador");
+
+        nombreAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreAdministradorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnCrearT, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(torneoActual)
+                        .addGap(18, 18, 18)
+                        .addComponent(cerrarSesion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(nombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrearT)
+                    .addComponent(torneoActual)
+                    .addComponent(cerrarSesion))
+                .addGap(35, 35, 35))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCrearTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTActionPerformed
+
+    }//GEN-LAST:event_btnCrearTActionPerformed
+
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSesionActionPerformed
+
+    private void torneoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torneoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_torneoActualActionPerformed
+
+    private void nombreAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreAdministradorActionPerformed
+        nombreAdministrador.setText(adm.getNombre());
+    }//GEN-LAST:event_nombreAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +177,11 @@ public class AdministradorHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearT;
+    private javax.swing.JButton cerrarSesion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nombreAdministrador;
+    private javax.swing.JButton torneoActual;
     // End of variables declaration//GEN-END:variables
 }

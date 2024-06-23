@@ -172,7 +172,7 @@ public class Participante implements Serializable {
         Controladora control = new Controladora();
         control.crearParticipante(this);
     }
-    
+    /*
     public boolean login(String usuario, String clave){
         Controladora control = new Controladora();
         EntityManager em = control.getEntityManager();
@@ -192,6 +192,30 @@ public class Participante implements Serializable {
         }
         return valor;
     }
+*/
+    public boolean login(String usuario, String clave) {
+    Controladora control = new Controladora();
+    EntityManager em = control.getEntityManager();
+    boolean valor;
+    try {
+        Query query = em.createQuery("SELECT p FROM Participante p WHERE p.usuario = :usuario AND p.contrasena = :contrasena");
+        query.setParameter("usuario", usuario);
+        query.setParameter("contrasena", clave);
+        List resultado = query.getResultList();
+        if (!resultado.isEmpty()) {
+            valor = true;
+        } else {
+            valor = false;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        valor = false;
+    } finally {
+        em.close();  // Asegúrate de cerrar el EntityManager
+    }
+    return valor;
+}
+
     @Override
     public String toString() {
         return "Participante{" + "idParticipante=" + idParticipante + ", nombre=" + nombre + ", usuario=" + usuario + ", contrasena=" + contrasena + ", email=" + email + ", participanteAdministradorCollection=" + participanteAdministradorCollection + ", participanteTorneoCollection=" + participanteTorneoCollection + ", etapaCollection=" + etapaCollection + ", participanteEtapaCollection=" + participanteEtapaCollection + '}';

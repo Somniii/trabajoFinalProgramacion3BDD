@@ -6,6 +6,7 @@ package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +18,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import seahub.trabajofinaltorneo.persistencia.TorneoJpaController;
 
 /**
  *
@@ -175,5 +180,57 @@ public class Torneo implements Serializable {
     }
 
 
-    
+
+ TorneoJpaController control = new TorneoJpaController();
+
+ public void ListaTorneo(JTable tabla) {
+    DefaultTableModel model;
+    String[] titulo = {"idTorneo", "nombre"};
+    model = new DefaultTableModel(null, titulo);
+
+    try {
+        List<Torneo> datos = control.findTorneoEntities();
+        
+        if (datos.isEmpty()) {
+            System.out.println("La lista de torneos está vacía.");
+        } else {
+            System.out.println("La lista de torneos contiene datos.");
+            for (Torneo trn : datos) {
+                System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                Object[] rowData = {
+                    trn.getIdTorneo(),
+                    trn.getNombre()
+                };
+                model.addRow(rowData);
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+
+/*
+String[] columnNames = {"pedido_id", "nombre_cliente", "estado_pedido_id", "fecha_alta", "fecha_ult_modif", "total"};
+		DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+		
+		for (Pedido p : tienda.getPedidos()) {
+			Object[] rowData = {
+				p.getId(),
+				p.getCliente().getNombre(),
+				p.getEstado(),
+				p.getFechaAlta(),
+				p.getFechaUltModif(),
+				p.getTotal()				
+			};
+			model.addRow(rowData);
+		}
+		
+		table = new JTable(model);
+		scrollPane.setViewportView(table);
+*/
 }

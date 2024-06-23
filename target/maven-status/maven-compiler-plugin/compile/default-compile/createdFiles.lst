@@ -56,6 +56,7 @@ seahub\trabajofinaltorneo\igu\principal\Register.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos$2.class
 seahub\trabajofinaltorneo\igu\principal\Register$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$2.class
+seahub\trabajofinaltorneo\igu\principal\UnirseTorneo.class
 seahub\trabajofinaltorneo\logica\Participante.class
 seahub\trabajofinaltorneo\persistencia\AdministradorJpaController.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$1.class
@@ -66,6 +67,7 @@ seahub\trabajofinaltorneo\igu\principal\Login.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$5.class
 seahub\trabajofinaltorneo\igu\principal\Register$3.class
 seahub\trabajofinaltorneo\TrabajoFinalTorneo.class
+seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$1.class
 seahub\trabajofinaltorneo\igu\ventanas\ExpulsarUser.class
 seahub\trabajofinaltorneo\igu\principal\Login$5.class
 seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.class

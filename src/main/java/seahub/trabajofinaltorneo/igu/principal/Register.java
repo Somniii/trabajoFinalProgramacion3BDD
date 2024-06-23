@@ -43,11 +43,14 @@ public class Register extends javax.swing.JFrame {
         panelAdm6 = new javax.swing.JLabel();
         panelAdm7 = new javax.swing.JLabel();
         txtNombreAdm = new javax.swing.JTextField();
-        txtUserAdm = new javax.swing.JTextField();
+        txtEmailAdm = new javax.swing.JTextField();
         PasswordAdm = new javax.swing.JPasswordField();
         panelAdm8 = new javax.swing.JLabel();
         PasswordClaveAdm = new javax.swing.JPasswordField();
         btnRegister = new javax.swing.JButton();
+        btnAtrasAdm = new javax.swing.JButton();
+        panelAdm10 = new javax.swing.JLabel();
+        txtUserAdm = new javax.swing.JTextField();
         panelUser = new javax.swing.JPanel();
         panelAdm = new javax.swing.JLabel();
         panelAdm1 = new javax.swing.JLabel();
@@ -59,7 +62,7 @@ public class Register extends javax.swing.JFrame {
         btnRegisterUser = new javax.swing.JButton();
         panelAdm9 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
-        btnAtras = new javax.swing.JButton();
+        btnAtrasUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,8 +76,8 @@ public class Register extends javax.swing.JFrame {
 
         panelAdm4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm4.setForeground(new java.awt.Color(255, 255, 255));
-        panelAdm4.setText("Ingrese Clave");
-        jPanel3.add(panelAdm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 150, 30));
+        panelAdm4.setText("Ingrese Email");
+        jPanel3.add(panelAdm4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 130, 30));
 
         panelAdm5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm5.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,21 +92,21 @@ public class Register extends javax.swing.JFrame {
         panelAdm7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm7.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm7.setText("Ingrese User");
-        jPanel3.add(panelAdm7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 150, 30));
+        jPanel3.add(panelAdm7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 150, 30));
 
         txtNombreAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreAdmActionPerformed(evt);
             }
         });
-        jPanel3.add(txtNombreAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 180, 30));
-        jPanel3.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 180, 30));
-        jPanel3.add(PasswordAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 180, 30));
+        jPanel3.add(txtNombreAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 180, 30));
+        jPanel3.add(txtEmailAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 180, 30));
+        jPanel3.add(PasswordAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 180, 30));
 
         panelAdm8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm8.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm8.setText("Ingrese Nombre");
-        jPanel3.add(panelAdm8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, 30));
+        jPanel3.add(panelAdm8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 150, 30));
         jPanel3.add(PasswordClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 180, 30));
 
         btnRegister.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,7 +116,21 @@ public class Register extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel3.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 160, 40));
+        jPanel3.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 130, 40));
+
+        btnAtrasAdm.setText("Atras");
+        btnAtrasAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasAdmActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAtrasAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 110, 40));
+
+        panelAdm10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        panelAdm10.setForeground(new java.awt.Color(255, 255, 255));
+        panelAdm10.setText("Ingrese Clave");
+        jPanel3.add(panelAdm10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
+        jPanel3.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 180, 30));
 
         tableAdm.addTab("Admin", jPanel3);
 
@@ -164,14 +181,14 @@ public class Register extends javax.swing.JFrame {
         panelUser.add(panelAdm9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 150, 30));
         panelUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 180, 30));
 
-        btnAtras.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnAtras.setText("Atras");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnAtrasUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAtrasUser.setText("Atras");
+        btnAtrasUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
+                btnAtrasUserActionPerformed(evt);
             }
         });
-        panelUser.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 130, 40));
+        panelUser.add(btnAtrasUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 130, 40));
 
         tableAdm.addTab("User", panelUser);
 
@@ -202,8 +219,68 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreAdmActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-       
-        
+          Register registro = new Register();    
+          String nombre = txtNombreAdm.getText();
+          String user = txtUserAdm.getText();
+          String email = txtEmailAdm.getText();
+          String pass = "";
+          char [] password = PasswordAdm.getPassword();
+          for(int x = 0 ; x<password.length ; x++){
+            pass += password[x];
+          }    
+          String passAdm = "";
+          char [] passwordAdm = PasswordClaveAdm.getPassword();
+          for(int x = 0 ; x<passwordAdm.length ; x++){
+              passAdm += passwordAdm[x];
+          }
+          ArrayList<Administrador> listaAdm = control.traerTodoAdministrador();
+          boolean encontradoUsu = false;
+          boolean encontradoEmail = false;
+          for(Administrador admAux : listaAdm){
+              if(admAux.getUsuario().compareTo(user)==0){
+                  encontradoUsu = true;
+              }
+              if(admAux.getEmail().compareTo(email)==0){
+                  encontradoEmail = true;
+              }
+          }
+          if(passAdm.compareTo(claveAdministrador)!=0){
+              JOptionPane.showMessageDialog(null, "CLAVE DE ADMINISTRADOR INCORRECTA");
+          } 
+          else if(encontradoUsu==true){
+              JOptionPane.showMessageDialog(null, "USUARIO NO DISPONIBLE");
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);        
+          }else if(encontradoEmail==true){
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+              JOptionPane.showMessageDialog(null, "EMAIL NO DISPONIBLE");
+          }else if(encontradoUsu==true && encontradoEmail==true){
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+              JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
+          }else{
+              //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
+              Administrador adm= new Administrador(nombre,user,pass,email);
+              //System.out.println(part.toString());
+              Controladora control = new Controladora();
+
+              try {
+                  JOptionPane.showMessageDialog(null,"ADMINISTRADOR CREADO");
+                  control.crearAdministrador(adm);
+              } catch (Exception ex) {
+                  JOptionPane.showMessageDialog(null,"EXCEPTION ERROR");
+                  Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              
+              this.setVisible(false);
+              registro.setVisible(true);
+              registro.setLocationRelativeTo(null);  
+                
+          }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
@@ -268,12 +345,19 @@ public class Register extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_btnRegisterUserActionPerformed
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+    private void btnAtrasUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasUserActionPerformed
         Login login = new Login();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
         this.setVisible(false);
-    }//GEN-LAST:event_btnAtrasActionPerformed
+    }//GEN-LAST:event_btnAtrasUserActionPerformed
+
+    private void btnAtrasAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasAdmActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtrasAdmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,13 +398,15 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPasswordField PasswordAdm;
     private javax.swing.JPasswordField PasswordClave;
     private javax.swing.JPasswordField PasswordClaveAdm;
-    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnAtrasAdm;
+    private javax.swing.JButton btnAtrasUser;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRegisterUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel panelAdm;
     private javax.swing.JLabel panelAdm1;
+    private javax.swing.JLabel panelAdm10;
     private javax.swing.JLabel panelAdm2;
     private javax.swing.JLabel panelAdm3;
     private javax.swing.JLabel panelAdm4;
@@ -332,6 +418,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel panelUser;
     private javax.swing.JTabbedPane tableAdm;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmailAdm;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreAdm;
     private javax.swing.JTextField txtUser;

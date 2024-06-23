@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
@@ -22,6 +24,7 @@ import javax.persistence.OneToMany;
 public class Administrador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Basic(optional = false)
     @Column(name = "idAdministrador")
     private Integer idAdministrador;
@@ -54,7 +57,7 @@ public class Administrador implements Serializable {
     public Administrador(Integer idAdministrador) {
         this.idAdministrador = idAdministrador;
     }
-
+    
     public Administrador(Integer idAdministrador, String nombre, String email, String usuario, String contrasena) {
         this.idAdministrador = idAdministrador;
         this.nombre = nombre;
@@ -63,6 +66,14 @@ public class Administrador implements Serializable {
         this.contrasena = contrasena;
     }
 
+    public Administrador(String nombre, String email, String usuario, String contrasena) {
+        this.nombre = nombre;
+        this.email = email;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
+
+    
     public Integer getIdAdministrador() {
         return idAdministrador;
     }

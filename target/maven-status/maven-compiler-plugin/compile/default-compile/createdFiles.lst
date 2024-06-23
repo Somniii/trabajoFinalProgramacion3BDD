@@ -16,6 +16,7 @@ seahub\trabajofinaltorneo\igu\principal\Login$4.class
 seahub\trabajofinaltorneo\igu\ventanas\ExpulsarUser$1.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser$1$1.class
+seahub\trabajofinaltorneo\igu\principal\Login$7.class
 seahub\trabajofinaltorneo\logica\Etapa.class
 seahub\trabajofinaltorneo\igu\principal\SeleccionarGanador$1.class
 seahub\trabajofinaltorneo\logica\ParticipanteAdministrador.class
@@ -37,9 +38,11 @@ seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosAnotados$1$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$3.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteTorneoJpaController.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles$1.class
+seahub\trabajofinaltorneo\igu\principal\Login$6.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosAnotados$1.class
 seahub\trabajofinaltorneo\logica\Administrador.class
 seahub\trabajofinaltorneo\igu\principal\Register$4.class
+seahub\trabajofinaltorneo\igu\principal\Register$7.class
 seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo$1$1.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser.class
 seahub\trabajofinaltorneo\igu\principal\Register.class
@@ -55,6 +58,7 @@ seahub\trabajofinaltorneo\igu\principal\Login.class
 seahub\trabajofinaltorneo\igu\principal\Register$3.class
 seahub\trabajofinaltorneo\TrabajoFinalTorneo.class
 seahub\trabajofinaltorneo\igu\ventanas\ExpulsarUser.class
+seahub\trabajofinaltorneo\igu\principal\Login$5.class
 seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.class
 seahub\trabajofinaltorneo\persistencia\exceptions\PreexistingEntityException.class
 seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.class

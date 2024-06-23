@@ -6,6 +6,7 @@ package seahub.trabajofinaltorneo.igu.principal;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Participante;
 
@@ -249,11 +250,65 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserAdmActionPerformed
 
     private void btnLogAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogAdmActionPerformed
-        // TODO add your handling code here:
+          String usuario = txtUserAdm.getText();
+          String pass = "";
+          char [] password = txtClaveAdm.getPassword();
+          for(int x = 0 ; x<password.length ; x++){
+          pass += password[x];
+                  
+          }
+          //Hay un problema en contrasena , da numeros raros
+        
+          //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
+          int idAuxiliar;
+          ArrayList<Administrador> admAux = control.traerTodoAdministrador();
+          boolean usuarioEncontrado = false;
+          boolean passwordIgual = false;
+          //System.out.println("Apunto de entrar en el for");
+          for(Administrador aux : admAux){
+              //System.out.println("Entra en el for");
+              //System.out.println("COMPARA: "+ aux.getUsuario() + "CON "+usuario); 
+              String usuarioTraido = aux.getUsuario();
+              //System.out.println("Usuario traido :"+usuarioTraido);
+              if(usuarioTraido.compareTo(usuario)==0){
+                  //System.out.println("Es igual");
+                  usuarioEncontrado = true;
+                  if(aux.getContrasena().compareTo(pass)==0){
+                    passwordIgual = true;
+                  }
+              }else{
+                  //System.out.println("No es igual");
+              }
+          }
+          if(usuarioEncontrado == false){
+                JOptionPane.showMessageDialog(null, "NO EXISTE ESE USUARIO");
+                  //System.out.println("NO se encontro el usuario");             
+                Login login = new Login();
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
+        this.setVisible(false);   
+          }else{
+              if(passwordIgual == false){
+                  JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
+                    Login login = new Login();
+                    login.setVisible(true);
+                    login.setLocationRelativeTo(null);
+                    this.setVisible(false);   
+              }else{
+                  HomeParticipante nuevoHome = new HomeParticipante();
+                  nuevoHome.setVisible(true);
+                  nuevoHome.setLocationRelativeTo(null);
+                  this.setVisible(false);
+              }
+          }
+               // TODO add your handling code here:
     }//GEN-LAST:event_btnLogAdmActionPerformed
 
     private void btnRegisterAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAdmActionPerformed
-        // TODO add your handling code here:
+        Register registro = new Register();
+        this.setVisible(false);
+        registro.setVisible(true);
+        registro.setLocationRelativeTo(null);   
     }//GEN-LAST:event_btnRegisterAdmActionPerformed
 
     /**

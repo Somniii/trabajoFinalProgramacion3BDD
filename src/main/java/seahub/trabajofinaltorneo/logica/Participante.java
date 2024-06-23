@@ -27,7 +27,7 @@ public class Participante implements Serializable {
    
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // o IDENTITY para JPA 2.1+
+    @GeneratedValue(strategy = GenerationType.TABLE) // o IDENTITY para JPA 2.1+ FUNCINOA AUTO Y TABLE , TABLE TE LOS PONE EN ORDEN
     @Basic(optional = false)
     @Column(name = "idParticipante")
     private Integer idParticipante;
@@ -219,6 +219,9 @@ public class Participante implements Serializable {
     @Override
     public String toString() {
         return "Participante{" + "idParticipante=" + idParticipante + ", nombre=" + nombre + ", usuario=" + usuario + ", contrasena=" + contrasena + ", email=" + email + ", participanteAdministradorCollection=" + participanteAdministradorCollection + ", participanteTorneoCollection=" + participanteTorneoCollection + ", etapaCollection=" + etapaCollection + ", participanteEtapaCollection=" + participanteEtapaCollection + '}';
+    }
+    public String idUsuPass(){
+        return "-------------\nID = "+idParticipante+ "\nUSUARIO : "+usuario+"\nPASSWORD : "+contrasena;
     }
 
 

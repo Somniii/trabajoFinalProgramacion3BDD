@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package seahub.trabajofinaltorneo.igu.principal;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ import seahub.trabajofinaltorneo.logica.Controladora;
 public class Register extends javax.swing.JFrame {
 
   private Controladora control = new Controladora();
+  private String claveAdministrador = "1234";
   
     public Register() {
         initComponents();
@@ -205,7 +207,14 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
-      try {
+      /*TASKS: 
+        hacer        this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+        En una funcion para no hacerlo tan largo
+        */
+        try {
+          Register registro = new Register();    
           String nombre = txtNombre.getText();
           String user = txtUser.getText();
           String email = txtEmail.getText();
@@ -215,11 +224,46 @@ public class Register extends javax.swing.JFrame {
           pass += password[x];
           }
           //JOptionPane.showMessageDialog(null,pass);
-          Participante part = new Participante(nombre,user,pass,email);
-          System.out.println("Entra");
-          System.out.println(part.toString());
-          part.crearEnBase();
+          ArrayList<Participante> listaPart = control.traerTodoParticipante();
+          boolean encontradoUsu = false;
+          boolean encontradoEmail = false;
+          for(Participante pAux : listaPart){
+              if(pAux.getUsuario().compareTo(user)==0){
+                  encontradoUsu = true;
+              }
+              if(pAux.getEmail().compareTo(email)==0){
+                  encontradoEmail = true;
+              }
+          }
+          if(encontradoUsu==true){
+              JOptionPane.showMessageDialog(null, "USUARIO NO DISPONIBLE");
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);        
+          }else if(encontradoEmail==true){
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+              JOptionPane.showMessageDialog(null, "EMAIL NO DISPONIBLE");
+          }else if(encontradoUsu==true && encontradoEmail==true){
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+              JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
+          }else{
+              JOptionPane.showMessageDialog(null,"PARTICIPANTE CREADO");
+              //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
+              Participante part = new Participante(nombre,user,pass,email);
+              //System.out.println(part.toString());
+              part.crearEnBase();
+                this.setVisible(false);
+                registro.setVisible(true);
+                registro.setLocationRelativeTo(null);  
+                
+          }
       } catch (Exception ex) {
+          System.out.println("ERROR AL INGRESAR EL PARTICIPANTE EN LA BASE DE DATOS//Exception ex");
+          JOptionPane.showMessageDialog(null, "ERROR AL INGRESAR USUARIO ERROR");
           Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
       }
     }//GEN-LAST:event_btnRegisterUserActionPerformed

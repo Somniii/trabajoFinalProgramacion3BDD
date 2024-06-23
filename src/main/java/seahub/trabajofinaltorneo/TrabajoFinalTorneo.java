@@ -19,6 +19,7 @@ public class TrabajoFinalTorneo {
         //System.out.println("Hello World!");
         
         //Controladora control = new Controladora();
+       // prueba();
         Login login = new Login();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
@@ -32,4 +33,5 @@ public class TrabajoFinalTorneo {
         //System.out.println("Nombre="+aux.getNombre());
         
     }
+
 }

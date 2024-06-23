@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -25,6 +27,7 @@ public class Torneo implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Basic(optional = false)
     @Column(name = "idTorneo")
     private Integer idTorneo;
@@ -61,6 +64,8 @@ public class Torneo implements Serializable {
     public Torneo(String nombre ,Administrador adm){
         this.nombre = nombre;
         this.idAdministrador = adm;
+        this.vigente = true;
+        this.inscripcionVigente = true;
     }
 
     public Torneo(Integer idTorneo, String nombre, int pisos, int pisosTotales, boolean vigente , boolean inscripcionVigente) {

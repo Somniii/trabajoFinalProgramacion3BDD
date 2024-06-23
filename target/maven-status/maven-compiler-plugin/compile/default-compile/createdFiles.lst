@@ -4,6 +4,7 @@ seahub\trabajofinaltorneo\igu\principal\Register$2.class
 seahub\trabajofinaltorneo\logica\Torneo_.class
 seahub\trabajofinaltorneo\persistencia\EtapaJpaController.class
 seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneos$3.class
 seahub\trabajofinaltorneo\igu\principal\Login$1.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser$1.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneos$1$1.class
@@ -17,6 +18,7 @@ seahub\trabajofinaltorneo\igu\ventanas\ExpulsarUser$1.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser$1$1.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$6.class
+seahub\trabajofinaltorneo\igu\principal\CargaUsuarios$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$7.class
 seahub\trabajofinaltorneo\logica\Etapa.class
 seahub\trabajofinaltorneo\igu\principal\SeleccionarGanador$1.class
@@ -47,9 +49,11 @@ seahub\trabajofinaltorneo\igu\principal\Register$4.class
 seahub\trabajofinaltorneo\igu\principal\Register$7.class
 seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo$1$1.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$4.class
+seahub\trabajofinaltorneo\igu\principal\CargaUsuarios.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos.class
 seahub\trabajofinaltorneo\igu\principal\Register.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneos$2.class
 seahub\trabajofinaltorneo\igu\principal\Register$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$2.class
 seahub\trabajofinaltorneo\logica\Participante.class

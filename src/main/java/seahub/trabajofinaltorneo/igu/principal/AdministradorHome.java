@@ -157,7 +157,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         }
         if(verificarTodosFinalizados = true){
             JOptionPane.showMessageDialog(null, "CREANDO TORNEO...");
-            CrearTorneos crearTorneos = new CrearTorneos();
+            CrearTorneos crearTorneos = new CrearTorneos(adm);
             crearTorneos.setVisible(true);
             crearTorneos.setLocationRelativeTo(null);
             this.setVisible(false);

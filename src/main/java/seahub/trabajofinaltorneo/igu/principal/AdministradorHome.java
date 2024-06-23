@@ -4,7 +4,12 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.igu.ventanas.CrearTorneo;
 import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
  *
@@ -140,7 +145,27 @@ public class AdministradorHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearTActionPerformed
-
+        //CREAR SENTENCIA IF QUE SE FIJE SI EL ADM YA TIENE UN TORNEO
+        boolean verificarTodosFinalizados =true;
+        Collection<Torneo> listaTorneosAdm= adm.getTorneoCollection();
+        for(Torneo auxTorneo : listaTorneosAdm){
+            if(auxTorneo.getVigente()==false){
+                
+            }else{
+                verificarTodosFinalizados = true;
+            }
+        }
+        if(verificarTodosFinalizados = true){
+            JOptionPane.showMessageDialog(null, "CREANDO TORNEO...");
+            CrearTorneos crearTorneos = new CrearTorneos();
+            crearTorneos.setVisible(true);
+            crearTorneos.setLocationRelativeTo(null);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "TORNEO EN CURSO");
+            
+        }
+        
     }//GEN-LAST:event_btnCrearTActionPerformed
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed

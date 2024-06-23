@@ -48,6 +48,7 @@ seahub\trabajofinaltorneo\igu\principal\Register$7.class
 seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo$1$1.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$4.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneos.class
 seahub\trabajofinaltorneo\igu\principal\Register.class
 seahub\trabajofinaltorneo\igu\principal\Register$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$2.class
@@ -71,3 +72,4 @@ seahub\trabajofinaltorneo\igu\principal\AdministradorHome$2.class
 seahub\trabajofinaltorneo\logica\ParticipanteEtapa.class
 seahub\trabajofinaltorneo\logica\Participante_.class
 seahub\trabajofinaltorneo\logica\ParticipanteEtapa_.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneos$1.class

@@ -58,6 +58,10 @@ public class Torneo implements Serializable {
     public Torneo(Integer idTorneo) {
         this.idTorneo = idTorneo;
     }
+    public Torneo(String nombre ,Administrador adm){
+        this.nombre = nombre;
+        this.idAdministrador = adm;
+    }
 
     public Torneo(Integer idTorneo, String nombre, int pisos, int pisosTotales, boolean vigente , boolean inscripcionVigente) {
         this.idTorneo = idTorneo;

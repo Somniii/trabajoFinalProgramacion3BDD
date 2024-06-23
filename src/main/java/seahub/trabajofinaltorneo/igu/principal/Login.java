@@ -4,7 +4,9 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Participante;
 
 /**
@@ -12,8 +14,7 @@ import seahub.trabajofinaltorneo.logica.Participante;
  * @author tinov
  */
 public class Login extends javax.swing.JFrame {
-
-  
+    private Controladora control = new Controladora();
     Participante parti = new Participante();
     public Login() {
         initComponents();
@@ -108,7 +109,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        if(txtUser.getText().equals("") || txtClave.getText().equals("")){
+        /*if(txtUser.getText().equals("") || txtClave.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Los Campos estan Vacios");
         }else{
             boolean valor = parti.login(txtUser.getText(), txtClave.getText());
@@ -120,7 +121,59 @@ public class Login extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Error de Usuario o Contraseña");
             }
-        }
+        }*/
+        String usuario = txtUser.getText();
+          String pass = "";
+          char [] password = txtClave.getPassword();
+          for(int x = 0 ; x<password.length ; x++){
+          pass += password[x];
+                  
+          }
+          //Hay un problema en contrasena , da numeros raros
+        
+          //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
+          int idAuxiliar;
+          ArrayList<Participante> participanteAux = control.traerTodoParticipante();
+          boolean usuarioEncontrado = false;
+          boolean passwordIgual = false;
+          //System.out.println("Apunto de entrar en el for");
+          for(Participante aux : participanteAux){
+              //System.out.println("Entra en el for");
+              //System.out.println("COMPARA: "+ aux.getUsuario() + "CON "+usuario); 
+              String usuarioTraido = aux.getUsuario();
+              //System.out.println("Usuario traido :"+usuarioTraido);
+              if(usuarioTraido.compareTo(usuario)==0){
+                  //System.out.println("Es igual");
+                  usuarioEncontrado = true;
+                  if(aux.getContrasena().compareTo(pass)==0){
+                    passwordIgual = true;
+                  }
+              }else{
+                  //System.out.println("No es igual");
+              }
+          }
+          if(usuarioEncontrado == false){
+                JOptionPane.showMessageDialog(null, "NO EXISTE ESE USUARIO");
+                  //System.out.println("NO se encontro el usuario");             
+                Login login = new Login();
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
+        this.setVisible(false);   
+          }else{
+              if(passwordIgual == false){
+                  JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
+                    Login login = new Login();
+                    login.setVisible(true);
+                    login.setLocationRelativeTo(null);
+                    this.setVisible(false);   
+              }else{
+                  HomeParticipante nuevoHome = new HomeParticipante();
+                  nuevoHome.setVisible(true);
+                  nuevoHome.setLocationRelativeTo(null);
+                  this.setVisible(false);
+              }
+          }
+       
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed

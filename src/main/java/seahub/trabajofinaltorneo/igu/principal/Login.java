@@ -295,7 +295,7 @@ public class Login extends javax.swing.JFrame {
                     login.setLocationRelativeTo(null);
                     this.setVisible(false);   
               }else{
-                  HomeParticipante nuevoHome = new HomeParticipante();
+                  AdministradorHome nuevoHome = new AdministradorHome();
                   nuevoHome.setVisible(true);
                   nuevoHome.setLocationRelativeTo(null);
                   this.setVisible(false);

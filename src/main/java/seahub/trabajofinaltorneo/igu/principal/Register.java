@@ -18,6 +18,7 @@ import seahub.trabajofinaltorneo.logica.Controladora;
 public class Register extends javax.swing.JFrame {
 
   private Controladora control = new Controladora();
+  private String claveAdministrador = "1234";
   
     public Register() {
         initComponents();

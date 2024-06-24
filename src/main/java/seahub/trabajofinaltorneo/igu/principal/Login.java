@@ -66,25 +66,31 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Login");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 90, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 170, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 170, 30));
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 30));
-        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, 30));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 30));
+
+        txtClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ingrese su clave");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         btnLog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLog.setText("Ingresar");
@@ -102,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 110, 40));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 110, 40));
 
         jTabbedPane1.addTab("Participante", jPanel1);
 
@@ -158,7 +164,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,6 +321,10 @@ public class Login extends javax.swing.JFrame {
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);   
     }//GEN-LAST:event_btnRegisterAdmActionPerformed
+
+    private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveActionPerformed
 
     /**
      * @param args the command line arguments

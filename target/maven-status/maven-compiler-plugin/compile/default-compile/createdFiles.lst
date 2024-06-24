@@ -83,6 +83,7 @@ seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles$1$1.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$2.class
 seahub\trabajofinaltorneo\logica\ParticipanteEtapa.class
+seahub\trabajofinaltorneo\igu\principal\Login$8.class
 seahub\trabajofinaltorneo\logica\Participante_.class
 seahub\trabajofinaltorneo\logica\ParticipanteEtapa_.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos$1.class

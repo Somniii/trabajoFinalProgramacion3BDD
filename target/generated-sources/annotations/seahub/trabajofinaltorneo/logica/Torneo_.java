@@ -7,9 +7,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
-import seahub.trabajofinaltorneo.persistencia.TorneoJpaController;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-23T22:05:02", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-23T22:14:19", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Torneo.class)
 public class Torneo_ { 
 
@@ -17,7 +16,6 @@ public class Torneo_ {
     public static volatile SingularAttribute<Torneo, Integer> pisos;
     public static volatile SingularAttribute<Torneo, Integer> pisosTotales;
     public static volatile SingularAttribute<Torneo, Boolean> vigente;
-    public static volatile SingularAttribute<Torneo, TorneoJpaController> control;
     public static volatile CollectionAttribute<Torneo, ParticipanteTorneo> participanteTorneoCollection;
     public static volatile CollectionAttribute<Torneo, Etapa> etapaCollection;
     public static volatile SingularAttribute<Torneo, String> nombre;

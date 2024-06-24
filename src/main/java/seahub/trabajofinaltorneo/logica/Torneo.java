@@ -181,7 +181,7 @@ public class Torneo implements Serializable {
 
 
 
- TorneoJpaController control = new TorneoJpaController();
+
 
  public void ListaTorneo(JTable tabla) {
      //Definis la table
@@ -190,6 +190,7 @@ public class Torneo implements Serializable {
     model = new DefaultTableModel(null, titulo);
 
     try {
+        TorneoJpaController control = new TorneoJpaController();
         List<Torneo> datos = control.findTorneoEntities();
         
         if (datos.isEmpty()) {

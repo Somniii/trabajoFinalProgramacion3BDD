@@ -223,7 +223,7 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);   
           }else{
               if(passwordIgual == false){
-                  JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
+                    JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
                     Login login = new Login();
                     login.setVisible(true);
                     login.setLocationRelativeTo(null);

@@ -27,6 +27,7 @@ public class AdministradorHome extends javax.swing.JFrame {
     public AdministradorHome(Administrador adm){
         initComponents();
         this.adm = adm;
+        nombreAdministrador.setText(adm.getNombre());        
     }
 
     /**
@@ -184,7 +185,7 @@ public class AdministradorHome extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreAdministradorActionPerformed
 
     private void btnNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNombreActionPerformed
-        nombreAdministrador.setText(adm.getNombre());
+
     }//GEN-LAST:event_btnNombreActionPerformed
 
     /**

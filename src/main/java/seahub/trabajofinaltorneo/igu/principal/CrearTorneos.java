@@ -106,10 +106,10 @@ public class CrearTorneos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR EXCEPTION");
             Logger.getLogger(CrearTorneos.class.getName()).log(Level.SEVERE, null, ex);
         }
-       CargaUsuarios cargarU = new CargaUsuarios(tor);
-       cargarU.setVisible(true);
-       cargarU.setLocationRelativeTo(null);
-       this.setVisible(false);
+       //CargaUsuarios cargarU = new CargaUsuarios(tor);
+       //cargarU.setVisible(true);
+       //cargarU.setLocationRelativeTo(null);
+       //this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
     /**

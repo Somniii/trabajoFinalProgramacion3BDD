@@ -184,6 +184,7 @@ public class Torneo implements Serializable {
  TorneoJpaController control = new TorneoJpaController();
 
  public void ListaTorneo(JTable tabla) {
+     //Definis la table
     DefaultTableModel model;
     String[] titulo = {"idTorneo", "nombre"};
     model = new DefaultTableModel(null, titulo);
@@ -201,6 +202,7 @@ public class Torneo implements Serializable {
                     trn.getIdTorneo(),
                     trn.getNombre()
                 };
+                //Que es addRow(rowData)
                 model.addRow(rowData);
             }
         }

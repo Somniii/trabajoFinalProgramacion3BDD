@@ -4,6 +4,13 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Participante;
+import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
@@ -15,10 +22,17 @@ public class UnirseTorneo extends javax.swing.JFrame {
     /**
      * Creates new form UnirseTorneo
      */
+    private Participante par;
     public UnirseTorneo() {
         initComponents();
         setVisible(true);
         mostrarTabla();
+    }
+    public UnirseTorneo(Participante par) {
+        initComponents();
+        setVisible(true);
+        mostrarTabla();
+        this.par = par;
     }
 
     /**
@@ -33,6 +47,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaTorneo = new javax.swing.JTable();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,9 +65,22 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
             }
         ));
+        TablaTorneo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaTorneoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaTorneo);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 410, 340));
+
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,6 +95,51 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TablaTorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaTorneoMouseClicked
+        Controladora control = new Controladora();
+        int select = TablaTorneo.getSelectedRow(); 
+        ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
+        int contador = 0;
+        boolean yaUnido = false;
+        Torneo tor = new Torneo();
+        for(Torneo torAux : torneoArr){
+            if(contador == select){
+                tor = torAux;
+                break;
+            }
+            contador++;
+        }
+        ArrayList<ParticipanteTorneo> parTorArr = control.traerTodoParticipanteTorneo();
+        for(ParticipanteTorneo parTorAux : parTorArr){
+            if(parTorAux.getIdParticipante().equals(par)== true){
+                if(parTorAux.getIdTorneo().equals(tor)==true){
+                    yaUnido = true;  
+                }
+            }
+        }
+        if(yaUnido==true){
+            JOptionPane.showMessageDialog(null, "YA ESTAS UNIDO A  :"+tor.getNombre());
+        }else{
+            JOptionPane.showMessageDialog(null, "TE UNISTE A :"+tor.getNombre());
+            ParticipanteTorneo parTor = new ParticipanteTorneo(tor ,par); 
+            try {
+                control.crearParticipanteTorneo(parTor);
+             } catch (Exception ex) {
+                Logger.getLogger(UnirseTorneo.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "ERROR EXCEPTION EX");
+        }
+        }
+
+        
+    }//GEN-LAST:event_TablaTorneoMouseClicked
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        HomeParticipante homePar = new HomeParticipante(par);
+        homePar.setVisible(true);
+        homePar.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void mostrarTabla(){
         Torneo torneo = new Torneo();
@@ -107,6 +180,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaTorneo;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

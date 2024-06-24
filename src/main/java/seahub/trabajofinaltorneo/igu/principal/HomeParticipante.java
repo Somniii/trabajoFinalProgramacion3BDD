@@ -4,6 +4,8 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import seahub.trabajofinaltorneo.logica.Participante;
+
 /**
  *
  * @author ianel
@@ -13,8 +15,13 @@ public class HomeParticipante extends javax.swing.JFrame {
     /**
      * Creates new form HomeParticipante
      */
+    private Participante par;
     public HomeParticipante() {
         initComponents();
+    }
+    public HomeParticipante(Participante par) {
+        initComponents();
+        this.par = par;
     }
 
     /**
@@ -57,7 +64,7 @@ public class HomeParticipante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUnirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnirseActionPerformed
-        UnirseTorneo unirseTorneo = new UnirseTorneo();
+        UnirseTorneo unirseTorneo = new UnirseTorneo(par);
         unirseTorneo.setVisible(true);
         unirseTorneo.setLocationRelativeTo(null);
         this.setVisible(false);

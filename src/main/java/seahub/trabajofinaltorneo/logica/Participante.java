@@ -192,7 +192,7 @@ public class Participante implements Serializable {
         }
         return valor;
     }
-*/
+
     public boolean login(String usuario, String clave) {
     Controladora control = new Controladora();
     EntityManager em = control.getEntityManager();
@@ -214,7 +214,7 @@ public class Participante implements Serializable {
         em.close();  // Asegúrate de cerrar el EntityManager
     }
     return valor;
-}
+}*/
 
     @Override
     public String toString() {

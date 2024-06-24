@@ -224,4 +224,10 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public ArrayList<ParticipanteTorneo> traerTodoParticipanteTorneo() {
+        List<ParticipanteTorneo> list = parTorJpa.findParticipanteTorneoEntities();
+        ArrayList<ParticipanteTorneo> listaParticipanteTorneo = new ArrayList<ParticipanteTorneo> (list);
+        return listaParticipanteTorneo;
+    }
 }

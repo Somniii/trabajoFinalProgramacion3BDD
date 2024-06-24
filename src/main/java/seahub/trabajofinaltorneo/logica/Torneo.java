@@ -190,8 +190,8 @@ public class Torneo implements Serializable {
     model = new DefaultTableModel(null, titulo);
 
     try {
-        TorneoJpaController control = new TorneoJpaController();
-        List<Torneo> datos = control.findTorneoEntities();
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
         
         if (datos.isEmpty()) {
             System.out.println("La lista de torneos está vacía.");

@@ -198,6 +198,7 @@ public class Login extends javax.swing.JFrame {
           ArrayList<Participante> participanteAux = control.traerTodoParticipante();
           boolean usuarioEncontrado = false;
           boolean passwordIgual = false;
+          Participante par = new Participante();
           //System.out.println("Apunto de entrar en el for");
           for(Participante aux : participanteAux){
               //System.out.println("Entra en el for");
@@ -208,6 +209,7 @@ public class Login extends javax.swing.JFrame {
                   //System.out.println("Es igual");
                   usuarioEncontrado = true;
                   if(aux.getContrasena().compareTo(pass)==0){
+                    par = aux;
                     passwordIgual = true;
                   }
               }else{
@@ -229,7 +231,7 @@ public class Login extends javax.swing.JFrame {
                     login.setLocationRelativeTo(null);
                     this.setVisible(false);   
               }else{
-                  HomeParticipante nuevoHome = new HomeParticipante();
+                  HomeParticipante nuevoHome = new HomeParticipante(par);
                   nuevoHome.setVisible(true);
                   nuevoHome.setLocationRelativeTo(null);
                   this.setVisible(false);

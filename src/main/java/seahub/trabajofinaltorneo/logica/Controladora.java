@@ -104,8 +104,12 @@ public class Controladora {
     public void eliminarParticipanteTorneo(int id) throws NonexistentEntityException{
         controlPersis.eliminarParticipanteTorneo(id);
     }
+    public ArrayList<ParticipanteTorneo> traerTodoParticipanteTorneo(){
+        return controlPersis.traerTodoParticipanteTorneo();
+    }
 
     EntityManager getEntityManager() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

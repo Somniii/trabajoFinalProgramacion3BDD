@@ -91,17 +91,18 @@ public class CrearTorneos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        AdministradorHome admHome = new AdministradorHome(adm);
-        admHome.setVisible(true);
-        admHome.setLocationRelativeTo(null);
-        this.setVisible(false);   
+        irAtras(); 
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
        Torneo tor = new Torneo(textNombre.getText(),adm);
        Controladora control = new Controladora();
         try {
+            
             control.crearTorneo(tor);
+            JOptionPane.showMessageDialog(null, "TORNEO CREADO");
+            irAtras();
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "ERROR EXCEPTION");
             Logger.getLogger(CrearTorneos.class.getName()).log(Level.SEVERE, null, ex);
@@ -147,6 +148,12 @@ public class CrearTorneos extends javax.swing.JFrame {
         });
     }
 
+    private void irAtras(){
+        AdministradorHome admHome = new AdministradorHome(adm);
+        admHome.setVisible(true);
+        admHome.setLocationRelativeTo(null);
+        this.setVisible(false);          
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCrear;

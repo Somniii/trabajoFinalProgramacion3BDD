@@ -7,6 +7,7 @@ seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos$3.class
 seahub\trabajofinaltorneo\igu\principal\Login$1.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser$1.class
+seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$2.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneos$1$1.class
 seahub\trabajofinaltorneo\igu\principal\Register$6.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteJpaController.class
@@ -27,6 +28,7 @@ seahub\trabajofinaltorneo\logica\ParticipanteAdministrador_.class
 seahub\trabajofinaltorneo\logica\Torneo.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$1.class
+seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$3.class
 seahub\trabajofinaltorneo\logica\Controladora.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$3.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneos.class

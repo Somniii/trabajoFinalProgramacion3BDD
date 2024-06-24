@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,6 +23,7 @@ public class ParticipanteTorneo implements Serializable {
  
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Basic(optional = false)
     @Column(name = "idP_T")
     private Integer idPT;
@@ -36,6 +39,10 @@ public class ParticipanteTorneo implements Serializable {
 
     public ParticipanteTorneo(Integer idPT) {
         this.idPT = idPT;
+    }
+    public ParticipanteTorneo(Torneo tor , Participante par){
+        this.idTorneo=tor;
+        this.idParticipante=par;
     }
 
     public Integer getIdPT() {

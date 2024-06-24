@@ -18,6 +18,9 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author tinov
@@ -215,6 +218,7 @@ public class Participante implements Serializable {
     }
     return valor;
 }*/
+
 
     @Override
     public String toString() {

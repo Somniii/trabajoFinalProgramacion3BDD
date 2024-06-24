@@ -5,6 +5,7 @@
 package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
@@ -214,8 +215,10 @@ public class Torneo implements Serializable {
         JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
-public void ListaTorneoAdminsitrador(JTable tabla) {
+
+public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
      //Definis la table
+    //JOptionPane.showMessageDialog(null, "ENTRA" );
     DefaultTableModel model;
     String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente"};
     model = new DefaultTableModel(null, titulo);
@@ -225,16 +228,58 @@ public void ListaTorneoAdminsitrador(JTable tabla) {
         List<Torneo> datos = control.traerTodoTorneo();
         
         if (datos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "NO HAY DATOS " );
+            
             //System.out.println("La lista de torneos está vacía.");
         } else {
             //System.out.println("La lista de torneos contiene datos.");
+            Administrador admAux = new Administrador();
+            for (Torneo trn : datos) {
+                System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                admAux = trn.getIdAdministrador();
+                if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
+                    //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                    Object[] rowData = {
+                        trn.getIdTorneo(),
+                        trn.getNombre(),                
+                        trn.getVigente(),
+                        trn.getInscripcionVigente(),                    
+                        };
+                         //Que es addRow(rowData)
+                         model.addRow(rowData);
+                }
+
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+public void ListaTorneo(JTable tabla){
+     //Definis la table
+    DefaultTableModel model;
+    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","pisosTotales"};
+    model = new DefaultTableModel(null, titulo);
+
+    try {
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
+        
+        if (datos.isEmpty()) {
+            System.out.println("La lista de torneos está vacía.");
+        } else {
+            System.out.println("La lista de torneos contiene datos.");
             for (Torneo trn : datos) {
                 System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
                 Object[] rowData = {
                     trn.getIdTorneo(),
-                    trn.getNombre(),                
+                    trn.getNombre(),
+                    trn.getInscripcionVigente(),
                     trn.getVigente(),
-                    trn.getInscripcionVigente(),                    
+                    trn.getPisosTotales(),
                 };
                 //Que es addRow(rowData)
                 model.addRow(rowData);
@@ -246,6 +291,19 @@ public void ListaTorneoAdminsitrador(JTable tabla) {
         ex.printStackTrace(); // Imprime la traza de la excepción para depuración
         JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+public int cantidadParticipantes(){
+    Controladora control = new Controladora();
+    ArrayList<ParticipanteTorneo> parTor = control.traerTodoParticipanteTorneo();
+    Torneo torAux = new Torneo();
+    int contador = 0;
+    for(ParticipanteTorneo parTorAux: parTor){
+        torAux = parTorAux.getIdTorneo();
+        if(torAux.getIdTorneo().equals(this.getIdTorneo())){
+            contador++;
+        }
+    }
+    return contador;
 }
 
 

@@ -71,26 +71,26 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 170, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 170, 30));
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 30));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 240, 30));
 
         txtClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 240, 30));
+        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ingrese su clave");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         btnLog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLog.setText("Ingresar");
@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 110, 40));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 40));
 
         jTabbedPane1.addTab("Participante", jPanel1);
 

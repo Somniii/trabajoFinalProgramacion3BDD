@@ -30,12 +30,17 @@ public class UnirseTorneo extends javax.swing.JFrame {
         setSize(500, 500);
         setVisible(true);
         this.setTitle("Unirse a Torneos Existentes");
+        mostrarTabla();
     }
     public UnirseTorneo(Participante par) {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Unirse a torneos Existentes");
         setVisible(true);
-        mostrarTabla();
         this.par = par;
+         mostrarTabla();
     }
 
     /**

@@ -5,6 +5,8 @@
 package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -88,7 +93,61 @@ public class ParticipanteTorneo implements Serializable {
         }
         return true;
     }
+    public void participanteTablaTorneo(JTable tabla , Torneo tor){
+    DefaultTableModel model;
+    String[] titulo = {"idParticipante", "Email","Nombre","Usuario"};
+    model = new DefaultTableModel(null, titulo);
 
+    try {
+        Controladora control = new Controladora();
+        List<ParticipanteTorneo> datos = control.traerTodoParticipanteTorneo();
+        
+        if (datos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "NO HAY DATOS " );
+            
+            //System.out.println("La lista de torneos está vacía.");
+        } else {
+            //System.out.println("La lista de torneos contiene datos.");
+            Torneo torneo = new Torneo();
+            Participante parAux = new Participante();
+            for (ParticipanteTorneo parTor : datos) {
+                //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                torneo = parTor.getIdTorneo();
+                if(torneo.getIdTorneo().equals(tor.getIdTorneo())==true){
+                    //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                    parAux = parTor.getIdParticipante();
+                    Object[] rowData = {
+                        parAux.getIdParticipante(),
+                        parAux.getEmail(),                
+                        parAux.getNombre(),
+                        parAux.getUsuario(),                    
+                        };
+                         //Que es addRow(rowData)
+                         model.addRow(rowData);
+                }
+
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }
+    /*public int totalTorneos(Torneo tor){
+        Controladora control = new Controladora();
+        ArrayList<ParticipanteTorneo> parTor = control.traerTodoParticipanteTorneo();
+        int contador;
+        Torneo torAux = new Torneo();
+        for(ParticipanteTorneo parTorAux : parTor){
+            torAux = parTorAux.idTorneo;
+            if(torAux.equals(tor)==true){
+                contador++
+            }
+        }
+        return contador;
+    }*/
     @Override
     public String toString() {
         return "seahub.tournament.logica.ParticipanteTorneo[ idPT=" + idPT + " ]";

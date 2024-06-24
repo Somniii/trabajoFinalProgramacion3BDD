@@ -4,20 +4,26 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
  *
  * @author tinov
  */
-public class VerTorneos extends javax.swing.JFrame {
+public class VerTorneosAdm extends javax.swing.JFrame {
 
     /**
      * Creates new form VerTorneos
      */
     private Administrador adm;
-    public VerTorneos() {
+    public VerTorneosAdm() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -27,15 +33,15 @@ public class VerTorneos extends javax.swing.JFrame {
         mostrarTorneo();
        
     }
-    public VerTorneos(Administrador adm){
+    public VerTorneosAdm(Administrador adm){
         initComponents();
         this.adm = adm;
-        mostrarTorneo();
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
         this.setTitle("Ver Torneos Existentes");
         setVisible(true);
+        mostrarTorneo();
         
     }
     @SuppressWarnings("unchecked")
@@ -44,15 +50,16 @@ public class VerTorneos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablatTorneo = new javax.swing.JTable();
+        tablaTorneo = new javax.swing.JTable();
         btnAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tablatTorneo.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTorneo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -63,7 +70,12 @@ public class VerTorneos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablatTorneo);
+        tablaTorneo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaTorneoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaTorneo);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
 
@@ -74,6 +86,10 @@ public class VerTorneos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Elegir torneo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,12 +113,40 @@ public class VerTorneos extends javax.swing.JFrame {
         irAtras();         // TODO add your handling code here:
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void tablaTorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTorneoMouseClicked
+        Controladora control = new Controladora();
+        int select = tablaTorneo.getSelectedRow(); 
+        ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
+        int contador = 0;
+        //boolean yaTerminado = false;
+        Torneo tor = new Torneo();
+        for(Torneo torAux : torneoArr){
+            if(contador == select){
+                tor = torAux;
+                break;
+            }
+            contador++;
+        }
+        /*for(ParticipanteTorneo parTorAux : parTorArr){
+            if(parTorAux.getIdParticipante().equals(par)== true){
+                if(parTorAux.getIdTorneo().equals(tor)==true){
+                    yaUnido = true;  
+                }
+            }
+        }*/
+        VistaTorneoInscripcion vistaTor = new VistaTorneoInscripcion(tor , adm);
+        vistaTor.setVisible(true);
+        this.setVisible(false);
+        
+       // TODO add your handling code here:
+    }//GEN-LAST:event_tablaTorneoMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public void mostrarTorneo(){
         Torneo tor = new Torneo();
-        tor.ListaTorneoAdminsitrador(tablatTorneo);
+        tor.ListaTorneoAdminsitrador(tablaTorneo ,adm);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -118,20 +162,21 @@ public class VerTorneos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerTorneosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerTorneosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerTorneosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerTorneosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerTorneos().setVisible(true);
+                new VerTorneosAdm().setVisible(true);
             }
         });
     }
@@ -143,8 +188,9 @@ public class VerTorneos extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablatTorneo;
+    private javax.swing.JTable tablaTorneo;
     // End of variables declaration//GEN-END:variables
 }

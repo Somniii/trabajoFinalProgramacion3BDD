@@ -4,41 +4,33 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
-import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
  *
  * @author tinov
  */
-public class CrearTorneos extends javax.swing.JFrame {
+public class AceptacionInscripcion extends javax.swing.JFrame {
 
     /**
-     * Creates new form CrearTorneos
+     * Creates new form aceptacionInscripcion
      */
+    private Torneo tor;
     private Administrador adm;
-    
-    public CrearTorneos() {
-        initComponents();
+    public AceptacionInscripcion() {
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
-        this.setTitle("Crear Torneo Nuevo");
-        setVisible(true);
+        initComponents();
     }
-    public CrearTorneos(Administrador adm){
-        initComponents();
-        this.adm = adm;
-        initComponents();
+    public AceptacionInscripcion(Torneo tor, Administrador adm){
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
-        this.setTitle("Crear Torneo Nuevo");
-        setVisible(true);
+        initComponents();
+        this.tor = tor;
+        this.adm = adm;
     }
 
     /**
@@ -51,47 +43,40 @@ public class CrearTorneos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        textNombre = new javax.swing.JTextField();
-        btnCrear = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(41, 41, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Creacion torneo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Nombre torneo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        jPanel1.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, -1));
-
-        btnCrear.setText("Crear Torneo");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setText("Cerrar Inscripcion");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-        btnAtras.setText("Atras");
+        btnAtras.setText("Volver atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Una vez cerrada la inscripcion no se puede volver atras, estas seguro?");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,28 +86,15 @@ public class CrearTorneos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        irAtras(); 
-    }//GEN-LAST:event_btnAtrasActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-       Torneo tor = new Torneo(textNombre.getText(),adm);
-       Controladora control = new Controladora();
-        try {
-            
-            control.crearTorneo(tor);
-            JOptionPane.showMessageDialog(null, "TORNEO CREADO");
-            irAtras();
-            
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EXCEPTION");
-            Logger.getLogger(CrearTorneos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       //CargaUsuarios cargarU = new CargaUsuarios(tor);
-       //cargarU.setVisible(true);
-       //cargarU.setLocationRelativeTo(null);
-       //this.setVisible(false);
-    }//GEN-LAST:event_btnCrearActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        VistaTorneoInscripcion vistaInscripcion = new VistaTorneoInscripcion(tor,adm);
+        vistaInscripcion.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,36 +113,29 @@ public class CrearTorneos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AceptacionInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AceptacionInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AceptacionInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearTorneos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AceptacionInscripcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearTorneos().setVisible(true);
+                new AceptacionInscripcion().setVisible(true);
             }
         });
     }
 
-    private void irAtras(){
-        AdministradorHome admHome = new AdministradorHome(adm);
-        admHome.setVisible(true);
-        admHome.setLocationRelativeTo(null);
-        this.setVisible(false);          
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
 }

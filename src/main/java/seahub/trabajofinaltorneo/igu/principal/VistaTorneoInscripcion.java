@@ -130,6 +130,8 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         VerTorneosAdm verTor = new VerTorneosAdm(adm);
+        verTor.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**

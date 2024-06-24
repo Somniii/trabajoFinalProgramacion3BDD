@@ -5,6 +5,8 @@
 package seahub.trabajofinaltorneo.igu.principal;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
@@ -44,6 +46,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnLog = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
+        btnPrueba = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -109,6 +112,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 40));
+
+        btnPrueba.setText("prueba");
+        btnPrueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPruebaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         jTabbedPane1.addTab("Participante", jPanel1);
 
@@ -326,6 +337,40 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveActionPerformed
 
+    private void btnPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaActionPerformed
+        Controladora control = new Controladora();
+        Participante par1 = new Participante("qwer1","qwe1","1324","qwer@gmail.com");
+        Participante par2 = new Participante("qwer1","asd1","1324","qwer@gmail.com");
+        Participante par3 = new Participante("qwer1","zxc1","1324","qwer@gmail.com");
+        Participante par4 = new Participante("qwer1","1234","1324","qwer@gmail.com");
+        try {
+            control.crearParticipante(par1);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par2);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par3);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par4);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Administrador adm = new Administrador("adm","adm@gmail.com","adm","1234");
+        try {
+            control.crearAdministrador(adm);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPruebaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +409,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnLogAdm;
+    private javax.swing.JButton btnPrueba;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRegisterAdm;
     private javax.swing.JLabel jLabel1;

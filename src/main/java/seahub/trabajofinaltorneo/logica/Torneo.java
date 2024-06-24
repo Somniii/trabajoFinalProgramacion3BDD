@@ -199,13 +199,15 @@ public class Torneo implements Serializable {
         } else {
             System.out.println("La lista de torneos contiene datos.");
             for (Torneo trn : datos) {
-                System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
-                Object[] rowData = {
-                    trn.getIdTorneo(),
-                    trn.getNombre()
-                };
-                //Que es addRow(rowData)
-                model.addRow(rowData);
+                if(trn.inscripcionVigente!=false){
+                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                    Object[] rowData = {
+                        trn.getIdTorneo(),
+                        trn.getNombre()
+                    };
+                    //Que es addRow(rowData)
+                    model.addRow(rowData);
+                }
             }
         }
 

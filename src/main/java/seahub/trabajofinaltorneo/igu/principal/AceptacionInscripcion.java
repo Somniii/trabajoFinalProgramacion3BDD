@@ -7,6 +7,7 @@ package seahub.trabajofinaltorneo.igu.principal;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Etapa;
@@ -95,22 +96,210 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        //PRIMERO poner todos los participantes inscriptos al torneo en un ArrayList
-        ArrayList<Participante> arrayPart = crearArrayListParticipantes(this.getTor());        
+        ArrayList<Participante> arrayPart = crearArrayListParticipante(this.getTor());
+        Controladora control = new Controladora();
+        int cantidad = tor.cantidadParticipantes();
+        JOptionPane.showMessageDialog(null, "CANTIDAD PARTICIPANTES:"+cantidad);
+        for(Participante part : arrayPart){
+            System.out.println("Id:"+part.getIdParticipante());
+        }
+        int exponenteDos = -1;
+        while(Math.pow(2,exponenteDos)*2<cantidad){
+            System.out.println(cantidad+" es mayor que "+Math.pow(2, exponenteDos)*2);
+            exponenteDos++;
+        }
+        
+        int exponencialNecesario = (int) Math.pow(2,exponenteDos);
+        System.out.println(cantidad+" es menor que "+exponencialNecesario);
+        int cantidadEtapas = exponencialNecesario;
+        tor.setPisosTotales(exponenteDos);
+        System.out.println("Cantidad etapas necesarias:"+cantidadEtapas+" pisos necesarios:"+exponenteDos+" cantidad participantes que pueden entrar:"+exponencialNecesario*2);
+        int j = 0;
+        for(int i = 0; i<cantidadEtapas ; i++){
+            System.out.println("Recorre i:"+ i + " j:" + j);
+            Etapa eta = new Etapa(exponenteDos,tor, adm);
+            try {
+                //MANDAR A BDD
+                control.crearEtapa(eta);
+            } catch (Exception ex) {
+                Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            j++;
+        }
+        
+        int i = 0;
+        ArrayList<Etapa> etaArray = control.traerTodoEtapa();
+        for(Etapa etaAux : etaArray){       
+                    //System.out.println("-----------------\nEntra al primer for con i al "+ i);
+                    Administrador admAux = etaAux.getIdAdministrador();
+                    //System.out.println("Entra al for, id etapa:"+etaAux.getIdEtapa());
+                    if(i>=cantidadEtapas){
+                        break;
+                    }
+                    //System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
+                    if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
+                        //System.out.println("ENTRA PRIMER IF");                
+                        Torneo torAux = etaAux.getIdTorneo();
+                        //System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
+                        if(torAux.getIdTorneo().equals(tor.getIdTorneo())==true){
+                            //System.out.println("ENTRA SEGUNDO IF");                    
+                            //System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
+                            int alturaMax = etaAux.getJerarquia();
+                            //System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
+                            if(alturaMax==exponenteDos){
+                               // System.out.println("Anda todo bien");
+                                //System.out.println("No sale del for con i al "+ i);
+                                if(arrayPart.get(i)!=null){                                    
+                                    //Vincular participante con una etapa
+                                    //System.out.println("index enrta al if:"+i);
+
+                                    ParticipanteEtapa partEta = new ParticipanteEtapa(etaAux, arrayPart.get(i));
+                                    try {
+                                        control.crearParticipanteEtapa(partEta);
+                                    } catch (Exception ex) {
+                                        Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    i++;
+                                }else{
+                                    break;
+                                }                                               
+                            }
+                        }
+                    }   
+        }
+        System.out.println("Sale del for con i al "+ i);
+        if(i==5){
+            System.out.println("Sale del for con i al 5");
+        }
+        if(arrayPart.get(i)==null){
+            System.out.println("Es nulo");
+        }else{
+            for(Etapa etaAux : etaArray){  
+                    if(i>=cantidad){
+                        break;
+                    }
+                    Administrador admAux = etaAux.getIdAdministrador();
+                    //System.out.println("Entra al for SEGUNDO");
+                    //System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
+                    if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
+                        //System.out.println("ENTRA PRIMER IF");                
+                        Torneo torAux = etaAux.getIdTorneo();
+                        //System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
+                        if(torAux.getIdTorneo().equals(tor.getIdTorneo())==true){
+                            //System.out.println("ENTRA SEGUNDO IF");                    
+                            //System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
+                            int alturaMax = etaAux.getJerarquia();
+                            //System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
+                            if(alturaMax==exponenteDos){
+                                //System.out.println("Anda todo bien");
+                                if(arrayPart.get(i)!=null){
+                                    //Vincular participante con una etapa
+                                    //System.out.println("index :"+i);
+                                    ParticipanteEtapa partEta = new ParticipanteEtapa(etaAux, arrayPart.get(i));
+                                    try {
+                                        control.crearParticipanteEtapa(partEta);
+                                    } catch (Exception ex) {
+                                        Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    i++;
+                                }else{
+                                    break;
+                                }                                               
+                            }
+                        }
+                    }   
+            } 
+            Torneo torAux = tor;
+            torAux.setInscripcionVigente(false);
+            tor = torAux;
+            control.editarTorneo(tor);
+        }
+       
+        //while(i<arrayPart.size() && arrayPart.get(i)!=null){
+
+        /*while (i < arrayPart.size() && arrayPart.get(i) != null) {
+            System.out.println("Entra, participante:" + arrayPart.get(i).getNombre());
+            i++;
+        }*/
+        System.out.println("Total participantes :" + i);
+        
+    }//GEN-LAST:event_btnCerrarActionPerformed
+    /*private void enviarParticipanteEtapa(Etapa eta,Participante part){
+        
+    }*/
+    /*        for(Participante auxPart : arrayPart){
+            if(auxPart==null){
+                break;
+            }else{
+                for(Etapa etaAux : etaArray){       
+                    Administrador admAux = etaAux.getIdAdministrador();
+                    System.out.println("Entra al for");
+                    System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
+                    if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
+                        System.out.println("ENTRA PRIMER IF");                
+                        Torneo torAux = etaAux.getIdTorneo();
+                        System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
+                        if(torAux.getIdTorneo().equals(tor.getIdTorneo())==true){
+                            System.out.println("ENTRA SEGUNDO IF");                    
+                            System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
+                            int alturaMax = etaAux.getJerarquia();
+                            System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
+                            if(alturaMax==exponenteDos){
+                                System.out.println("Anda todo bien");
+                                if(auxPart!=null){
+                                    //Vincular participante con una etapa
+                                    System.out.println("index :"+i);
+                                    ParticipanteEtapa partEta = new ParticipanteEtapa(etaAux, auxPart);
+                                    i++;
+                                }else{
+                                    break;
+                                }                                               
+                            }
+                        }
+                    }
+                }
+            //}
+        }
+
+        //}
+        }*/
+    
+    
+    private ArrayList<Participante> crearArrayListParticipante(Torneo tor) {
+        ArrayList<Participante> aMandar = new ArrayList<>(); // Inicializar correctamente el ArrayList
+
+        Controladora control = new Controladora();
+        ArrayList<ParticipanteTorneo> parTorArr = control.traerTodoParticipanteTorneo();
+
+        for (ParticipanteTorneo parTorAux : parTorArr) {
+            Torneo torAux = parTorAux.getIdTorneo(); // No necesitas reasignar torAux aquí si no es necesario
+            if (torAux.getIdTorneo().equals(tor.getIdTorneo())) {
+                // Agregar el participante correspondiente a aMandar
+                aMandar.add(parTorAux.getIdParticipante());
+            }
+        }
+
+   
+    return aMandar;
+    }
+    
+    private void auxiliarTorneo(){
+                //PRIMERO poner todos los participantes inscriptos al torneo en un ArrayList
+        ArrayList<Participante> arrayPart = crearArrayListParticipante(this.getTor());        
         Controladora control = new Controladora();
         //LUEGO contar cantidad de usuarios que tengo
         int cantidad = tor.cantidadParticipantes();
         //EN BASE a la cantidad de usuarios que tengo empezar a ver que potencia de dos es la minima para que entren todos los usuarios
-        int cantidadPisos = 0;
+        int cantidadPisos = -2;
         while((Math.pow(2,cantidadPisos)/2)<cantidad){
             System.out.println("Cantidad pisos:"+ (Math.pow(2,cantidadPisos)) +" es menos que :"+cantidad);
             cantidadPisos++;
         }
-        cantidadPisos--;
         System.out.println("Cantidad pisos:"+cantidadPisos);
         //EJ si tengo 15 participantes necesito 2^4 
         //Ahora ya tengo la cantidad de etapas necesarias para el torneo
         int totalEtapas = (int) (Math.pow(2,cantidadPisos))/2;
+        JOptionPane.showMessageDialog(null, "CANTIDAD PISOS:"+cantidadPisos+"Total etapas"+totalEtapas);
         System.out.println("Total etapas : " + totalEtapas);
         //Vamos a crear la misma cantidad de participantes que partEtas
         //(si solo hay un partEta y no dos , automaticamente se le pasa a la siguiente ronda)
@@ -158,23 +347,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             }else{
                 break;
             }
-        }                
-    }//GEN-LAST:event_btnCerrarActionPerformed
-    private ArrayList<Participante> crearArrayListParticipantes(Torneo tor) {
-    ArrayList<Participante> aMandar = new ArrayList<>(); // Inicializar correctamente el ArrayList
-
-    Controladora control = new Controladora();
-    ArrayList<ParticipanteTorneo> parTorArr = control.traerTodoParticipanteTorneo();
-
-    for (ParticipanteTorneo parTorAux : parTorArr) {
-        Torneo torAux = parTorAux.getIdTorneo(); // No necesitas reasignar torAux aquí si no es necesario
-        if (torAux.getIdTorneo().equals(tor.getIdTorneo())) {
-            // Agregar el participante correspondiente a aMandar
-            aMandar.add(parTorAux.getIdParticipante());
-        }
-    }
-
-    return aMandar;
+        } 
     }
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         VistaTorneoInscripcion vistaInscripcion = new VistaTorneoInscripcion(tor,adm);

@@ -83,6 +83,7 @@ seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo$1$1.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$4.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$2.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos.class
+seahub\trabajofinaltorneo\igu\principal\Login$9.class
 seahub\trabajofinaltorneo\igu\principal\Register.class
 seahub\trabajofinaltorneo\igu\principal\Register$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$2.class
@@ -91,6 +92,7 @@ seahub\trabajofinaltorneo\igu\principal\SeleccionarGanador.class
 seahub\trabajofinaltorneo\igu\principal\Login.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$5.class
 seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$1.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneos$4.class
 seahub\trabajofinaltorneo\persistencia\exceptions\PreexistingEntityException.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles$1$1.class
 seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm$3.class

@@ -53,9 +53,9 @@ public class CrearTorneos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        textNombre = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,6 @@ public class CrearTorneos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Nombre torneo");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        jPanel1.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, -1));
 
         btnCrear.setText("Crear Torneo");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +76,7 @@ public class CrearTorneos extends javax.swing.JFrame {
                 btnCrearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +84,14 @@ public class CrearTorneos extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,23 +112,35 @@ public class CrearTorneos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-       Torneo tor = new Torneo(textNombre.getText(),adm);
-       Controladora control = new Controladora();
-        try {
+       String nombreTorneo = txtNombre.getText();
+       //PROBLEMA = SE PONE NOMBRE VACIO     
+       if(nombreTorneo.isEmpty()){
+           JOptionPane.showMessageDialog(null,"NOMBRE VACIO");
+       }
+       else{
+            Torneo tor = new Torneo(nombreTorneo,adm);
+            Controladora control = new Controladora();
+            try {
             
-            control.crearTorneo(tor);
-            JOptionPane.showMessageDialog(null, "TORNEO CREADO");
-            irAtras();
+                control.crearTorneo(tor);
+                JOptionPane.showMessageDialog(null, "TORNEO CREADO");
+                irAtras();
             
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "ERROR EXCEPTION");
-            Logger.getLogger(CrearTorneos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "ERROR EXCEPTION");
+                Logger.getLogger(CrearTorneos.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+       }
+
        //CargaUsuarios cargarU = new CargaUsuarios(tor);
        //cargarU.setVisible(true);
        //cargarU.setLocationRelativeTo(null);
        //this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +189,6 @@ public class CrearTorneos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textNombre;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

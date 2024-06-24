@@ -23,11 +23,21 @@ public class AdministradorHome extends javax.swing.JFrame {
     private Administrador adm = new Administrador();
     public AdministradorHome() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Menu de Administrador");
+        setVisible(true);
     }
     public AdministradorHome(Administrador adm){
         initComponents();
         this.adm = adm;
         nombreAdministrador.setText(adm.getNombre());        
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Menu de Administrador");
+        setVisible(true);
     }
 
     /**

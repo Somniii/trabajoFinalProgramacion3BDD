@@ -19,6 +19,11 @@ public class CargaUsuarios extends javax.swing.JFrame {
             
     public CargaUsuarios() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        setVisible(true);
+        this.setTitle("Login");
     }
     public CargaUsuarios(Torneo tor){
         initComponents();
@@ -40,6 +45,7 @@ public class CargaUsuarios extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 700));
 
         jPanel1.setBackground(new java.awt.Color(41, 41, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

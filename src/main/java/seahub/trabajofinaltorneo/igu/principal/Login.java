@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 700);
+        setSize(500, 500);
         setVisible(true);
         this.setTitle("Login");
     }

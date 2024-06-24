@@ -14,7 +14,11 @@ public class SeleccionarGanador extends javax.swing.JFrame {
      * Creates new form SeleccionarGanador
      */
     public SeleccionarGanador() {
-        initComponents();
+    setResizable(false);
+    setLocationRelativeTo(null);
+    setSize(500, 500);
+    this.setTitle("Quien gana?");
+    setVisible(true);
     }
 
     /**

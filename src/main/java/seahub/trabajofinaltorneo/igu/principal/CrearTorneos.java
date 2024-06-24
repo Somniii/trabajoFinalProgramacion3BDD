@@ -24,6 +24,11 @@ public class CrearTorneos extends javax.swing.JFrame {
     
     public CrearTorneos() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Crear Torneo Nuevo");
+        setVisible(true);
     }
     public CrearTorneos(Administrador adm){
         initComponents();

@@ -66,7 +66,7 @@ public class AdministradorHome extends javax.swing.JFrame {
             }
         });
 
-        torneoActual.setText("torneoActual");
+        torneoActual.setText("ver torneos");
         torneoActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 torneoActualActionPerformed(evt);
@@ -98,7 +98,7 @@ public class AdministradorHome extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(btnCrearT, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(31, 31, 31)
                         .addComponent(torneoActual)
                         .addGap(18, 18, 18)
                         .addComponent(cerrarSesion))
@@ -110,7 +110,7 @@ public class AdministradorHome extends javax.swing.JFrame {
                                 .addComponent(nombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
                                 .addComponent(btnNombre)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +177,10 @@ public class AdministradorHome extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSesionActionPerformed
 
     private void torneoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torneoActualActionPerformed
-        // TODO add your handling code here:
+        VerTorneos torVer = new VerTorneos(adm);
+        torVer.setVisible(true);
+        this.setVisible(false);
+              // TODO add your handling code here:
     }//GEN-LAST:event_torneoActualActionPerformed
 
     private void nombreAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreAdministradorActionPerformed

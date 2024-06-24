@@ -143,7 +143,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
     private void mostrarTabla(){
         Torneo torneo = new Torneo();
-        torneo.ListaTorneo(TablaTorneo);
+        torneo.ListaTorneoParticipante(TablaTorneo);
     }
     
     public static void main(String args[]) {

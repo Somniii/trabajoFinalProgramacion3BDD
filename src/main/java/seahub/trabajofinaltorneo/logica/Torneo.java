@@ -183,7 +183,7 @@ public class Torneo implements Serializable {
 
 
 
- public void ListaTorneo(JTable tabla) {
+ public void ListaTorneoParticipante(JTable tabla) {
      //Definis la table
     DefaultTableModel model;
     String[] titulo = {"idTorneo", "nombre"};
@@ -214,7 +214,39 @@ public class Torneo implements Serializable {
         JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+public void ListaTorneoAdminsitrador(JTable tabla) {
+     //Definis la table
+    DefaultTableModel model;
+    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente"};
+    model = new DefaultTableModel(null, titulo);
 
+    try {
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
+        
+        if (datos.isEmpty()) {
+            //System.out.println("La lista de torneos está vacía.");
+        } else {
+            //System.out.println("La lista de torneos contiene datos.");
+            for (Torneo trn : datos) {
+                System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                Object[] rowData = {
+                    trn.getIdTorneo(),
+                    trn.getNombre(),                
+                    trn.getVigente(),
+                    trn.getInscripcionVigente(),                    
+                };
+                //Que es addRow(rowData)
+                model.addRow(rowData);
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
 
 /*

@@ -36,7 +36,10 @@ public class ParticipanteEtapa implements Serializable {
 
     public ParticipanteEtapa() {
     }
-
+    public ParticipanteEtapa(Etapa idEtapa, Participante idParticipante){
+        this.idEtapa = idEtapa;
+        this.idParticipante = idParticipante;
+    }
     public ParticipanteEtapa(Integer idPE) {
         this.idPE = idPE;
     }

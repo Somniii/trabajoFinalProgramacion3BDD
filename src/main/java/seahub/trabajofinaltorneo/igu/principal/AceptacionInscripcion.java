@@ -4,7 +4,15 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Etapa;
+import seahub.trabajofinaltorneo.logica.Participante;
+import seahub.trabajofinaltorneo.logica.ParticipanteEtapa;
+import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
@@ -87,9 +95,87 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        // TODO add your handling code here:
+        //PRIMERO poner todos los participantes inscriptos al torneo en un ArrayList
+        ArrayList<Participante> arrayPart = crearArrayListParticipantes(this.getTor());        
+        Controladora control = new Controladora();
+        //LUEGO contar cantidad de usuarios que tengo
+        int cantidad = tor.cantidadParticipantes();
+        //EN BASE a la cantidad de usuarios que tengo empezar a ver que potencia de dos es la minima para que entren todos los usuarios
+        int cantidadPisos = 0;
+        while((Math.pow(2,cantidadPisos)/2)<cantidad){
+            System.out.println("Cantidad pisos:"+ (Math.pow(2,cantidadPisos)) +" es menos que :"+cantidad);
+            cantidadPisos++;
+        }
+        cantidadPisos--;
+        System.out.println("Cantidad pisos:"+cantidadPisos);
+        //EJ si tengo 15 participantes necesito 2^4 
+        //Ahora ya tengo la cantidad de etapas necesarias para el torneo
+        int totalEtapas = (int) (Math.pow(2,cantidadPisos))/2;
+        System.out.println("Total etapas : " + totalEtapas);
+        //Vamos a crear la misma cantidad de participantes que partEtas
+        //(si solo hay un partEta y no dos , automaticamente se le pasa a la siguiente ronda)
+        int cantidadPuestos = 0;
+        for(int i = 0;i < totalEtapas ;i++){
+            cantidadPuestos++;
+            //Tengo que crear una etapa
+            Participante part = arrayPart.get(i);
+            Etapa eta = new Etapa(cantidadPisos,tor, adm);
+            try {
+                control.crearEtapa(eta);
+            } catch (Exception ex) {
+                Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Como relaciono dos participantes en la misma etapa
+            //Como creo dos partEta que tengan la misma etapa?
+            ParticipanteEtapa partEta = new ParticipanteEtapa(eta, part);            
+            try {
+                control.crearParticipanteEtapa(partEta);
+            } catch (Exception ex) {
+                Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        ArrayList<Etapa> etapasTotales = control.traerTodoEtapa();
+        System.out.println("Cantidad puestos"+ cantidadPuestos);
+        //Etapa para comprobar con aux
+        Etapa etaAux = new Etapa();
+        for(Etapa aux : etapasTotales){        
+            if(arrayPart.get(cantidadPuestos+1) != null){
+               cantidadPuestos++;
+               etaAux = aux;
+               if(etaAux.getIdAdministrador().equals(adm)==true){
+                   if(etaAux.getIdTorneo().equals(tor)==true){
+                       System.out.println("Entra segundo if");
+                       //DUDA CON EL ULTIMO IF , NO SE SI ESTA BIEN ISNTANCIADO
+                       if(etaAux.getJerarquia() == cantidadPisos){
+                            ParticipanteEtapa partEta = new ParticipanteEtapa(aux,arrayPart.get(cantidadPuestos));
+                            System.out.println("Cantidad puestos"+ cantidadPuestos);
+                       }
+                   }
+               }
+               else{
+                   System.out.println("Array participantes es null");
+               }
+            }else{
+                break;
+            }
+        }                
     }//GEN-LAST:event_btnCerrarActionPerformed
+    private ArrayList<Participante> crearArrayListParticipantes(Torneo tor) {
+    ArrayList<Participante> aMandar = new ArrayList<>(); // Inicializar correctamente el ArrayList
 
+    Controladora control = new Controladora();
+    ArrayList<ParticipanteTorneo> parTorArr = control.traerTodoParticipanteTorneo();
+
+    for (ParticipanteTorneo parTorAux : parTorArr) {
+        Torneo torAux = parTorAux.getIdTorneo(); // No necesitas reasignar torAux aquí si no es necesario
+        if (torAux.getIdTorneo().equals(tor.getIdTorneo())) {
+            // Agregar el participante correspondiente a aMandar
+            aMandar.add(parTorAux.getIdParticipante());
+        }
+    }
+
+    return aMandar;
+    }
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         VistaTorneoInscripcion vistaInscripcion = new VistaTorneoInscripcion(tor,adm);
         vistaInscripcion.setVisible(true);
@@ -131,6 +217,15 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             }
         });
     }
+
+    public Torneo getTor() {
+        return tor;
+    }
+
+    public void setTor(Torneo tor) {
+        this.tor = tor;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;

@@ -130,28 +130,28 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         int i = 0;
         ArrayList<Etapa> etaArray = control.traerTodoEtapa();
         for(Etapa etaAux : etaArray){       
-                    //System.out.println("-----------------\nEntra al primer for con i al "+ i);
+                    System.out.println("-----------------\nEntra al primer for con i al "+ i);
                     Administrador admAux = etaAux.getIdAdministrador();
-                    //System.out.println("Entra al for, id etapa:"+etaAux.getIdEtapa());
+                    System.out.println("Entra al for, id etapa:"+etaAux.getIdEtapa());
                     if(i>=cantidadEtapas){
                         break;
                     }
-                    //System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
+                    System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
                     if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
-                        //System.out.println("ENTRA PRIMER IF");                
+                        System.out.println("ENTRA PRIMER IF");                
                         Torneo torAux = etaAux.getIdTorneo();
-                        //System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
+                        System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
                         if(torAux.getIdTorneo().equals(tor.getIdTorneo())==true){
-                            //System.out.println("ENTRA SEGUNDO IF");                    
-                            //System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
+                            System.out.println("ENTRA SEGUNDO IF");                    
+                            System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
                             int alturaMax = etaAux.getJerarquia();
-                            //System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
+                            System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
                             if(alturaMax==exponenteDos){
-                               // System.out.println("Anda todo bien");
-                                //System.out.println("No sale del for con i al "+ i);
+                                System.out.println("Anda todo bien");
+                                System.out.println("No sale del for con i al "+ i);
                                 if(arrayPart.get(i)!=null){                                    
                                     //Vincular participante con una etapa
-                                    //System.out.println("index enrta al if:"+i);
+                                    System.out.println("index enrta al if:"+i);
 
                                     ParticipanteEtapa partEta = new ParticipanteEtapa(etaAux, arrayPart.get(i));
                                     try {
@@ -171,7 +171,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         if(i==5){
             System.out.println("Sale del for con i al 5");
         }
-        if(arrayPart.get(i)==null){
+        if(arrayPart.get(i)==null || i>=cantidad){
             System.out.println("Es nulo");
         }else{
             for(Etapa etaAux : etaArray){  
@@ -179,26 +179,30 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
                         break;
                     }
                     Administrador admAux = etaAux.getIdAdministrador();
-                    //System.out.println("Entra al for SEGUNDO");
-                    //System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
+                    System.out.println("Entra al for SEGUNDO");
+                    System.out.println("Compara:" +admAux.getUsuario() +"con "+adm.getUsuario());
                     if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
-                        //System.out.println("ENTRA PRIMER IF");                
+                        System.out.println("ENTRA PRIMER IF");                
                         Torneo torAux = etaAux.getIdTorneo();
-                        //System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
+                        System.out.println("Compara : "+ torAux.getIdTorneo() + "con "+tor.getIdTorneo());
                         if(torAux.getIdTorneo().equals(tor.getIdTorneo())==true){
-                            //System.out.println("ENTRA SEGUNDO IF");                    
-                            //System.out.println("Solo llego a la igualdad de torneo , falta 1");                   
+                            System.out.println("ENTRA SEGUNDO IF");                    
+                            //System.out.println("Solo llego a la igualdad de torneo , falta 1");  
+                            
                             int alturaMax = etaAux.getJerarquia();
-                            //System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
+                            //System.out.println("SE ROMPE A VER LA ALTURA");
+                            System.out.println("Compara "+ alturaMax +"con" + exponenteDos);
                             if(alturaMax==exponenteDos){
-                                //System.out.println("Anda todo bien");
+                                System.out.println("Anda todo bien");
                                 if(arrayPart.get(i)!=null){
                                     //Vincular participante con una etapa
-                                    //System.out.println("index :"+i);
+                                    System.out.println("index :"+i);
                                     ParticipanteEtapa partEta = new ParticipanteEtapa(etaAux, arrayPart.get(i));
                                     try {
                                         control.crearParticipanteEtapa(partEta);
+                                        System.out.println("Crea el partEta");
                                     } catch (Exception ex) {
+                                        System.out.println("Error exception ex");
                                         Logger.getLogger(AceptacionInscripcion.class.getName()).log(Level.SEVERE, null, ex);
                                     }
                                     i++;
@@ -209,10 +213,12 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
                         }
                     }   
             } 
-            Torneo torAux = tor;
-            torAux.setInscripcionVigente(false);
-            tor = torAux;
-            control.editarTorneo(tor);
+            System.out.println("Sale del segundo FOR");
+            Torneo torAux = control.traerTorneo(tor.getIdTorneo());
+            torAux.setInscripcionVigente(false);           
+            System.out.println("Setea la inscripcionvigente en false ");
+            control.editarTorneo(torAux);
+            System.out.println("edita el torneo con la nueva inscripcion vigente");
         }
        
         //while(i<arrayPart.size() && arrayPart.get(i)!=null){
@@ -222,7 +228,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             i++;
         }*/
         System.out.println("Total participantes :" + i);
-        
+        System.out.println("POR FIN SALIR DEL CODIGO");
     }//GEN-LAST:event_btnCerrarActionPerformed
     /*private void enviarParticipanteEtapa(Etapa eta,Participante part){
         

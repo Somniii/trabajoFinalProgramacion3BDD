@@ -39,6 +39,8 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         this.tor = tor;
         this.adm = adm;
         mostrarTabla();
+        String id = Integer.toString(tor.getIdTorneo());
+        txtId.setText(id);
     }
 
     /**
@@ -57,6 +59,8 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JButton();
         cantidadParticipantes = new javax.swing.JTextField();
         btnAtras = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +107,11 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2.setText("Id torneo:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,8 +188,10 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JTextField cantidadParticipantes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaParticipantes;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

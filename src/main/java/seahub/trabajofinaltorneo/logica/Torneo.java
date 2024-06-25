@@ -222,7 +222,7 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
      //Definis la table
     //JOptionPane.showMessageDialog(null, "ENTRA" );
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente"};
+    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","TUYO"};
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -236,20 +236,24 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
         } else {
             //System.out.println("La lista de torneos contiene datos.");
             Administrador admAux = new Administrador();
+            String tuyo = "NO";
             for (Torneo trn : datos) {
                 System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
                 admAux = trn.getIdAdministrador();
                 if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
                     //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                    tuyo = "SI";
+                }
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),                
                         trn.getVigente(),
-                        trn.getInscripcionVigente(),                    
-                        };
+                        trn.getInscripcionVigente(),  
+                        tuyo
+                    };
                          //Que es addRow(rowData)
                          model.addRow(rowData);
-                }
+                
 
             }
         }

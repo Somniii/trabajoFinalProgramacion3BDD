@@ -64,6 +64,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
                 {},
                 {},
                 {},
+                {},
                 {}
             },
             new String [] {
@@ -120,9 +121,19 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         int contador = 0;
         //boolean yaTerminado = false;
         Torneo tor = new Torneo();
+        Boolean inscripcionVigente = true;
+        Boolean poderEntrar = false;
         for(Torneo torAux : torneoArr){
             if(contador == select){
                 tor = torAux;
+                if(tor.getInscripcionVigente() == false){
+                    inscripcionVigente = false;
+                }
+                Administrador admAux = tor.getIdAdministrador();
+                if(admAux.getIdAdministrador()==adm.getIdAdministrador()){
+                    poderEntrar = true;
+                }
+                    
                 break;
             }
             contador++;
@@ -134,9 +145,20 @@ public class VerTorneosAdm extends javax.swing.JFrame {
                 }
             }
         }*/
-        VistaTorneoInscripcion vistaTor = new VistaTorneoInscripcion(tor , adm);
-        vistaTor.setVisible(true);
-        this.setVisible(false);
+        if(poderEntrar == false){
+            JOptionPane.showMessageDialog(null, "NO ES UN TORNEO TUYO");
+        }else{
+            if(inscripcionVigente == true){
+                VistaTorneoInscripcion vistaTor = new VistaTorneoInscripcion(tor , adm);
+                vistaTor.setVisible(true);
+                this.setVisible(false);
+            }else{
+                VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor ,adm);
+                vistaTor.setVisible(true);
+                this.setVisible(false);
+            }   
+        }
+
         
        // TODO add your handling code here:
     }//GEN-LAST:event_tablaTorneoMouseClicked

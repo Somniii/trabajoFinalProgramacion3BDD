@@ -4,6 +4,9 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Torneo;
+
 /**
  *
  * @author tinov
@@ -13,8 +16,23 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     /**
      * Creates new form VistaTorneoVigente
      */
+    private Torneo tor;
+    private Administrador adm;
     public VistaTorneoVigente() {
         initComponents();
+    }
+    public VistaTorneoVigente(Torneo tor, Administrador adm){
+        this.tor = tor;
+        this.adm = adm;
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Pasar etapa");
+        initComponents();
+        String pisoActual = String.valueOf(tor.getPisos());
+        textPisos.setText(pisoActual);
+        String id = Integer.toString(tor.getIdTorneo());
+        textId.setText(id);
     }
 
     /**
@@ -27,25 +45,78 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnAtras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        textPisos = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        textId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(41, 41, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Estamos en pisos:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 20));
+
+        textPisos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textPisosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(textPisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2.setText("id Torneo:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        textId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textIdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(textId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        VerTorneosAdm torAdm = new VerTorneosAdm(adm);
+        torAdm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void textPisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPisosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPisosActionPerformed
+
+    private void textIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,6 +154,11 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField textId;
+    private javax.swing.JTextField textPisos;
     // End of variables declaration//GEN-END:variables
 }

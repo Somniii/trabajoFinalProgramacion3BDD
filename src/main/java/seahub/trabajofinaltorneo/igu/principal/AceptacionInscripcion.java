@@ -126,7 +126,6 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             }
             j++;
         }
-        
         int i = 0;
         ArrayList<Etapa> etaArray = control.traerTodoEtapa();
         for(Etapa etaAux : etaArray){       
@@ -215,7 +214,9 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             } 
             System.out.println("Sale del segundo FOR");
             Torneo torAux = control.traerTorneo(tor.getIdTorneo());
-            torAux.setInscripcionVigente(false);           
+            torAux.setInscripcionVigente(false);    
+            torAux.setPisosTotales(exponenteDos);
+            torAux.setPisos(exponenteDos);
             System.out.println("Setea la inscripcionvigente en false ");
             control.editarTorneo(torAux);
             System.out.println("edita el torneo con la nueva inscripcion vigente");

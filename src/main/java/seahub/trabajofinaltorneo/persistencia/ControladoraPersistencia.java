@@ -230,4 +230,10 @@ public class ControladoraPersistencia {
         ArrayList<ParticipanteTorneo> listaParticipanteTorneo = new ArrayList<ParticipanteTorneo> (list);
         return listaParticipanteTorneo;
     }
+
+    public ArrayList<ParticipanteEtapa> traerTodoParticipanteEtapa() {
+        List<ParticipanteEtapa> list = parEtaJpa.findParticipanteEtapaEntities();
+        ArrayList<ParticipanteEtapa> listaParticipanteEtapa = new ArrayList<ParticipanteEtapa> (list);
+        return listaParticipanteEtapa;
+    }
 }

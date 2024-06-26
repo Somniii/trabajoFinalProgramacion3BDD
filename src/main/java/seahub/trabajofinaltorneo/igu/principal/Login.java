@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
           pass += password[x];
                   
           }
-          String ClaveCodificar = Codificar(pass);
+          String claveCodificar = Codificar(pass);
           //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
           int idAuxiliar;
           ArrayList<Participante> participanteAux = control.traerTodoParticipante();
@@ -209,7 +209,8 @@ public class Login extends javax.swing.JFrame {
               String usuarioTraido = aux.getUsuario();
               if(usuarioTraido.compareTo(usuario)==0){
                   usuarioEncontrado = true;
-                  if(aux.getContrasena().compareTo(ClaveCodificar)==0){
+                  //if(aux.getContrasena().compareTo(pass)==0){
+                  if(aux.getContrasena().compareTo(claveCodificar)==0){
                     par = aux;
                     passwordIgual = true;
                   }
@@ -273,6 +274,7 @@ public class Login extends javax.swing.JFrame {
               if(usuarioTraido.compareTo(usuario)==0){
                   //System.out.println("Es igual");
                   usuarioEncontrado = true;
+                  //if(aux.getContrasena().compareTo(pass)==0){
                   if(aux.getContrasena().compareTo(passC)==0){
                     passwordIgual = true;
                     admEnviar = aux;

@@ -83,7 +83,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 410, 340));
 
-        btnAtras.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicoz\\Lenguajes\\Imagenes para JSwing\\atras 3 (2).png")); // NOI18N
+        btnAtras.setText("irAtras");
         btnAtras.setMaximumSize(new java.awt.Dimension(100, 100));
         btnAtras.setMinimumSize(new java.awt.Dimension(75, 25));
         btnAtras.setPreferredSize(new java.awt.Dimension(50, 100));
@@ -92,7 +92,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 50));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

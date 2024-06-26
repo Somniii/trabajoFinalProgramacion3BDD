@@ -4,7 +4,16 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Etapa;
+import seahub.trabajofinaltorneo.logica.Participante;
+import seahub.trabajofinaltorneo.logica.ParticipanteEtapa;
+import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
@@ -33,6 +42,7 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         textPisos.setText(pisoActual);
         String id = Integer.toString(tor.getIdTorneo());
         textId.setText(id);
+        mostrarTorneo();        
     }
 
     /**
@@ -54,13 +64,16 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnPasar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAtras.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicoz\\Lenguajes\\Imagenes para JSwing\\arrow_back_48dp_FILL0_wght400_GRAD0_opsz48 (1).png")); // NOI18N
+        btnAtras.setText("irAtras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
@@ -103,26 +116,48 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         btnPasar.setText("Pasar de etapa");
-        jPanel1.add(btnPasar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        btnPasar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPasar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 470, 360));
+
+        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel6.setText("participantes restantes:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void mostrarTorneo(){
+        ParticipanteEtapa parEta = new ParticipanteEtapa();
+        parEta.ListaTorneoEtapa(jTable1, tor);
+    }
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         VerTorneosAdm torAdm = new VerTorneosAdm(adm);
         torAdm.setVisible(true);
@@ -136,6 +171,115 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     private void textIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textIdActionPerformed
+    
+    private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
+        //ELEGIR GANADORES DE CADA ETAPA
+
+        Controladora control = new Controladora();
+        ArrayList<Etapa> etaArr = control.traerTodoEtapa(); 
+        ArrayList<ParticipanteEtapa> parEtaArr = control.traerTodoParticipanteEtapa();
+        int cantidadEtapas = 0;        
+        int cantParPorEta = 0;
+        ArrayList<Participante> parAux = new ArrayList<>();
+        for(Etapa etaAux : etaArr){
+            if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                if(etaAux.getJerarquia()==tor.getPisos()){
+                    cantidadEtapas++;
+                    //YA SE QUE HAY UNA ETAPA ACA , SE SUMA EL CONTADOR +1                  
+                    //AHORA TENGO QUE IDENTIFICAR CUANTAS ETAPA-PARTICIPANTES HAY CON ESTA ETAPA , SI HAY 1 SE ELIGE A ESA COMO GANADOR DE LA ETAPA 
+                    //SI HAY 2 SE PASA A ELEGIR UN GANADOR
+                    cantParPorEta = 0;
+                    parAux = new ArrayList<>();
+                    for(ParticipanteEtapa parEtaAux : parEtaArr){
+                        if(parEtaAux.getIdEtapa().getIdEtapa().equals(etaAux.getIdEtapa())){
+                            cantParPorEta++;
+                            parAux.add(parEtaAux.getIdParticipante());
+                        }
+                    }
+                    //SI SOLO HAY UN PARTICIPANTE EN ESA ETAPA SE ELIGE A ESE COMO GANADOR
+                    if(cantParPorEta == 1){
+                        Participante ganador =parAux.get(0);
+                        Etapa eta = control.traerEtapa(etaAux.getIdEtapa());
+                        eta.setIdParticipante(ganador);
+                        control.editarEtapa1(eta);
+                    }else if(cantParPorEta ==2){
+                        //public ElegirGanadores(Torneo tor ,Administrador adm, Participante par1 ,Participante par2 ,Etapa eta){
+                        ElegirGanadores elegir = new ElegirGanadores(tor,adm,parAux.get(0),parAux.get(1),etaAux ,this,cantidadEtapas);
+                        elegir.setVisible(true);
+                        this.setVisible(false);
+                    }
+                }
+            }
+        }
+        //SI ESTAMOS EN LA FINAL
+        if(tor.getPisos()==0){
+            etaArr = control.traerTodoEtapa();
+            Participante ganador = new Participante();
+            for(Etapa etaAux : etaArr){
+                if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                    if(etaAux.getJerarquia()==tor.getPisos()){
+                        //pongo el participante que gano en el arraylist
+                        ganador=etaAux.getIdParticipante();
+                        JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + ganador.getUsuario());
+                    }
+                }
+            }            
+        }
+        //SI NO ESTAMOS EN LA FINAL
+        else{
+            //Actualizo etaArr con los datos nuevos que puse(LOS GANADORES)
+            //Ya que se que la cantidad de etapas a crear va a ser la mitad hago 
+            etaArr = control.traerTodoEtapa();
+            ArrayList<Participante> parGanadores = new ArrayList<>();
+            for(Etapa etaAux : etaArr){
+                if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                    if(etaAux.getJerarquia()==tor.getPisos()){
+                        //pongo el participante que gano en el arraylist
+                        parGanadores.add(etaAux.getIdParticipante());
+                    }
+                }
+            }
+            double aux = parGanadores.size();
+            double cantidadEtapasNuevas = aux/2;
+            tor.setPisos(tor.getPisos()-1);
+            for(int i = 0 ; i <cantidadEtapasNuevas ; i = i+2){
+                //public Etapa(int jerarquia,Torneo idTorneo,Administrador idAdministrador) {
+                Etapa etaNueva = new Etapa(tor.getPisos(),tor,adm);
+                try {
+                    control.crearEtapa(etaNueva);
+                    //public ParticipanteEtapa(Etapa idEtapa, Participante idParticipante)
+                } catch (Exception ex) {
+                    Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            //Ahora tengo que reactualizar el array de etapas con las etaps con el piso mas alto
+            etaArr = control.traerTodoEtapa();
+            ArrayList<Etapa> etaRelacion = new ArrayList<>();
+            for(Etapa etaAux : etaArr){
+                if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                    if(etaAux.getJerarquia()==tor.getPisos()){
+                        //pongo el participante que gano en el arraylist
+                        etaRelacion.add(etaAux);
+                    }
+                }
+            }        
+            for(int i = 0 ; i <cantidadEtapasNuevas ; i = i+2){
+                ParticipanteEtapa parEtaNueva = new ParticipanteEtapa(etaRelacion.get(i),parGanadores.get(i));
+                ParticipanteEtapa parEtaNueva1 = new ParticipanteEtapa(etaRelacion.get(i), parGanadores.get(i+1));
+                try {
+                    control.crearParticipanteEtapa(parEtaNueva);
+                } catch (Exception ex) {
+                    Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    control.crearParticipanteEtapa(parEtaNueva1);
+                } catch (Exception ex) {
+                    Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        //EN BASE A ESTO Y SABIENDO LA CANTIDAD DE ETAPAS , DIVIDIMOS ESTA CANTIDAD POR DOS Y PONEMOS CADA DOS GANADORES DE LAS ETAPAS PASADA EN UNA NUEVA
+    }//GEN-LAST:event_btnPasarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +324,10 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField textId;
     private javax.swing.JTextField textPisos;
     // End of variables declaration//GEN-END:variables

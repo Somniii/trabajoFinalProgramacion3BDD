@@ -97,6 +97,9 @@ public class Controladora {
     public void eliminarParticipanteEtapa(int id) throws NonexistentEntityException{
         controlPersis.eliminarParticipanteEtapa(id);
     }
+    public ArrayList<ParticipanteEtapa> traerTodoParticipanteEtapa(){
+        return controlPersis.traerTodoParticipanteEtapa();
+    }
     //Metodos relacion Participante Torneo
     public void crearParticipanteTorneo(ParticipanteTorneo parTor) throws Exception{
         controlPersis.crearParticipanteTorneo(parTor);

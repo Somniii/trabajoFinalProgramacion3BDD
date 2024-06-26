@@ -280,10 +280,11 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
         JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
+
 public void ListaTorneo(JTable tabla){
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","pisosTotales"};
+    String[] titulo = {"nombre", "usuario","Id","inscripcionVigente","pisosTotales"};
     model = new DefaultTableModel(null, titulo);
 
     try {

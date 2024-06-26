@@ -4,6 +4,12 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Etapa;
+import seahub.trabajofinaltorneo.logica.Participante;
+import seahub.trabajofinaltorneo.logica.Torneo;
+
 /**
  *
  * @author tinov
@@ -13,8 +19,30 @@ public class ElegirGanadores extends javax.swing.JFrame {
     /**
      * Creates new form ElegirGanadores
      */
+    private Torneo tor;
+    private Administrador adm;
+    private Participante par1;
+    private Participante par2;
+    private Etapa eta;
+    private VistaTorneoVigente vistaTor;
+    private Participante ganador = new Participante();
     public ElegirGanadores() {
         initComponents();
+    }
+    public ElegirGanadores(Torneo tor ,Administrador adm, Participante par1 ,Participante par2 ,Etapa eta , VistaTorneoVigente vistaTor , int etapaActual){
+        initComponents();
+        this.tor = tor;
+        this.adm = adm;
+        this.par1 = par1;
+        this.par2 = par2;
+        this.eta = eta;
+        this.vistaTor = vistaTor;
+        String pisos = Integer.toString(tor.getPisos());
+        piso.setText(pisos);
+        String numeroEtapa = Integer.toString(etapaActual);
+        etapa.setText(numeroEtapa);
+        nombrePar1.setText(par1.getNombre());
+        nombrePar2.setText(par2.getNombre());        
     }
 
     /**
@@ -51,14 +79,29 @@ public class ElegirGanadores extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         btnPar1.setText("Gano");
+        btnPar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPar1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         btnPar2.setText("Gano");
+        btnPar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPar2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
         jPanel1.add(nombrePar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, -1));
         jPanel1.add(nombrePar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 130, 20));
 
         btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
@@ -101,7 +144,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void participanteGanadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participanteGanadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_participanteGanadorActionPerformed
@@ -109,6 +152,25 @@ public class ElegirGanadores extends javax.swing.JFrame {
     private void pisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pisoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pisoActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        Controladora control = new Controladora();
+        Etapa etaAux = control.traerEtapa(eta.getIdEtapa());
+        etaAux.setIdParticipante(ganador);
+        control.editarEtapa1(etaAux);        
+        vistaTor.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnPar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar1ActionPerformed
+        ganador = par1;
+        participanteGanador.setText(ganador.getNombre());
+    }//GEN-LAST:event_btnPar1ActionPerformed
+
+    private void btnPar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar2ActionPerformed
+        ganador = par2;
+        participanteGanador.setText(ganador.getNombre());
+    }//GEN-LAST:event_btnPar2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -53,16 +53,16 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(41, 41, 41));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAtras.setText("Atras");
+        btnAtras.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicoz\\Lenguajes\\Imagenes para JSwing\\arrow_back_48dp_FILL0_wght400_GRAD0_opsz48 (1).png")); // NOI18N
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 287, 80, 40));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Estamos en pisos:");

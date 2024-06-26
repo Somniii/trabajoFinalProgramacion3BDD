@@ -8,15 +8,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Participante;
-        import seahub.trabajofinaltorneo.logica.Administrador;
+import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Encriptar;
+import static seahub.trabajofinaltorneo.logica.Encriptar.Codificar;
 
 /**
  *
  * @author tinov
  */
 public class Register extends javax.swing.JFrame {
-
+  private Encriptar codi = new Encriptar();
   private Controladora control = new Controladora();
   private String claveAdministrador = "1234";
   
@@ -230,7 +232,8 @@ public class Register extends javax.swing.JFrame {
           char [] password = PasswordAdm.getPassword();
           for(int x = 0 ; x<password.length ; x++){
             pass += password[x];
-          }    
+          }
+          String passC = Codificar(pass);
           String passAdm = "";
           char [] passwordAdm = PasswordClaveAdm.getPassword();
           for(int x = 0 ; x<passwordAdm.length ; x++){
@@ -266,11 +269,8 @@ public class Register extends javax.swing.JFrame {
                 registro.setLocationRelativeTo(null);  
               JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
           }else{
-              //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
-              Administrador adm= new Administrador(nombre,email,user,pass);
-              //System.out.println(part.toString());
+              Administrador adm= new Administrador(nombre,email,user,passC);
               Controladora control = new Controladora();
-
               try {
                   JOptionPane.showMessageDialog(null,"ADMINISTRADOR CREADO");
                   control.crearAdministrador(adm);
@@ -287,12 +287,7 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
-      /*TASKS: 
-        hacer        this.setVisible(false);
-                registro.setVisible(true);
-                registro.setLocationRelativeTo(null);  
-        En una funcion para no hacerlo tan largo
-        */
+
         try {
           Register registro = new Register();    
           String nombre = txtNombre.getText();
@@ -303,6 +298,7 @@ public class Register extends javax.swing.JFrame {
           for(int x = 0 ; x<password.length ; x++){
           pass += password[x];
           }
+          String claveCodificada = Codificar(pass);
           //JOptionPane.showMessageDialog(null,pass);
           ArrayList<Participante> listaPart = control.traerTodoParticipante();
           boolean encontradoUsu = false;
@@ -333,7 +329,7 @@ public class Register extends javax.swing.JFrame {
           }else{
               JOptionPane.showMessageDialog(null,"PARTICIPANTE CREADO");
               //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
-              Participante part = new Participante(nombre,user,pass,email);
+              Participante part = new Participante(nombre,user,claveCodificada,email);
               //System.out.println(part.toString());
               part.crearEnBase();
                 this.setVisible(false);

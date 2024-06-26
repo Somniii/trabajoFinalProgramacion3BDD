@@ -67,6 +67,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
                 {},
                 {},
                 {},
+                {},
                 {}
             },
             new String [] {
@@ -111,10 +112,17 @@ public class UnirseTorneo extends javax.swing.JFrame {
         int contador = 0;
         boolean yaUnido = false;
         Torneo tor = new Torneo();
+        boolean disponible =  false;
         for(Torneo torAux : torneoArr){
             if(contador == select){
+                
                 tor = torAux;
                 break;
+            }
+            if(torAux.getInscripcionVigente() == true){
+                disponible = true;
+            }else{
+                disponible = false;
             }
             contador++;
         }
@@ -123,12 +131,15 @@ public class UnirseTorneo extends javax.swing.JFrame {
             if(parTorAux.getIdParticipante().equals(par)== true){
                 if(parTorAux.getIdTorneo().equals(tor)==true){
                     yaUnido = true;  
-                }
+                }                   
             }
         }
         if(yaUnido==true){
             JOptionPane.showMessageDialog(null, "YA ESTAS UNIDO A  :"+tor.getNombre());
-        }else{
+        }else if(disponible == false){
+            JOptionPane.showMessageDialog(null, "EL TORNEO "+ tor.getNombre()+ " CERRO INSCRIPCION");
+        }
+        else{
             JOptionPane.showMessageDialog(null, "TE UNISTE A :"+tor.getNombre());
             ParticipanteTorneo parTor = new ParticipanteTorneo(tor ,par); 
             try {
@@ -151,7 +162,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
     private void mostrarTabla(){
         Torneo torneo = new Torneo();
-        torneo.ListaTorneoParticipante(TablaTorneo);
+        torneo.ListaTorneoParticipante(TablaTorneo ,par);
     }
     
     public static void main(String args[]) {

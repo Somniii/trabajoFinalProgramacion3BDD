@@ -184,30 +184,48 @@ public class Torneo implements Serializable {
 
 
 
- public void ListaTorneoParticipante(JTable tabla) {
+ public void ListaTorneoParticipante(JTable tabla , Participante par) {
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre"};
+    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido"};
     model = new DefaultTableModel(null, titulo);
 
     try {
         Controladora control = new Controladora();
         List<Torneo> datos = control.traerTodoTorneo();
-        
+        List<ParticipanteTorneo> parTor = control.traerTodoParticipanteTorneo();
         if (datos.isEmpty()) {
             System.out.println("La lista de torneos está vacía.");
         } else {
             System.out.println("La lista de torneos contiene datos.");
             for (Torneo trn : datos) {
-                if(trn.inscripcionVigente!=false){
+                //if(trn.inscripcionVigente!=false){
+                    String yaUnido = "NO";
+                    for(ParticipanteTorneo parTorAux : parTor){
+                        if(parTorAux.getIdParticipante().getIdParticipante().equals(par.getIdParticipante())==true &&parTorAux.getIdTorneo().getIdTorneo().equals(trn.getIdTorneo())){
+                            yaUnido = "SI";
+                            System.out.println("ENTRA");
+                        }//else{
+                            yaUnido = "NO";
+                        //}
+                    }
                     System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                    String disponible = "NO";
+                    if(trn.getInscripcionVigente()==true){
+                        disponible = "SI";
+                    }else{
+                        disponible = "NO";
+                    }
                     Object[] rowData = {
                         trn.getIdTorneo(),
-                        trn.getNombre()
+                        trn.getNombre(),
+                        trn.getIdAdministrador().getUsuario(),
+                        disponible,
+                        yaUnido,
                     };
                     //Que es addRow(rowData)
                     model.addRow(rowData);
-                }
+                //}
             }
         }
 
@@ -243,6 +261,8 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
                 if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
                     //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
                     tuyo = "SI";
+                }else{
+                    tuyo = "NO";
                 }
                     Object[] rowData = {
                         trn.getIdTorneo(),

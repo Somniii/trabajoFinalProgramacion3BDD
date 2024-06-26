@@ -4,6 +4,7 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
@@ -128,9 +129,13 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        AceptacionInscripcion aceptar = new AceptacionInscripcion(tor ,adm);
-        aceptar.setVisible(true);
-        this.setVisible(false);
+        if(tor.cantidadParticipantes()<2){
+            JOptionPane.showMessageDialog(null, "CON 0 O 1 PARTICIPANTES , NO SE PUEDE PASAR A LA SIGUIENTE ETAPA");
+        }else{
+            AceptacionInscripcion aceptar = new AceptacionInscripcion(tor ,adm);
+            aceptar.setVisible(true);
+            this.setVisible(false);   
+        }
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void cantidadParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadParticipantesActionPerformed

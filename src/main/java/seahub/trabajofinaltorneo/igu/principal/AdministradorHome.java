@@ -146,16 +146,16 @@ public class AdministradorHome extends javax.swing.JFrame {
         //CREAR SENTENCIA IF QUE SE FIJE SI EL ADM YA TIENE UN TORNEO
         boolean verificarTodosFinalizados =true;
         Collection<Torneo> listaTorneosAdm= adm.getTorneoCollection();
-        for(Torneo auxTorneo : listaTorneosAdm){
+        /*for(Torneo auxTorneo : listaTorneosAdm){
             if(auxTorneo.getVigente()==false){
                 
             }else{
                 verificarTodosFinalizados = true;
             }
-        }
+        }*/
         if(verificarTodosFinalizados = true){
             JOptionPane.showMessageDialog(null, "CREANDO TORNEO...");
-            CrearTorneos crearTorneos = new CrearTorneos(adm);
+            CrearTorneosP crearTorneos = new CrearTorneosP(adm);
             crearTorneos.setVisible(true);
             crearTorneos.setLocationRelativeTo(null);
             this.setVisible(false);

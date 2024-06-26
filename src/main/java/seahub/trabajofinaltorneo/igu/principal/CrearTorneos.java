@@ -56,6 +56,8 @@ public class CrearTorneos extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
+        btnSiguiente = new javax.swing.JToggleButton();
+        andaPorDios = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +78,7 @@ public class CrearTorneos extends javax.swing.JFrame {
                 btnCrearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -84,14 +86,21 @@ public class CrearTorneos extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setText("Ingrese nombre");
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 270, -1));
+
+        btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 230, -1));
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+
+        andaPorDios.setText("jTextField1");
+        jPanel1.add(andaPorDios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,13 +121,14 @@ public class CrearTorneos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-       String nombreTorneo = txtNombre.getText();
+       //String nombreTorneo = txtNombre.getText();
        //PROBLEMA = SE PONE NOMBRE VACIO     
-       if(nombreTorneo.isEmpty()){
+       System.out.println(txtNombre.getText());
+       if(txtNombre.getText().isEmpty()){
            JOptionPane.showMessageDialog(null,"NOMBRE VACIO");
        }
        else{
-            Torneo tor = new Torneo(nombreTorneo,adm);
+            Torneo tor = new Torneo(txtNombre.getText(),adm);
             Controladora control = new Controladora();
             try {
             
@@ -138,9 +148,15 @@ public class CrearTorneos extends javax.swing.JFrame {
        //this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        String prueba  = andaPorDios.getText();
+        System.out.println("String : "+prueba);
+        System.out.println("Texto :"+andaPorDios.getText());
+        if(txtNombre.getText().isEmpty()==true){
+       
+        
+        }
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,8 +200,10 @@ public class CrearTorneos extends javax.swing.JFrame {
         this.setVisible(false);          
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField andaPorDios;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JToggleButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

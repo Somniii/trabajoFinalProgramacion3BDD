@@ -92,5 +92,37 @@ public class ParticipanteEtapa implements Serializable {
     public String toString() {
         return "seahub.tournament.logica.ParticipanteEtapa[ idPE=" + idPE + " ]";
     }
+         //Definis la table
+    DefaultTableModel model;
+    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","pisosTotales"};
+    model = new DefaultTableModel(null, titulo);
+
+    try {
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
+        
+        if (datos.isEmpty()) {
+            System.out.println("La lista de torneos está vacía.");
+        } else {
+            System.out.println("La lista de torneos contiene datos.");
+            for (Torneo trn : datos) {
+                System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                Object[] rowData = {
+                    trn.getIdTorneo(),
+                    trn.getNombre(),
+                    trn.getInscripcionVigente(),
+                    trn.getVigente(),
+                    trn.getPisosTotales(),
+                };
+                //Que es addRow(rowData)
+                model.addRow(rowData);
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
       
 }

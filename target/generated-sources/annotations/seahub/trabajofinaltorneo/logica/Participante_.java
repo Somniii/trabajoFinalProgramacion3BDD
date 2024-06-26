@@ -9,11 +9,7 @@ import seahub.trabajofinaltorneo.logica.ParticipanteAdministrador;
 import seahub.trabajofinaltorneo.logica.ParticipanteEtapa;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 
-<<<<<<< HEAD
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-26T01:00:41", comments="EclipseLink-2.7.12.v20230209-rNA")
-=======
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-26T01:28:18", comments="EclipseLink-2.7.12.v20230209-rNA")
->>>>>>> d08d1d27d45a5676b940d396cbd5825529151e8a
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-26T01:38:37", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Participante.class)
 public class Participante_ { 
 

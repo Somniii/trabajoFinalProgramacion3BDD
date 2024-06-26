@@ -199,23 +199,20 @@ public class Torneo implements Serializable {
         } else {
             System.out.println("La lista de torneos contiene datos.");
             for (Torneo trn : datos) {
-                //if(trn.inscripcionVigente!=false){
                     String yaUnido = "NO";
-                    for(ParticipanteTorneo parTorAux : parTor){
-                        if(parTorAux.getIdParticipante().getIdParticipante().equals(par.getIdParticipante())==true &&parTorAux.getIdTorneo().getIdTorneo().equals(trn.getIdTorneo())){
+                    for (ParticipanteTorneo parTorAux : parTor) {
+                        if (parTorAux.getIdParticipante().getIdParticipante().equals(par.getIdParticipante()) &&
+                            parTorAux.getIdTorneo().getIdTorneo().equals(trn.getIdTorneo())) {
                             yaUnido = "SI";
-                            System.out.println("ENTRA");
-                        }//else{
-                            yaUnido = "NO";
-                        //}
+                            break; // Salir del bucle si se encuentra al participante inscrito
+                        }
                     }
-                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
+                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre() + "Inscripcion vigente :"+ trn.getInscripcionVigente());
                     String disponible = "NO";
-                    if(trn.getInscripcionVigente()==true){
+                    if (trn.getInscripcionVigente() == true ) {
                         disponible = "SI";
-                    }else{
-                        disponible = "NO";
-                    }
+                    }       
+                    
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),
@@ -225,7 +222,6 @@ public class Torneo implements Serializable {
                     };
                     //Que es addRow(rowData)
                     model.addRow(rowData);
-                //}
             }
         }
 

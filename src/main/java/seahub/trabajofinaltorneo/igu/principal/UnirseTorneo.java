@@ -107,50 +107,67 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
     private void TablaTorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaTorneoMouseClicked
         Controladora control = new Controladora();
-        int select = TablaTorneo.getSelectedRow(); 
-        ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
+        int select = TablaTorneo.getSelectedRow();
         int contador = 0;
         boolean yaUnido = false;
-        Torneo tor = new Torneo();
-        boolean disponible =  false;
-        for(Torneo torAux : torneoArr){
-            if(contador == select){
-                
-                tor = torAux;
-                break;
-            }
-            if(torAux.getInscripcionVigente() == true){
-                disponible = true;
-            }else{
+        Torneo tor = null;
+        boolean disponible = false;
+        ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
+        for (Torneo torAux : torneoArr) {
+
+
+            if (torAux.getInscripcionVigente() == true) {
+                disponible = true; // Verificar disponibilidad por torneo
+            } else {
                 disponible = false;
             }
+            if (contador == select) {
+                tor = torAux;
+                break;
+            }            
+            System.out.println("Torneo:"+torAux.getNombre());
+            System.out.println("Disponinle =" + disponible);            
             contador++;
         }
+
         ArrayList<ParticipanteTorneo> parTorArr = control.traerTodoParticipanteTorneo();
-        for(ParticipanteTorneo parTorAux : parTorArr){
-            if(parTorAux.getIdParticipante().equals(par)== true){
-                if(parTorAux.getIdTorneo().equals(tor)==true){
-                    yaUnido = true;  
-                }                   
+        for (ParticipanteTorneo parTorAux : parTorArr) {
+            if (parTorAux.getIdParticipante().equals(par) == true) {
+                if (parTorAux.getIdTorneo().equals(tor) == true) {
+                    yaUnido = true;
+                }
             }
         }
-        if(yaUnido==true){
-            JOptionPane.showMessageDialog(null, "YA ESTAS UNIDO A  :"+tor.getNombre());
-        }else if(disponible == false){
-            JOptionPane.showMessageDialog(null, "EL TORNEO "+ tor.getNombre()+ " CERRO INSCRIPCION");
+        ArrayList<Torneo> torneoArr2 = control.traerTodoTorneo();
+
+        System.out.println("Disponinle FINAL=" + disponible);
+        if (yaUnido == true) {
+            JOptionPane.showMessageDialog(null, "YA ESTAS UNIDO A :" + tor.getNombre());
+            UnirseTorneo unirseT = new UnirseTorneo(par);
+            unirseT.setVisible(true);
+            this.setVisible(false);
         }
-        else{
-            JOptionPane.showMessageDialog(null, "TE UNISTE A :"+tor.getNombre());
-            ParticipanteTorneo parTor = new ParticipanteTorneo(tor ,par); 
+        if (disponible == false) {
+            JOptionPane.showMessageDialog(null, "EL TORNEO " + tor.getNombre() + " CERRO INSCRIPCION");
+            UnirseTorneo unirseT = new UnirseTorneo(par);
+            unirseT.setVisible(true);
+            this.setVisible(false);
+            
+        } 
+
+        if(yaUnido == false && disponible == true ){
+            JOptionPane.showMessageDialog(null, "TE UNISTE A :" + tor.getNombre());
+            ParticipanteTorneo parTor = new ParticipanteTorneo(tor, par);
             try {
                 control.crearParticipanteTorneo(parTor);
-             } catch (Exception ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(UnirseTorneo.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "ERROR EXCEPTION EX");
+                JOptionPane.showMessageDialog(null, "ERROR: " + ex.getMessage()); // Mostrar mensaje más informativo
+            }
+            UnirseTorneo unirseT = new UnirseTorneo(par);
+            unirseT.setVisible(true);
+            this.setVisible(false);
         }
-        }
-
-        
     }//GEN-LAST:event_TablaTorneoMouseClicked
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed

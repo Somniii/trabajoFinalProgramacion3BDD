@@ -230,6 +230,9 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         }*/
         System.out.println("Total participantes :" + i);
         System.out.println("POR FIN SALIR DEL CODIGO");
+        VistaTorneoVigente vistaTorVig = new VistaTorneoVigente(tor,adm);
+        vistaTorVig.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnCerrarActionPerformed
     /*private void enviarParticipanteEtapa(Etapa eta,Participante part){
         

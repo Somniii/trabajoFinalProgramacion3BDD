@@ -138,12 +138,15 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Ingrese Usuario de Administrador");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 280, 30));
 
+        txtUserAdm.setText("admin");
         txtUserAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserAdmActionPerformed(evt);
             }
         });
         jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 240, 30));
+
+        txtClaveAdm.setText("1234");
         jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N

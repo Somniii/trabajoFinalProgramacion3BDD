@@ -217,7 +217,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
             torAux.setInscripcionVigente(false);    
             torAux.setPisosTotales(exponenteDos);
             torAux.setPisos(exponenteDos);
-            System.out.println("Setea la inscripcionvigente en false ");
+            System.out.println("Setea la inscripcionvigente en " + torAux.getInscripcionVigente() + "y pisos en " + torAux.getPisosTotales() + "y piso actual "+ torAux.getPisos() );
             control.editarTorneo(torAux);
             System.out.println("edita el torneo con la nueva inscripcion vigente");
         }

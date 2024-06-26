@@ -107,7 +107,7 @@ public void ListaTorneoEtapa(JTable tabla , Torneo tor){
     ArrayList<Etapa> eta = control.traerTodoEtapa();
     ArrayList<Etapa> etaArr = new ArrayList<>();
     for(Etapa etaAux : eta){
-        if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo() )){      
+        if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo() )==true){                  
             if(etaAux.getJerarquia() == tor.getPisos()){
                 System.out.println("Entra");
                 etaArr.add(etaAux);

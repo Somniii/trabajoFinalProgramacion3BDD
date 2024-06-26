@@ -31,14 +31,17 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         initComponents();
     }
     public VistaTorneoVigente(Torneo tor, Administrador adm){
-        this.tor = tor;
+        Controladora control = new Controladora();       
+        Torneo torAux = control.traerTorneo(tor.getIdTorneo());
+        this.tor = torAux;
         this.adm = adm;
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
         this.setTitle("Pasar etapa");
         initComponents();
-        String pisoActual = String.valueOf(tor.getPisos());
+        String pisoActual = Integer.toString(tor.getPisos());
+        System.out.println("Piso : " + tor.getPisos());
         textPisos.setText(pisoActual);
         String id = Integer.toString(tor.getIdTorneo());
         textId.setText(id);
@@ -173,7 +176,41 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     }//GEN-LAST:event_textIdActionPerformed
     
     private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
+        
         //ELEGIR GANADORES DE CADA ETAPA
+        //VER SI YA HAY UN GANADOR
+        
+        if(tor.getPisos()==0){
+            Controladora control = new Controladora();
+            System.out.println("Entra al if de la final 227");            
+            ArrayList<Etapa> etaArr = control.traerTodoEtapa();
+            Participante ganador = new Participante();                      
+            for(Etapa etaAux : etaArr){
+                System.out.println("Entra al for 231");
+                if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                    System.out.println("Entra al if 234");
+                    if(etaAux.getJerarquia()==tor.getPisos()){
+                        System.out.println("Entra el if 236");
+                        /*if(etaAux.getIdParticipante()!=null){
+                            ArrayList<ParticipanteEtapa> buscarFinalistas = control.traerTodoParticipanteEtapa();
+                            ArrayList<Participante> finalistas = new ArrayList<>();
+                            for(ParticipanteEtapa parEtaFin : buscarFinalistas){
+                                if(parEtaFin.getIdEtapa().getIdEtapa()==etaAux.getIdEtapa()){
+                                    finalistas.add(parEtaFin.getIdParticipante());
+                                }
+                            }
+                            ElegirGanadores elegir = new ElegirGanadores(tor, adm , finalistas.get(0), finalistas.get(1), etaAux , 1);
+                        }else{*/
+                            //pongo el participante que gano en el arraylist
+                        if(etaAux.getIdParticipante()!=null){                            
+                            JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + etaAux.getIdParticipante().getUsuario()); 
+                            
+                        }
+
+                    }
+                }
+            }            
+        }
         System.out.println("VISTA TORNEO VIGENTE BOTON TOCADO");
         Controladora control = new Controladora();
         ArrayList<Etapa> etaArr = control.traerTodoEtapa(); 
@@ -184,8 +221,10 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         for(Etapa etaAux : etaArr){
             System.out.println("Enrta al for etaAux 185");   
             if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
+                //Si estamos en el mismo torneo
                 System.out.println("Entra al if 186");
                 if(etaAux.getJerarquia()==tor.getPisos()){
+                    //Si estamos en la misma jerarquia
                     System.out.println("Entra al if 189");
                     cantidadEtapas++;
                     System.out.println("CANTIDAD DE ETAPAS : "+cantidadEtapas);
@@ -206,6 +245,7 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
                     System.out.println("Sale for 198 con cantidad Participatnes por etapa :"+cantParPorEta);
                     //SI SOLO HAY UN PARTICIPANTE EN ESA ETAPA SE ELIGE A ESE COMO GANADOR
                     if(cantParPorEta == 1){
+                        //Esta parte anda creo
                         System.out.println("Entra if 207");
                         Participante ganador =parAux.get(0);
                         int id = etaAux.getIdEtapa();
@@ -227,16 +267,28 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         if(tor.getPisos()==0){
             System.out.println("Entra al if de la final 227");            
             etaArr = control.traerTodoEtapa();
-            Participante ganador = new Participante();
+            Participante ganador = new Participante();                      
             for(Etapa etaAux : etaArr){
                 System.out.println("Entra al for 231");
                 if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
                     System.out.println("Entra al if 234");
                     if(etaAux.getJerarquia()==tor.getPisos()){
                         System.out.println("Entra el if 236");
-                        //pongo el participante que gano en el arraylist
-                        ganador=etaAux.getIdParticipante();
-                        JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + ganador.getUsuario());
+                        /*if(etaAux.getIdParticipante()!=null){
+                            ArrayList<ParticipanteEtapa> buscarFinalistas = control.traerTodoParticipanteEtapa();
+                            ArrayList<Participante> finalistas = new ArrayList<>();
+                            for(ParticipanteEtapa parEtaFin : buscarFinalistas){
+                                if(parEtaFin.getIdEtapa().getIdEtapa()==etaAux.getIdEtapa()){
+                                    finalistas.add(parEtaFin.getIdParticipante());
+                                }
+                            }
+                            ElegirGanadores elegir = new ElegirGanadores(tor, adm , finalistas.get(0), finalistas.get(1), etaAux , 1);
+                        }else{*/
+                            //pongo el participante que gano en el arraylist
+                            ganador=etaAux.getIdParticipante();
+                            JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + ganador.getUsuario()); 
+                        //}
+
                     }
                 }
             }            
@@ -308,12 +360,12 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         Torneo torAux = control.traerTorneo(tor.getIdTorneo());
         torAux.setPisos(tor.getPisos());
         control.editarTorneo(torAux);
-        VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor,adm);
+        VistaTorneoVigente vistaTor = new VistaTorneoVigente(torAux,adm);
         vistaTor.setVisible(true);
         this.setVisible(false);                
         //EN BASE A ESTO Y SABIENDO LA CANTIDAD DE ETAPAS , DIVIDIMOS ESTA CANTIDAD POR DOS Y PONEMOS CADA DOS GANADORES DE LAS ETAPAS PASADA EN UNA NUEVA
     }//GEN-LAST:event_btnPasarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

@@ -27,7 +27,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(410, 410);
         setVisible(true);
         this.setTitle("Unirse a Torneos Existentes");
         mostrarTabla();
@@ -83,7 +83,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 410, 340));
 
-        btnAtras.setText("irAtras");
+        btnAtras.setText("Ir atras");
         btnAtras.setMaximumSize(new java.awt.Dimension(100, 100));
         btnAtras.setMinimumSize(new java.awt.Dimension(75, 25));
         btnAtras.setPreferredSize(new java.awt.Dimension(50, 100));

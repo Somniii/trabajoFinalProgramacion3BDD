@@ -114,7 +114,7 @@ public class Register extends javax.swing.JFrame {
         jPanel3.add(panelAdm8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 150, 30));
         jPanel3.add(PasswordClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 180, 30));
 
-        btnRegister.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegister.setText("Registrarse");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +123,7 @@ public class Register extends javax.swing.JFrame {
         });
         jPanel3.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 130, 40));
 
+        btnAtrasAdm.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAtrasAdm.setText("Atras");
         btnAtrasAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,14 +198,14 @@ public class Register extends javax.swing.JFrame {
 
         tableAdm.addTab("User", panelUser);
 
-        jPanel1.add(tableAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 510));
+        jPanel1.add(tableAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -313,18 +314,21 @@ public class Register extends javax.swing.JFrame {
           }
           if(encontradoUsu==true){
               JOptionPane.showMessageDialog(null, "USUARIO NO DISPONIBLE");
-                this.setVisible(false);
+                
                 registro.setVisible(true);
-                registro.setLocationRelativeTo(null);        
-          }else if(encontradoEmail==true){
+                registro.setLocationRelativeTo(null);   
                 this.setVisible(false);
+          }else if(encontradoEmail==true){
+                
                 registro.setVisible(true);
                 registro.setLocationRelativeTo(null);  
+                this.setVisible(false);
               JOptionPane.showMessageDialog(null, "EMAIL NO DISPONIBLE");
           }else if(encontradoUsu==true && encontradoEmail==true){
-                this.setVisible(false);
+                
                 registro.setVisible(true);
                 registro.setLocationRelativeTo(null);  
+                this.setVisible(false);
               JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
           }else{
               JOptionPane.showMessageDialog(null,"PARTICIPANTE CREADO");
@@ -332,9 +336,10 @@ public class Register extends javax.swing.JFrame {
               Participante part = new Participante(nombre,user,claveCodificada,email);
               //System.out.println(part.toString());
               part.crearEnBase();
-                this.setVisible(false);
+                
                 registro.setVisible(true);
                 registro.setLocationRelativeTo(null);  
+                this.setVisible(false);
                 
           }
       } catch (Exception ex) {

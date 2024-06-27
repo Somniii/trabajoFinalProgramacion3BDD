@@ -37,7 +37,7 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         this.adm = adm;
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(686, 530);
         this.setTitle("Pasar etapa");
         initComponents();
         String pisoActual = Integer.toString(tor.getPisos());

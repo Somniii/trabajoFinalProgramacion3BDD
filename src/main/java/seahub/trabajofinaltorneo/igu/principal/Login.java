@@ -5,15 +5,17 @@
 package seahub.trabajofinaltorneo.igu.principal;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Encriptar;
+import static seahub.trabajofinaltorneo.logica.Encriptar.Codificar;
 import seahub.trabajofinaltorneo.logica.Participante;
 
-/**
- *
- * @author tinov
- */
+
+
 public class Login extends javax.swing.JFrame {
     private Controladora control = new Controladora();
     Participante parti = new Participante();
@@ -25,7 +27,7 @@ public class Login extends javax.swing.JFrame {
         setVisible(true);
         this.setTitle("Login");
     }
-
+    private Encriptar codi = new Encriptar();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +46,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnLog = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
+        btnPrueba = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -71,26 +74,26 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 170, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 170, 30));
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 240, 30));
+        jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 240, 30));
 
         txtClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClaveActionPerformed(evt);
             }
         });
-        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 240, 30));
+        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ingrese su clave");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         btnLog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLog.setText("Ingresar");
@@ -108,7 +111,15 @@ public class Login extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 110, 40));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 40));
+
+        btnPrueba.setText("prueba");
+        btnPrueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPruebaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         jTabbedPane1.addTab("Participante", jPanel1);
 
@@ -120,25 +131,28 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Login");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingrese Usuario de Administrador");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 280, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 280, 30));
 
+        txtUserAdm.setText("admin");
         txtUserAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserAdmActionPerformed(evt);
             }
         });
-        jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 240, 30));
-        jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, 30));
+        jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 240, 30));
+
+        txtClaveAdm.setText("1234");
+        jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Ingrese su clave");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         btnLogAdm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLogAdm.setText("Ingresar");
@@ -156,7 +170,7 @@ public class Login extends javax.swing.JFrame {
                 btnRegisterAdmActionPerformed(evt);
             }
         });
-        jPanel2.add(btnRegisterAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 110, 40));
+        jPanel2.add(btnRegisterAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 110, 40));
 
         jTabbedPane1.addTab("Administrador", jPanel2);
 
@@ -179,19 +193,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        /*if(txtUser.getText().equals("") || txtClave.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Los Campos estan Vacios");
-        }else{
-            boolean valor = parti.login(txtUser.getText(), txtClave.getText());
-            if(valor==true){
-                JOptionPane.showMessageDialog(null, "Se conecto");
-                HomeParticipante participante = new HomeParticipante();
-                participante.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, "Error de Usuario o Contraseña");
-            }
-        }*/
+
         String usuario = txtUser.getText();
           String pass = "";
           char [] password = txtClave.getPassword();
@@ -199,34 +201,26 @@ public class Login extends javax.swing.JFrame {
           pass += password[x];
                   
           }
-          //Hay un problema en contrasena , da numeros raros
-        
+          String claveCodificar = Codificar(pass);
           //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
           int idAuxiliar;
           ArrayList<Participante> participanteAux = control.traerTodoParticipante();
           boolean usuarioEncontrado = false;
           boolean passwordIgual = false;
           Participante par = new Participante();
-          //System.out.println("Apunto de entrar en el for");
           for(Participante aux : participanteAux){
-              //System.out.println("Entra en el for");
-              //System.out.println("COMPARA: "+ aux.getUsuario() + "CON "+usuario); 
               String usuarioTraido = aux.getUsuario();
-              //System.out.println("Usuario traido :"+usuarioTraido);
               if(usuarioTraido.compareTo(usuario)==0){
-                  //System.out.println("Es igual");
                   usuarioEncontrado = true;
-                  if(aux.getContrasena().compareTo(pass)==0){
+                  //if(aux.getContrasena().compareTo(pass)==0){
+                  if(aux.getContrasena().compareTo(claveCodificar)==0){
                     par = aux;
                     passwordIgual = true;
                   }
-              }else{
-                  //System.out.println("No es igual");
               }
           }
           if(usuarioEncontrado == false){
                 JOptionPane.showMessageDialog(null, "NO EXISTE ESE USUARIO");
-                  //System.out.println("NO se encontro el usuario");             
                 Login login = new Login();
                 login.setVisible(true);
                 login.setLocationRelativeTo(null);
@@ -265,8 +259,8 @@ public class Login extends javax.swing.JFrame {
           char [] password = txtClaveAdm.getPassword();
           for(int x = 0 ; x<password.length ; x++){
           pass += password[x];
-                  
           }
+          String passC = Codificar(pass);
           //Hay un problema en contrasena , da numeros raros
         
           //System.out.println("TENEMOS USUARIO :"+usuario+"\nPASSWORD :"+pass);
@@ -283,7 +277,8 @@ public class Login extends javax.swing.JFrame {
               if(usuarioTraido.compareTo(usuario)==0){
                   //System.out.println("Es igual");
                   usuarioEncontrado = true;
-                  if(aux.getContrasena().compareTo(pass)==0){
+                  //if(aux.getContrasena().compareTo(pass)==0){
+                  if(aux.getContrasena().compareTo(passC)==0){
                     passwordIgual = true;
                     admEnviar = aux;
                   }
@@ -326,6 +321,40 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveActionPerformed
 
+    private void btnPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaActionPerformed
+        Controladora control = new Controladora();
+        Participante par1 = new Participante("qwer1","qwe1","1324","qwer@gmail.com");
+        Participante par2 = new Participante("qwer1","asd1","1324","qwer@gmail.com");
+        Participante par3 = new Participante("qwer1","zxc1","1324","qwer@gmail.com");
+        Participante par4 = new Participante("qwer1","1234","1324","qwer@gmail.com");
+        try {
+            control.crearParticipante(par1);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par2);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par3);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            control.crearParticipante(par4);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Administrador adm = new Administrador("adm","adm@gmail.com","adm","1234");
+        try {
+            control.crearAdministrador(adm);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPruebaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +393,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLog;
     private javax.swing.JButton btnLogAdm;
+    private javax.swing.JButton btnPrueba;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRegisterAdm;
     private javax.swing.JLabel jLabel1;

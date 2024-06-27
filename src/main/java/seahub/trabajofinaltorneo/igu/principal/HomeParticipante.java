@@ -27,6 +27,12 @@ public class HomeParticipante extends javax.swing.JFrame {
     public HomeParticipante(Participante par) {
         initComponents();
         this.par = par;
+        initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Menu Participante");
+        setVisible(true);
     }
 
     /**

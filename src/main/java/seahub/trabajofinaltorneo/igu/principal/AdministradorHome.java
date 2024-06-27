@@ -56,100 +56,67 @@ public class AdministradorHome extends javax.swing.JFrame {
         torneoActual = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nombreAdministrador = new javax.swing.JTextField();
-        btnNombre = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCrearT.setText("crearTorneo");
+        btnCrearT.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        btnCrearT.setText("Crear Toneo");
         btnCrearT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearTActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCrearT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, -1));
 
-        cerrarSesion.setText("cerrarSesion");
+        cerrarSesion.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        cerrarSesion.setText("Cerrar Sesion");
         cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionActionPerformed(evt);
             }
         });
+        jPanel1.add(cerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
+        torneoActual.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         torneoActual.setText("ver torneos");
         torneoActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 torneoActualActionPerformed(evt);
             }
         });
+        jPanel1.add(torneoActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Bienvenido , administrador");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
         nombreAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreAdministradorActionPerformed(evt);
             }
         });
+        jPanel1.add(nombreAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 168, -1));
 
-        btnNombre.setText("Mostrar nombre");
-        btnNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNombreActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btnCrearT, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(torneoActual)
-                        .addGap(18, 18, 18)
-                        .addComponent(cerrarSesion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(btnNombre)))))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrearT)
-                    .addComponent(torneoActual)
-                    .addComponent(cerrarSesion))
-                .addGap(35, 35, 35))
-        );
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel2.setText("Que desea realizar");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,16 +126,16 @@ public class AdministradorHome extends javax.swing.JFrame {
         //CREAR SENTENCIA IF QUE SE FIJE SI EL ADM YA TIENE UN TORNEO
         boolean verificarTodosFinalizados =true;
         Collection<Torneo> listaTorneosAdm= adm.getTorneoCollection();
-        for(Torneo auxTorneo : listaTorneosAdm){
+        /*for(Torneo auxTorneo : listaTorneosAdm){
             if(auxTorneo.getVigente()==false){
                 
             }else{
                 verificarTodosFinalizados = true;
             }
-        }
+        }*/
         if(verificarTodosFinalizados = true){
             JOptionPane.showMessageDialog(null, "CREANDO TORNEO...");
-            CrearTorneos crearTorneos = new CrearTorneos(adm);
+            CrearTorneosP crearTorneos = new CrearTorneosP(adm);
             crearTorneos.setVisible(true);
             crearTorneos.setLocationRelativeTo(null);
             this.setVisible(false);
@@ -187,7 +154,7 @@ public class AdministradorHome extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSesionActionPerformed
 
     private void torneoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torneoActualActionPerformed
-        VerTorneos torVer = new VerTorneos(adm);
+        VerTorneosAdm torVer = new VerTorneosAdm(adm);
         torVer.setVisible(true);
         this.setVisible(false);
               // TODO add your handling code here:
@@ -196,10 +163,6 @@ public class AdministradorHome extends javax.swing.JFrame {
     private void nombreAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreAdministradorActionPerformed
         
     }//GEN-LAST:event_nombreAdministradorActionPerformed
-
-    private void btnNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNombreActionPerformed
-
-    }//GEN-LAST:event_btnNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,9 +202,9 @@ public class AdministradorHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearT;
-    private javax.swing.JButton btnNombre;
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombreAdministrador;
     private javax.swing.JButton torneoActual;

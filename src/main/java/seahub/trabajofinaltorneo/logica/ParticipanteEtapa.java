@@ -5,6 +5,8 @@
 package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,7 +41,10 @@ public class ParticipanteEtapa implements Serializable {
 
     public ParticipanteEtapa() {
     }
-
+    public ParticipanteEtapa(Etapa idEtapa, Participante idParticipante){
+        this.idEtapa = idEtapa;
+        this.idParticipante = idParticipante;
+    }
     public ParticipanteEtapa(Integer idPE) {
         this.idPE = idPE;
     }
@@ -89,5 +97,42 @@ public class ParticipanteEtapa implements Serializable {
     public String toString() {
         return "seahub.tournament.logica.ParticipanteEtapa[ idPE=" + idPE + " ]";
     }
+    
+public void ListaTorneoEtapa(JTable tabla , Torneo tor){
+     //Definis la table
+    DefaultTableModel model;
+    Controladora control = new Controladora();
+    String[] titulo = {"nombre", "usuario","Id"};
+    model = new DefaultTableModel(null, titulo);
+    ArrayList<Etapa> eta = control.traerTodoEtapa();
+    ArrayList<Etapa> etaArr = new ArrayList<>();
+    for(Etapa etaAux : eta){
+        if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo() )==true){                  
+            if(etaAux.getJerarquia() == tor.getPisos()){
+                System.out.println("Entra");
+                etaArr.add(etaAux);
+            }
+        }
+    }
+    ArrayList<ParticipanteEtapa> parEta = control.traerTodoParticipanteEtapa();
+    Participante part = null;
+    for(ParticipanteEtapa parEtaAux : parEta){
+        for(Etapa etaAux : etaArr){
+            if(etaAux.getIdEtapa().equals(parEtaAux.getIdEtapa().getIdEtapa())){
+                part = parEtaAux.getIdParticipante();
+                Object[] rowData = {
+                    part.getNombre(),
+                    part.getUsuario(),
+                    part.getIdParticipante(),
+                };
+                model.addRow(rowData);
+            }
+        }
+        
+        tabla.setModel(model);
+        }
+  
+    }
       
+
 }

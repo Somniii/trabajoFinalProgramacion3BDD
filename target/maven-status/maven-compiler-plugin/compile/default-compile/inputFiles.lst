@@ -1,8 +1,12 @@
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Administrador.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\ventanas\CargaUser.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ControladoraPersistencia.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ParticipanteTorneoJpaController.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\exceptions\PreexistingEntityException.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VistaTorneoInscripcion.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\TorneoJpaController.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ParticipanteJpaController.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Participante.java
@@ -21,10 +25,10 @@ C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahu
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\TrabajoFinalTorneo.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ParticipanteAdministradorJpaController.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\CrearTorneosP.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Etapa.java
-C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VerTorneos.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.java
-C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\SeleccionarGanador.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\ElegirGanadores.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Torneo.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\UnirseTorneo.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\ParticipanteTorneo.java
@@ -32,5 +36,6 @@ C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahu
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ParticipanteEtapaJpaController.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\CargaUsuarios.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Controladora.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Encriptar.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosAnotados.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.java

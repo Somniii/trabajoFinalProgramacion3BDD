@@ -23,11 +23,17 @@ public class CargaUsuarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(500, 500);
         setVisible(true);
-        this.setTitle("Login");
+        this.setTitle("Cargar Usuarios");
     }
     public CargaUsuarios(Torneo tor){
         initComponents();
         this.tor = tor;
+        initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Cargar Usuarios");
+        setVisible(true);
     }
 
     /**

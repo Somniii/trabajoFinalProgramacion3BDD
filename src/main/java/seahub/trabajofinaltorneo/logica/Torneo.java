@@ -5,6 +5,7 @@
 package seahub.trabajofinaltorneo.logica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
@@ -183,10 +184,107 @@ public class Torneo implements Serializable {
 
 
 
- public void ListaTorneoParticipante(JTable tabla) {
+ public void ListaTorneoParticipante(JTable tabla , Participante par) {
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre"};
+    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido"};
+    model = new DefaultTableModel(null, titulo);
+
+    try {
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
+        List<ParticipanteTorneo> parTor = control.traerTodoParticipanteTorneo();
+        if (datos.isEmpty()) {
+            System.out.println("La lista de torneos está vacía.");
+        } else {
+            System.out.println("La lista de torneos contiene datos.");
+            for (Torneo trn : datos) {
+                    String yaUnido = "NO";
+                    for (ParticipanteTorneo parTorAux : parTor) {
+                        if (parTorAux.getIdParticipante().getIdParticipante().equals(par.getIdParticipante()) &&
+                            parTorAux.getIdTorneo().getIdTorneo().equals(trn.getIdTorneo())) {
+                            yaUnido = "SI";
+                            break; // Salir del bucle si se encuentra al participante inscrito
+                        }
+                    }
+                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre() + "Inscripcion vigente :"+ trn.getInscripcionVigente());
+                    String disponible = "NO";
+                    if (trn.getInscripcionVigente() == true ) {
+                        disponible = "SI";
+                    }       
+                    
+                    Object[] rowData = {
+                        trn.getIdTorneo(),
+                        trn.getNombre(),
+                        trn.getIdAdministrador().getUsuario(),
+                        disponible,
+                        yaUnido,
+                    };
+                    //Que es addRow(rowData)
+                    model.addRow(rowData);
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
+     //Definis la table
+    //JOptionPane.showMessageDialog(null, "ENTRA" );
+    DefaultTableModel model;
+    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","TUYO"};
+    model = new DefaultTableModel(null, titulo);
+
+    try {
+        Controladora control = new Controladora();
+        List<Torneo> datos = control.traerTodoTorneo();
+        
+        if (datos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "NO HAY DATOS " );
+            
+            //System.out.println("La lista de torneos está vacía.");
+        } else {
+            //System.out.println("La lista de torneos contiene datos.");
+            Administrador admAux = new Administrador();
+            String tuyo = "NO";
+            for (Torneo trn : datos) {
+                System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                admAux = trn.getIdAdministrador();
+                if(admAux.getIdAdministrador().equals(adm.getIdAdministrador())==true){
+                    //System.out.println("Torneo NOMBRE ADM: " + trn.getIdAdministrador().getNombre() + ", Nombre ADM: " + adm.getNombre());
+                    tuyo = "SI";
+                }else{
+                    tuyo = "NO";
+                }
+                    Object[] rowData = {
+                        trn.getIdTorneo(),
+                        trn.getNombre(),                
+                        trn.getVigente(),
+                        trn.getInscripcionVigente(),  
+                        tuyo
+                    };
+                         //Que es addRow(rowData)
+                         model.addRow(rowData);
+                
+
+            }
+        }
+
+        tabla.setModel(model);
+    } catch (Exception ex) {
+        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
+        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+public void ListaTorneo(JTable tabla){
+     //Definis la table
+    DefaultTableModel model;
+    String[] titulo = {"nombre", "usuario","Id","inscripcionVigente","pisosTotales"};
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -201,7 +299,10 @@ public class Torneo implements Serializable {
                 System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
                 Object[] rowData = {
                     trn.getIdTorneo(),
-                    trn.getNombre()
+                    trn.getNombre(),
+                    trn.getInscripcionVigente(),
+                    trn.getVigente(),
+                    trn.getPisosTotales(),
                 };
                 //Que es addRow(rowData)
                 model.addRow(rowData);
@@ -214,38 +315,18 @@ public class Torneo implements Serializable {
         JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
-public void ListaTorneoAdminsitrador(JTable tabla) {
-     //Definis la table
-    DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente"};
-    model = new DefaultTableModel(null, titulo);
-
-    try {
-        Controladora control = new Controladora();
-        List<Torneo> datos = control.traerTodoTorneo();
-        
-        if (datos.isEmpty()) {
-            //System.out.println("La lista de torneos está vacía.");
-        } else {
-            //System.out.println("La lista de torneos contiene datos.");
-            for (Torneo trn : datos) {
-                System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre());
-                Object[] rowData = {
-                    trn.getIdTorneo(),
-                    trn.getNombre(),                
-                    trn.getVigente(),
-                    trn.getInscripcionVigente(),                    
-                };
-                //Que es addRow(rowData)
-                model.addRow(rowData);
-            }
+public int cantidadParticipantes(){
+    Controladora control = new Controladora();
+    ArrayList<ParticipanteTorneo> parTor = control.traerTodoParticipanteTorneo();
+    Torneo torAux = new Torneo();
+    int contador = 0;
+    for(ParticipanteTorneo parTorAux: parTor){
+        torAux = parTorAux.getIdTorneo();
+        if(torAux.getIdTorneo().equals(this.getIdTorneo())){
+            contador++;
         }
-
-        tabla.setModel(model);
-    } catch (Exception ex) {
-        ex.printStackTrace(); // Imprime la traza de la excepción para depuración
-        JOptionPane.showMessageDialog(null, "Error al cargar datos de torneos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+    return contador;
 }
 
 

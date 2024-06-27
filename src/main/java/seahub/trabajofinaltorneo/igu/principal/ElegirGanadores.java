@@ -44,6 +44,20 @@ public class ElegirGanadores extends javax.swing.JFrame {
         nombrePar1.setText(par1.getNombre());
         nombrePar2.setText(par2.getNombre());        
     }
+    public ElegirGanadores(Torneo tor ,Administrador adm, Participante par1 ,Participante par2 ,Etapa eta ,  int etapaActual){
+        initComponents();
+        this.tor = tor;
+        this.adm = adm;
+        this.par1 = par1;
+        this.par2 = par2;
+        this.eta = eta;
+        String pisos = Integer.toString(tor.getPisos());
+        piso.setText(pisos);
+        String numeroEtapa = Integer.toString(etapaActual);
+        etapa.setText(numeroEtapa);
+        nombrePar1.setText(par1.getNombre());
+        nombrePar2.setText(par2.getNombre());        
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,7 +158,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-  
+    
     private void participanteGanadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participanteGanadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_participanteGanadorActionPerformed

@@ -176,43 +176,89 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     }//GEN-LAST:event_textIdActionPerformed
     
     private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
+        //Controladora control = new Contorladora();
+    }//GEN-LAST:event_btnPasarActionPerformed
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VistaTorneoVigente().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnPasar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField textId;
+    private javax.swing.JTextField textPisos;
+    // End of variables declaration//GEN-END:variables
+}
+/**
         
         //ELEGIR GANADORES DE CADA ETAPA
         //VER SI YA HAY UN GANADOR
-        
+        System.out.println("VISTA TORNEO VIGENTE BOTON TOCADO");
+        Controladora control = new Controladora();        
         if(tor.getPisos()==0){
-            Controladora control = new Controladora();
+
             System.out.println("Entra al if de la final 227");            
             ArrayList<Etapa> etaArr = control.traerTodoEtapa();
-            Participante ganador = new Participante();                      
+            Participante ganador = new Participante();        
+            //ESTO VE SI YA HAY GANADOR 
             for(Etapa etaAux : etaArr){
                 System.out.println("Entra al for 231");
                 if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())==true){
                     System.out.println("Entra al if 234");
                     if(etaAux.getJerarquia()==tor.getPisos()){
                         System.out.println("Entra el if 236");
-                        /*if(etaAux.getIdParticipante()!=null){
-                            ArrayList<ParticipanteEtapa> buscarFinalistas = control.traerTodoParticipanteEtapa();
-                            ArrayList<Participante> finalistas = new ArrayList<>();
-                            for(ParticipanteEtapa parEtaFin : buscarFinalistas){
-                                if(parEtaFin.getIdEtapa().getIdEtapa()==etaAux.getIdEtapa()){
-                                    finalistas.add(parEtaFin.getIdParticipante());
-                                }
-                            }
-                            ElegirGanadores elegir = new ElegirGanadores(tor, adm , finalistas.get(0), finalistas.get(1), etaAux , 1);
-                        }else{*/
-                            //pongo el participante que gano en el arraylist
                         if(etaAux.getIdParticipante()!=null){                            
                             JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + etaAux.getIdParticipante().getUsuario()); 
-                            
+                            AdministradorHome admHome = new AdministradorHome(adm);
+                            admHome.setVisible(true);
+                            this.setVisible(false);
                         }
 
                     }
                 }
             }            
-        }
-        System.out.println("VISTA TORNEO VIGENTE BOTON TOCADO");
-        Controladora control = new Controladora();
+        }    
         ArrayList<Etapa> etaArr = control.traerTodoEtapa(); 
         ArrayList<ParticipanteEtapa> parEtaArr = control.traerTodoParticipanteEtapa();
         int cantidadEtapas = 0;        
@@ -244,6 +290,8 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
                     }
                     System.out.println("Sale for 198 con cantidad Participatnes por etapa :"+cantParPorEta);
                     //SI SOLO HAY UN PARTICIPANTE EN ESA ETAPA SE ELIGE A ESE COMO GANADOR
+                    //Aca ya tengo anotado , el piso , el arraylist de participante , la cantidad de participantes por etapa, el torneo 
+                    
                     if(cantParPorEta == 1){
                         //Esta parte anda creo
                         System.out.println("Entra if 207");
@@ -283,7 +331,7 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
                                 }
                             }
                             ElegirGanadores elegir = new ElegirGanadores(tor, adm , finalistas.get(0), finalistas.get(1), etaAux , 1);
-                        }else{*/
+                        }else{*//*
                             //pongo el participante que gano en el arraylist
                             ganador=etaAux.getIdParticipante();
                             JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + ganador.getUsuario()); 
@@ -364,56 +412,4 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         vistaTor.setVisible(true);
         this.setVisible(false);                
         //EN BASE A ESTO Y SABIENDO LA CANTIDAD DE ETAPAS , DIVIDIMOS ESTA CANTIDAD POR DOS Y PONEMOS CADA DOS GANADORES DE LAS ETAPAS PASADA EN UNA NUEVA
-    }//GEN-LAST:event_btnPasarActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaTorneoVigente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaTorneoVigente().setVisible(true);
-            }
-        });
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnPasar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField textId;
-    private javax.swing.JTextField textPisos;
-    // End of variables declaration//GEN-END:variables
-}
+*/

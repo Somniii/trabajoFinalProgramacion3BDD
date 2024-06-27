@@ -1,4 +1,5 @@
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\MetricasParticipante.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Administrador.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\ventanas\CargaUser.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion.java
@@ -8,6 +9,7 @@ C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahu
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VistaTorneoInscripcion.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\TorneoJpaController.java
+C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\principal\CambiarDatos.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\persistencia\ParticipanteJpaController.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\logica\Participante.java
 C:\Users\tinov\Documents\NetBeansProjects\trabajoFinalTorneo\src\main\java\seahub\trabajofinaltorneo\igu\ventanas\TerminarTorneo.java

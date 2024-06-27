@@ -25,14 +25,15 @@ public class HomeParticipante extends javax.swing.JFrame {
         this.setTitle("Menu Participante");
     }
     public HomeParticipante(Participante par) {
+        this.par = par;              
         initComponents();
-        this.par = par;
-        initComponents();
+        txtNombre.setText(par.getNombre());
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
         this.setTitle("Menu Participante");
-        setVisible(true);
+        setVisible(true);      
+        
     }
 
     /**
@@ -47,6 +48,9 @@ public class HomeParticipante extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnUnirse = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnMetricas = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +63,7 @@ public class HomeParticipante extends javax.swing.JFrame {
                 btnUnirseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 30));
 
         btnCerrar.setText("Cerrar sesion");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,17 +71,34 @@ public class HomeParticipante extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, 30));
+
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Bienvenido");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
+
+        btnMetricas.setText("Mostrar Metricas");
+        btnMetricas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetricasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,6 +117,12 @@ public class HomeParticipante extends javax.swing.JFrame {
         login.setLocationRelativeTo(null);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnMetricasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetricasActionPerformed
+        MetricasParticipante metriPar = new MetricasParticipante(par);
+        metriPar.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMetricasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +161,10 @@ public class HomeParticipante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnMetricas;
     private javax.swing.JButton btnUnirse;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

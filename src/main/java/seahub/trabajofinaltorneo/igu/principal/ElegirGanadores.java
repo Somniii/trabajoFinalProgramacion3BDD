@@ -4,10 +4,14 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.Participante;
+import seahub.trabajofinaltorneo.logica.ParticipanteEtapa;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
 /**
@@ -21,43 +25,39 @@ public class ElegirGanadores extends javax.swing.JFrame {
      */
     private Torneo tor;
     private Administrador adm;
-    private Participante par1;
-    private Participante par2;
-    private Etapa eta;
-    private VistaTorneoVigente vistaTor;
     private Participante ganador = new Participante();
+    private Participante part1 = new Participante();
+    private Participante part2 = new Participante();
+    private ArrayList<Etapa> etapas;
+    private ArrayList<Participante> participantes;
+    private int etapaActual;
+    private int cantidadParticipantes;
+    private int totalEtapas;
+    
     public ElegirGanadores() {
         initComponents();
     }
-    public ElegirGanadores(Torneo tor ,Administrador adm, Participante par1 ,Participante par2 ,Etapa eta , VistaTorneoVigente vistaTor , int etapaActual){
+    
+    public ElegirGanadores(Torneo tor , Administrador adm , ArrayList<Etapa> etapas , ArrayList<Participante> participantes ,int etapaActual, int totalEtapas , int cantidadParticipantes){
         initComponents();
         this.tor = tor;
-        this.adm = adm;
-        this.par1 = par1;
-        this.par2 = par2;
-        this.eta = eta;
-        this.vistaTor = vistaTor;
+        this.adm = adm;       
+        this.etapas = etapas;
+        this.participantes = participantes;
+        this.etapaActual = etapaActual;
+        this.totalEtapas = totalEtapas;
+        this.cantidadParticipantes = cantidadParticipantes;
+        
         String pisos = Integer.toString(tor.getPisos());
         piso.setText(pisos);
         String numeroEtapa = Integer.toString(etapaActual);
+        String totalEtapa = Integer.toString(totalEtapas);
         etapa.setText(numeroEtapa);
-        nombrePar1.setText(par1.getNombre());
-        nombrePar2.setText(par2.getNombre());        
+        total.setText(totalEtapa);
+        actual();
+        System.out.println("ETAPA ACTUAL :"+ etapaActual);
     }
-    public ElegirGanadores(Torneo tor ,Administrador adm, Participante par1 ,Participante par2 ,Etapa eta ,  int etapaActual){
-        initComponents();
-        this.tor = tor;
-        this.adm = adm;
-        this.par1 = par1;
-        this.par2 = par2;
-        this.eta = eta;
-        String pisos = Integer.toString(tor.getPisos());
-        piso.setText(pisos);
-        String numeroEtapa = Integer.toString(etapaActual);
-        etapa.setText(numeroEtapa);
-        nombrePar1.setText(par1.getNombre());
-        nombrePar2.setText(par2.getNombre());        
-    }    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +81,8 @@ public class ElegirGanadores extends javax.swing.JFrame {
         piso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         etapa = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,11 +147,19 @@ public class ElegirGanadores extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
         jPanel1.add(etapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 30, -1));
 
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("De");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 30, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,6 +168,50 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void actual(){
+        System.out.println("Entra a actual");
+        Controladora control = new Controladora();
+        if(tor.getPisos() == 0){
+            part1 = participantes.get(0);
+            part2 = participantes.get(1);
+            this.part1 = part1;
+            this.part2 = part2;
+            nombrePar1.setText(part1.getNombre());
+            nombrePar2.setText(part2.getNombre());
+        }else{
+            ArrayList<ParticipanteEtapa> parEtaArray = control.traerTodoParticipanteEtapa();
+            int cantidadParticipantesEtapa = 0;
+            System.out.println("Entra al else");
+            for(ParticipanteEtapa parEtaArr : parEtaArray){
+                //System.out.println("Entra al for");
+                //Encontramos la etapa
+                if(parEtaArr.getIdEtapa().getIdEtapa().equals(etapas.get(etapaActual-1).getIdEtapa())){
+                    System.out.println("Entra al primer if");
+                    for(Participante parAux : participantes){
+                        System.out.println("Busca a los participantes en el arrayList");
+                        if(parEtaArr.getIdParticipante().getIdParticipante().equals(parAux.getIdParticipante())){
+                            System.out.println("Encontro participante con mismo id");
+                            if(cantidadParticipantesEtapa==0){
+                                this.part1 = parAux;
+                            }else{
+                                this.part2 = parAux;                                
+                            }
+                            cantidadParticipantesEtapa++;
+                            System.out.println("Cantidad Participantes Etapa :"+cantidadParticipantesEtapa++);
+                                
+                        }
+                    }
+                }
+                System.out.println("Sale del for");
+            }
+            if(part2.getIdParticipante()==null){
+                ganador = part1;
+                participanteGanador.setText(ganador.getUsuario());
+            }
+            nombrePar1.setText(part1.getNombre());
+            nombrePar2.setText(part2.getNombre());
+        }
+    }
     
     private void participanteGanadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participanteGanadorActionPerformed
         // TODO add your handling code here:
@@ -169,20 +223,73 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         Controladora control = new Controladora();
-        Etapa etaAux = control.traerEtapa(eta.getIdEtapa());
-        etaAux.setIdParticipante(ganador);
-        control.editarEtapa1(etaAux);        
-        vistaTor.setVisible(true);
-        this.setVisible(false);
+        if(ganador==new Participante() ||ganador.getIdParticipante()==null){
+            JOptionPane.showMessageDialog(null, "NO SELECCIONASTE UN GANADOR!");            
+        }else{
+            //SI ESTAMOS EN EL ULTIMO PISO
+            if(tor.getPisos() == 0 ){ 
+                System.out.println("ENTRA A GANADOR X VECES");
+                System.out.println("GANADOR nombre : "+ganador);
+                System.out.println("Entra a elegir ganador");
+                Etapa etaAux = control.traerEtapa(etapas.get(0).getIdEtapa());
+                System.out.println("Etapa ID:"+etaAux.getIdEtapa());
+                etaAux.setFechaGanador(new Date());
+                etaAux.setIdParticipante(ganador);
+                control.editarEtapa1(etaAux);
+                Torneo torAux = control.traerTorneo(tor.getIdTorneo());
+                torAux.setVigente(false);
+                control.editarTorneo(torAux);
+                VerTorneosAdm vistaTor = new VerTorneosAdm(adm);
+                vistaTor.setVisible(true);
+                this.setVisible(false);                
+            }else{//SI NO ESTAMOS EN EL ULTIMO PISO
+                Etapa etaAux = control.traerEtapa(etapas.get(etapaActual-1).getIdEtapa());
+                System.out.println("TRAJO LA ETAPA ");
+                System.out.println("Etapa ID:"+etaAux.getIdEtapa());
+                System.out.println("PARA EL GANADOR: "+ganador);
+                etaAux.setFechaGanador(new Date());
+                etaAux.setIdParticipante(ganador);
+                control.editarEtapa1(etaAux);
+                Torneo torAux = control.traerTorneo(tor.getIdTorneo());
+                if(etapaActual==0){
+                    torAux.setPisos(torAux.getPisos()-1);
+                    control.editarTorneo(torAux);
+                    VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor,adm);
+                    vistaTor.setVisible(true);
+                    this.setVisible(false);  
+                }else{
+                    etapaActual--;      
+                    if(etapaActual==0){
+                        System.out.println("Etapa actual es 0");
+                        torAux.setPisos(torAux.getPisos()-1);
+                        control.editarTorneo(torAux);
+                        VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor,adm ,true);
+                        vistaTor.setVisible(true);
+                        this.setVisible(false);
+                    }else{
+                        ElegirGanadores elegirGanador = new ElegirGanadores(tor, adm ,etapas,participantes,etapaActual,totalEtapas,cantidadParticipantes);
+                        elegirGanador.setVisible(true);
+                        this.setVisible(false);
+                        //ACA ENVIO DE NUEVO RECURSIVAMENTE
+                        //public ElegirGanadores(Torneo tor , Administrador adm , ArrayList<Etapa> etapas , ArrayList<Participante> participantes ,int etapaActual, int totalEtapas , int cantidadParticipantes)s
+                    }
+
+
+                }
+   
+            }                
+            
+        }
+
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnPar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar1ActionPerformed
-        ganador = par1;
+        ganador = part1;
         participanteGanador.setText(ganador.getNombre());
     }//GEN-LAST:event_btnPar1ActionPerformed
 
     private void btnPar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar2ActionPerformed
-        ganador = par2;
+        ganador = part2;
         participanteGanador.setText(ganador.getNombre());
     }//GEN-LAST:event_btnPar2ActionPerformed
 
@@ -230,10 +337,12 @@ public class ElegirGanadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombrePar1;
     private javax.swing.JTextField nombrePar2;
     private javax.swing.JTextField participanteGanador;
     private javax.swing.JTextField piso;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }

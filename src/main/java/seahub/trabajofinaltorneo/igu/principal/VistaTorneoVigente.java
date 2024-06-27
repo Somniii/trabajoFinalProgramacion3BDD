@@ -47,6 +47,28 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         textId.setText(id);
         mostrarTorneo();        
     }
+    public VistaTorneoVigente(Torneo tor, Administrador adm ,boolean crear){
+        Controladora control = new Controladora();       
+        Torneo torAux = control.traerTorneo(tor.getIdTorneo());
+        this.tor = torAux;
+        this.adm = adm;        
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("Pasar etapa");
+        initComponents();
+        String pisoActual = Integer.toString(tor.getPisos());
+        System.out.println("Piso : " + tor.getPisos());
+        textPisos.setText(pisoActual);
+        String id = Integer.toString(tor.getIdTorneo());
+        textId.setText(id);
+        if(crear==true){
+            crearEtapasNuevas();
+        }else{
+            
+        }
+        mostrarTorneo();        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,6 +189,78 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+
+
+    public boolean necesitaCrearEtapas(){
+        System.out.println("Entra");
+        Controladora control = new Controladora();
+        boolean bool = false;
+        ArrayList<Etapa> etaArr = control.traerTodoEtapa();
+        for(Etapa etaAux : etaArr){
+            if(etaAux.getIdTorneo().getIdTorneo().equals( tor.getIdTorneo())){
+                System.out.println("Entra al if despues del for osea iguala el id del torneo");
+                int pisosAnteriores = tor.getPisos()+1;
+                //System.out.println("Pisos anteriores:"+pisosAnteriores+"\nPisos actuales:"+pisosAnteriores-1);
+                if(etaAux.getJerarquia()==pisosAnteriores){
+                    System.out.println("Entra al if de la misma cantidad de pisos");
+                    System.out.println("Entra al ultimo if antes del importante");
+                    if(etaAux.getIdParticipante()!=null || etaAux.getIdParticipante().getIdParticipante()!=null){
+                        bool = true;
+                        System.out.println("NECESITA CREAR NUEVAS ETAPAS");
+                        System.out.println(etaAux.getIdParticipante());
+                        break;
+                        
+                    }else{
+                        bool = false;                       
+                    }
+                }
+            }
+        }
+        
+        return bool;
+    }
+
+    public void crearEtapasNuevas(){
+        System.out.println("Esta por crear las etapas nuevas");       
+        Controladora control = new Controladora();
+        ArrayList<Participante> parArray = new ArrayList<>();
+        ArrayList<Etapa> etaArr = control.traerTodoEtapa();
+        for(Etapa etaAux : etaArr){
+            if(etaAux.getIdTorneo().getIdTorneo().equals(tor.getIdTorneo())){
+                int pisosAnteriores = tor.getPisos()+1;
+                if(etaAux.getJerarquia()==pisosAnteriores){
+                    parArray.add(etaAux.getIdParticipante());
+                    System.out.println("Participante a poner:"+etaAux.getIdParticipante().getUsuario());
+                }
+            }
+        }
+        System.out.println("Cantidad de participantes a poner :" + parArray.size());
+        int cantidadPart = parArray.size();
+        
+        for(int i = 0 ; i < cantidadPart ; i= i+2){
+            System.out.println("i:"+i);
+            System.out.println("Entra al for");
+            Etapa eta = new Etapa(tor.getPisos(),tor,adm);
+            try {
+                control.crearEtapa(eta);
+            } catch (Exception ex) {
+                Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ParticipanteEtapa parEta1 = new ParticipanteEtapa(eta,parArray.get(i));
+            ParticipanteEtapa parEta2 = new ParticipanteEtapa(eta,parArray.get(i+1));    
+            System.out.println("Crea los dos par eta");
+            try {
+                control.crearParticipanteEtapa(parEta1);
+            } catch (Exception ex) {
+                Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                control.crearParticipanteEtapa(parEta2);
+            } catch (Exception ex) {
+                Logger.getLogger(VistaTorneoVigente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     private void textPisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPisosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textPisosActionPerformed
@@ -176,7 +270,60 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     }//GEN-LAST:event_textIdActionPerformed
     
     private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
-        //Controladora control = new Contorladora();
+            Controladora control = new Controladora();
+
+            // voy a llevar:  los usuarios de esa etapa que estamos viendo
+            // podria llevar array de etapas para luego modificarlas una por una 
+            // primero :  encontrar etapas con torneo y mismo piso , ponerlas en un arraylist
+            // segundo : al encontrar las etapas anotar todos los usuarios de que estan vinculados a ella a un arraylist
+            // tercero : pasar los dos arraylist a elegirGanadores
+            //VERIFICA QUE NO HAYA FINALIZADO EL TORNEO CON UN GANADOR 
+            ArrayList<Etapa> etaArray = control.traerTodoEtapa();
+            ArrayList<Etapa> etapaLlevar = new ArrayList<>();
+            System.out.println("Torneo vigente? :"+ tor.getVigente());
+            if(tor.getVigente()==false){
+                System.out.println("Torneo finalizado");
+                for(Etapa etaArr : etaArray){
+                    if(etaArr.getIdTorneo().getIdTorneo()==tor.getIdTorneo()){                        
+                        if(etaArr.getJerarquia()==0){
+                            if(etaArr.getIdParticipante()!=null){
+                                JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + etaArr.getIdParticipante().getUsuario()); 
+                            }
+                        }
+                    }
+                }
+            }else{
+                for(Etapa etaArr : etaArray){
+                    if(etaArr.getIdTorneo().getIdTorneo()==tor.getIdTorneo()){
+                        if(etaArr.getJerarquia()==tor.getPisos()){
+                            etapaLlevar.add(etaArr);
+                            System.out.println("ETAPA ID:"+etaArr.getIdEtapa());
+                        }
+                    }
+                }
+                ArrayList<Participante> parLlevar = new ArrayList();
+                ArrayList<ParticipanteEtapa> parEtaArray = control.traerTodoParticipanteEtapa();
+                //ahora busco entre todas las EtapaParticipante si es de la misma etapa anoto los participantes en el arraylist
+                for(ParticipanteEtapa parEtaArr : parEtaArray){
+                    for(Etapa etaArr : etapaLlevar){
+                        if(parEtaArr.getIdEtapa().getIdEtapa().equals(etaArr.getIdEtapa())==true){
+                            parLlevar.add(parEtaArr.getIdParticipante());
+                            System.out.println("PARTICIPANTE :" +parEtaArr.getIdParticipante().getUsuario());
+                        }
+                    }
+                }
+                int cantidadEtapas = etapaLlevar.size();            
+                int cantidadParticipantes = parLlevar.size();
+                System.out.println("Etapas a llevar :"+cantidadEtapas+"\nParticipantes a llevar:"+cantidadParticipantes);                   
+                //YA TENEMOS LOS PARTICIPANTES Y LAS ETAPAS , AHORA LO LLEVAMOS TODO A ELEGIR GANADORES
+                //public ElegirGanadores(Torneo tor , Administrador adm , ArrayList<Etapa> etapas , ArrayList<Participante> participantes , int cantidadEtapas , int cantidadParticipantes){
+                ElegirGanadores elegirGanador = new ElegirGanadores(tor,adm,etapaLlevar,parLlevar , cantidadEtapas, cantidadEtapas,cantidadParticipantes);
+                elegirGanador.setVisible(true);
+                this.setVisible(false);
+            }            
+            
+            //AHORA SI EMPIEZA A RECORRER PARA VER 
+
     }//GEN-LAST:event_btnPasarActionPerformed
     
     /**

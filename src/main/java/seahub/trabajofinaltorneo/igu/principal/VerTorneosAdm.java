@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
@@ -123,6 +124,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         Torneo tor = new Torneo();
         Boolean inscripcionVigente = true;
         Boolean poderEntrar = false;
+        Boolean esFinalizado = false;
         for(Torneo torAux : torneoArr){
             if(contador == select){
                 tor = torAux;
@@ -132,6 +134,9 @@ public class VerTorneosAdm extends javax.swing.JFrame {
                 Administrador admAux = tor.getIdAdministrador();
                 if(admAux.getIdAdministrador()==adm.getIdAdministrador()){
                     poderEntrar = true;
+                }
+                if(torAux.getVigente()==false){
+                    esFinalizado = true;
                 }
                     
                 break;
@@ -145,19 +150,34 @@ public class VerTorneosAdm extends javax.swing.JFrame {
                 }
             }
         }*/
-        if(poderEntrar == false){
-            JOptionPane.showMessageDialog(null, "NO ES UN TORNEO TUYO");
+        ArrayList<Etapa> etaArray = control.traerTodoEtapa();
+        if(esFinalizado == true){
+                System.out.println("Torneo finalizado");
+                for(Etapa etaArr : etaArray){
+                    if(etaArr.getIdTorneo().getIdTorneo()==tor.getIdTorneo()){                        
+                        if(etaArr.getJerarquia()==0){
+                            if(etaArr.getIdParticipante()!=null){
+                                JOptionPane.showMessageDialog(null, "GANADOR TORNEO :" + etaArr.getIdParticipante().getUsuario()); 
+                            }
+                        }
+                    }
+                }
         }else{
-            if(inscripcionVigente == true){
-                VistaTorneoInscripcion vistaTor = new VistaTorneoInscripcion(tor , adm);
-                vistaTor.setVisible(true);
-                this.setVisible(false);
+            if(poderEntrar == false){
+                JOptionPane.showMessageDialog(null, "NO ES UN TORNEO TUYO");
             }else{
-                VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor ,adm);
-                vistaTor.setVisible(true);
-                this.setVisible(false);
-            }   
+                if(inscripcionVigente == true){
+                    VistaTorneoInscripcion vistaTor = new VistaTorneoInscripcion(tor , adm);
+                    vistaTor.setVisible(true);
+                    this.setVisible(false);
+                }else{
+                    VistaTorneoVigente vistaTor = new VistaTorneoVigente(tor ,adm);
+                    vistaTor.setVisible(true);
+                    this.setVisible(false);
+                }               
+            }
         }
+
 
         
        // TODO add your handling code here:

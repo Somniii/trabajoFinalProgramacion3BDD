@@ -34,10 +34,12 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         initComponents();
     }
     public AceptacionInscripcion(Torneo tor, Administrador adm){
+        initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
-        initComponents();
+        this.setTitle("");
+        setVisible(true);
         this.tor = tor;
         this.adm = adm;
     }

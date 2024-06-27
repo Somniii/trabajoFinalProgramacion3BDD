@@ -26,6 +26,11 @@ public class CrearTorneosP extends javax.swing.JFrame {
     }
     public CrearTorneosP(Administrador adm){
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("");
+        setVisible(true);
         this.adm = adm;
     }
 

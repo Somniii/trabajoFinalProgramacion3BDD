@@ -29,7 +29,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 500);
-        this.setTitle("Ver Torneos Existentes");
+        this.setTitle("");
         setVisible(true);
         mostrarTorneo();
        

@@ -40,6 +40,11 @@ public class ElegirGanadores extends javax.swing.JFrame {
     
     public ElegirGanadores(Torneo tor , Administrador adm , ArrayList<Etapa> etapas , ArrayList<Participante> participantes ,int etapaActual, int totalEtapas , int cantidadParticipantes){
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("");
+        setVisible(true);
         this.tor = tor;
         this.adm = adm;       
         this.etapas = etapas;

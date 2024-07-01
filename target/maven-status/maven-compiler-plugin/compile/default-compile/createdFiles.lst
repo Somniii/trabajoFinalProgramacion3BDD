@@ -5,6 +5,7 @@ seahub\trabajofinaltorneo\persistencia\EtapaJpaController.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser$1.class
 seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$2.class
 seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion$2.class
+seahub\trabajofinaltorneo\igu\principal\tiempoEligiendo$2.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$5.class
 seahub\trabajofinaltorneo\igu\principal\Register$6.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteJpaController.class
@@ -17,6 +18,7 @@ seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$4.class
 seahub\trabajofinaltorneo\igu\principal\MetricasParticipante.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneos.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$1.class
+seahub\trabajofinaltorneo\igu\principal\Login$10.class
 seahub\trabajofinaltorneo\igu\ventanas\CrearTorneo$1.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$1.class
 seahub\trabajofinaltorneo\logica\Administrador_.class
@@ -25,6 +27,7 @@ seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteAdministradorJpaController.class
 seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$3.class
+seahub\trabajofinaltorneo\logica\HiloCantidad.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteTorneoJpaController.class
 seahub\trabajofinaltorneo\igu\principal\CambiarDatos$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$6.class
@@ -32,6 +35,7 @@ seahub\trabajofinaltorneo\logica\Administrador.class
 seahub\trabajofinaltorneo\igu\principal\Register$4.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$6.class
 seahub\trabajofinaltorneo\igu\principal\CargaUsuarios.class
+seahub\trabajofinaltorneo\igu\principal\tiempoEligiendo$3.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$2.class
 seahub\trabajofinaltorneo\igu\ventanas\CargaUser.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos$2.class
@@ -92,6 +96,7 @@ seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneos$1.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosAnotados$1$1.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente.class
+seahub\trabajofinaltorneo\igu\principal\tiempoEligiendo$1.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$4.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$5.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles$1.class
@@ -104,6 +109,7 @@ seahub\trabajofinaltorneo\igu\principal\AdministradorHome$4.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$2.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$2.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos.class
+seahub\trabajofinaltorneo\igu\principal\Login$9.class
 seahub\trabajofinaltorneo\igu\principal\Register.class
 seahub\trabajofinaltorneo\igu\principal\Register$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$2.class
@@ -113,6 +119,7 @@ seahub\trabajofinaltorneo\igu\principal\AdministradorHome$5.class
 seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$1.class
 seahub\trabajofinaltorneo\igu\principal\CrearTorneos$4.class
 seahub\trabajofinaltorneo\persistencia\exceptions\PreexistingEntityException.class
+seahub\trabajofinaltorneo\igu\principal\tiempoEligiendo.class
 seahub\trabajofinaltorneo\igu\ventanas\ListaTorneosDisponibles$1$1.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$4.class
 seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm$3.class

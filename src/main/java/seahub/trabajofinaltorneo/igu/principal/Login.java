@@ -4,32 +4,59 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Encriptar;
 import static seahub.trabajofinaltorneo.logica.Encriptar.Codificar;
+import seahub.trabajofinaltorneo.logica.HiloCantidad;
 import seahub.trabajofinaltorneo.logica.Participante;
 
 
 
 public class Login extends javax.swing.JFrame {
     private Controladora control = new Controladora();
-    Participante parti = new Participante();
+    private HiloCantidad hiloCantidad;
+    private Thread hilo;
+    
     public Login() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(500, 450);
+        setTitle("Login");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Iniciar el hilo
+        hiloCantidad = new HiloCantidad(control, txtCantidad);
+        hilo = new Thread(hiloCantidad);
+        hilo.start();
+
+        // Agregar botón para detener el hilo
+        JButton stopButton = new JButton("Detener Hilo");
+        stopButton.addActionListener(new ActionListener() {
+            //@Override
+            public void actionPerformed(ActionEvent e) {
+                if (hiloCantidad != null) {
+                    hiloCantidad.stopRunning();
+                }
+            }
+        });
+        add(stopButton, BorderLayout.SOUTH);
+
         setVisible(true);
-        this.setTitle("Login");
-        Controladora control = new Controladora();
-        ArrayList<Participante> part = control.traerTodoParticipante();
-        String cant = part.size()+"";
-        txtCantidad.setText(cant);
+    }
+    public void hilo(){
+        HiloCantidad hilocant = new HiloCantidad(control,txtCantidad);        
+        hilocant.run();
     }
     private Encriptar codi = new Encriptar();
     /**
@@ -117,10 +144,17 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 110, 40));
-        jPanel1.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
 
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 12, -1, 20));
+
+        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Cantidad participantes:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 130, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
 
         jTabbedPane1.addTab("Participante", jPanel1);
 
@@ -219,27 +253,27 @@ public class Login extends javax.swing.JFrame {
                     passwordIgual = true;
                   }
               }
-          }
-          if(usuarioEncontrado == false){
+            }
+            if(usuarioEncontrado == false){
                 JOptionPane.showMessageDialog(null, "NO EXISTE ESE USUARIO");
+                this.setVisible(false);                   
                 Login login = new Login();
                 login.setVisible(true);
-                login.setLocationRelativeTo(null);
-        this.setVisible(false);   
-          }else{
-              if(passwordIgual == false){
+                login.setLocationRelativeTo(null);        
+            }else if(passwordIgual == false){             
                     JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
+                    this.setVisible(false);                       
                     Login login = new Login();
                     login.setVisible(true);
                     login.setLocationRelativeTo(null);
-                    this.setVisible(false);   
-              }else{
+            }else{
+                  this.setVisible(false);                     
                   HomeParticipante nuevoHome = new HomeParticipante(par);
                   nuevoHome.setVisible(true);
                   nuevoHome.setLocationRelativeTo(null);
-                  this.setVisible(false);
+                  
               }
-          }
+          
        
     }//GEN-LAST:event_btnLogActionPerformed
 
@@ -293,21 +327,20 @@ public class Login extends javax.swing.JFrame {
                 Login login = new Login();
                 login.setVisible(true);
                 login.setLocationRelativeTo(null);
-        this.setVisible(false);   
-          }else{
-              if(passwordIgual == false){
-                  JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
-                    Login login = new Login();
-                    login.setVisible(true);
-                    login.setLocationRelativeTo(null);
-                    this.setVisible(false);   
-              }else{
-                  AdministradorHome nuevoHome = new AdministradorHome(admEnviar);
-                  nuevoHome.setVisible(true);
-                  nuevoHome.setLocationRelativeTo(null);
-                  this.setVisible(false);
-              }
-          }
+                this.setVisible(false);   
+          }else if(passwordIgual == false){          
+                JOptionPane.showMessageDialog(null, "PASSWORD INCORRECTA");
+                Login login = new Login();
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
+                this.setVisible(false);   
+        }else{
+                AdministradorHome nuevoHome = new AdministradorHome(admEnviar);
+                nuevoHome.setVisible(true);
+                nuevoHome.setLocationRelativeTo(null);
+                this.setVisible(false);
+        }
+          
                // TODO add your handling code here:
     }//GEN-LAST:event_btnLogAdmActionPerformed
 
@@ -321,6 +354,10 @@ public class Login extends javax.swing.JFrame {
     private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     /**
      * @param args the command line arguments

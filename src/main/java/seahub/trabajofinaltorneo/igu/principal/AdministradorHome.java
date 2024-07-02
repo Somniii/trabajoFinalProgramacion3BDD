@@ -25,7 +25,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(405, 300);
         this.setTitle("Menu de Administrador");
         setVisible(true);
     }
@@ -35,7 +35,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         nombreAdministrador.setText(adm.getNombre());        
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(405,300);
+        setSize(420,350);
         this.setTitle("Menu de Administrador");
         setVisible(true);
     }
@@ -70,7 +70,7 @@ public class AdministradorHome extends javax.swing.JFrame {
                 btnCrearTActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCrearT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, -1));
+        jPanel1.add(btnCrearT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 130, -1));
 
         cerrarSesion.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         cerrarSesion.setText("Cerrar Sesion");
@@ -103,6 +103,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         jPanel1.add(nombreAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 168, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Que desea realizar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
@@ -110,7 +111,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

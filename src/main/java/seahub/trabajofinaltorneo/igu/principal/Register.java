@@ -185,6 +185,12 @@ public class Register extends javax.swing.JFrame {
         panelAdm9.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm9.setText("Ingrese User");
         panelUser.add(panelAdm9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 150, 30));
+
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
         panelUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 180, 30));
 
         btnAtrasUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -251,8 +257,17 @@ public class Register extends javax.swing.JFrame {
                   encontradoEmail = true;
               }
           }
-          if(passAdm.compareTo(claveAdministrador)!=0){
+          if(txtUser.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEmail.getText().isEmpty()){
+              JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
+               registro.setVisible(true);
+               registro.setLocationRelativeTo(null);   
+               this.setVisible(false);
+          }            
+          else if(passAdm.compareTo(claveAdministrador)!=0){
               JOptionPane.showMessageDialog(null, "CLAVE DE ADMINISTRADOR INCORRECTA");
+              this.setVisible(false);
+              registro.setVisible(true);
+              registro.setLocationRelativeTo(null);                
           } 
           else if(encontradoUsu==true){
               JOptionPane.showMessageDialog(null, "USUARIO NO DISPONIBLE");
@@ -311,8 +326,15 @@ public class Register extends javax.swing.JFrame {
               if(pAux.getEmail().compareTo(email)==0){
                   encontradoEmail = true;
               }
-          }
-          if(encontradoUsu==true){
+          }              
+          if(txtUser.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEmail.getText().isEmpty()){
+                            
+               registro.setVisible(true);
+               registro.setLocationRelativeTo(null);   
+               this.setVisible(false);
+               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
+          }                            
+          else if(encontradoUsu==true){
               JOptionPane.showMessageDialog(null, "USUARIO NO DISPONIBLE");
                 
                 registro.setVisible(true);
@@ -362,6 +384,10 @@ public class Register extends javax.swing.JFrame {
         login.setLocationRelativeTo(null);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAtrasAdmActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments

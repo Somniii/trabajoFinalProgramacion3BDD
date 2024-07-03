@@ -257,7 +257,8 @@ public class Register extends javax.swing.JFrame {
                   encontradoEmail = true;
               }
           }
-          if(txtUser.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEmail.getText().isEmpty()){
+          //System.out.println("txtUser:"+txtUserAdm.getText()+"txtNombre:"+txtNombreAdm.getText()+"txtEmail:"+txtEmailAdm.getText());
+          if(txtUserAdm.getText().isEmpty() || txtNombreAdm.getText().isEmpty() || txtEmailAdm.getText().isEmpty()){
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
                registro.setVisible(true);
                registro.setLocationRelativeTo(null);   
@@ -326,7 +327,8 @@ public class Register extends javax.swing.JFrame {
               if(pAux.getEmail().compareTo(email)==0){
                   encontradoEmail = true;
               }
-          }              
+          }          
+          
           if(txtUser.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEmail.getText().isEmpty()){
                             
                registro.setVisible(true);

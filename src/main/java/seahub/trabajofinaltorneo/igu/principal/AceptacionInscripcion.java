@@ -30,7 +30,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
     public AceptacionInscripcion() {
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(420, 250);
         initComponents();
     }
     public AceptacionInscripcion(Torneo tor, Administrador adm){

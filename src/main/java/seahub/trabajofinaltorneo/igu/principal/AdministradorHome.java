@@ -7,7 +7,6 @@ package seahub.trabajofinaltorneo.igu.principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
-import seahub.trabajofinaltorneo.igu.ventanas.CrearTorneo;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
@@ -64,7 +63,7 @@ public class AdministradorHome extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCrearT.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        btnCrearT.setText("Crear Toneo");
+        btnCrearT.setText("Crear  Toneo");
         btnCrearT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearTActionPerformed(evt);
@@ -100,12 +99,12 @@ public class AdministradorHome extends javax.swing.JFrame {
                 nombreAdministradorActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 168, -1));
+        jPanel1.add(nombreAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 168, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Que desea realizar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

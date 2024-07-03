@@ -50,6 +50,9 @@ public class Participante implements Serializable {
     @Lob
     @Column(name = "Email")
     private String email;
+    @Basic(optional = false)
+    @Column(name = "Imagen")
+    private byte[] foto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idParticipante")
     private Collection<ParticipanteAdministrador> participanteAdministradorCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idParticipante")
@@ -80,6 +83,17 @@ public class Participante implements Serializable {
         this.email = email;
     }
 
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    
+    
+    
     public Integer getIdParticipante() {
         return idParticipante;
     }

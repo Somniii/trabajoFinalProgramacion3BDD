@@ -4,6 +4,17 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.logica.AuxiliarIcono;
+import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Participante;
 
 /**
@@ -52,48 +63,85 @@ public class HomeParticipante extends javax.swing.JFrame {
         btnMetricas = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         btnCambiar = new javax.swing.JButton();
+        btnImag = new javax.swing.JButton();
+        Foto = new javax.swing.JLabel();
+        btnGuardarFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnUnirse.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         btnUnirse.setText("Unirse Torneo");
         btnUnirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUnirseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 30));
+        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, 30));
 
+        btnCerrar.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         btnCerrar.setText("Cerrar sesion");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, 30));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 120, 30));
 
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Bienvenido");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
 
+        btnMetricas.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btnMetricas.setText("Mostrar Metricas");
         btnMetricas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetricasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 30));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 230, -1));
+        jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 130, 30));
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
+
+        btnCambiar.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btnCambiar.setText("Cambiar Datos");
         btnCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCambiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 120, 30));
+        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 120, 30));
+
+        btnImag.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        btnImag.setText("Cambiar Foto");
+        btnImag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImag, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 282, 160, 30));
+
+        Foto.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
+        Foto.setToolTipText("");
+        Foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        jPanel1.add(Foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 160, 160));
+
+        btnGuardarFoto.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        btnGuardarFoto.setText("Guardar Foto");
+        btnGuardarFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarFotoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +151,7 @@ public class HomeParticipante extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
         );
 
         pack();
@@ -134,6 +182,47 @@ public class HomeParticipante extends javax.swing.JFrame {
         cambiarDatos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCambiarActionPerformed
+
+    private void btnImagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagActionPerformed
+       JFileChooser fileChooser = new JFileChooser();
+       fileChooser.setDialogTitle("Buscar Imagen");
+       int x = fileChooser.showOpenDialog(null);
+       if(x == 0){
+           try{
+              String archivo = fileChooser.getSelectedFile().getAbsolutePath();
+              File f = new File(archivo);
+              BufferedImage src = ImageIO.read(f);
+              BufferedImage dest = new BufferedImage(src.getWidth(), src.getHeight(), BufferedImage.TYPE_INT_RGB);
+              Graphics2D g = dest.createGraphics();
+              AffineTransform at = AffineTransform.getScaleInstance((double)src.getWidth()/src.getWidth(),(double) src.getHeight()/src.getHeight());
+              g.drawRenderedImage(src, at);
+              ImageIcon i = new ImageIcon(archivo);
+              i = new ImageIcon(dest);
+              Foto.setText("");
+              Foto.setIcon(new ImageIcon (new ImageIcon(dest).getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT)));
+              i.getIconHeight();
+           }catch(Exception e){
+               System.out.println("error en la imagen" + e.getMessage());
+           }
+       }
+       
+    }//GEN-LAST:event_btnImagActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnGuardarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFotoActionPerformed
+       if(Foto.getText().equals("")){
+        JOptionPane.showMessageDialog(null, "Icono sin cargar");
+       } else {
+           Controladora control = new Controladora();
+           Participante parAux = control.traerParticipante(par.getIdParticipante());
+           Image image = AuxiliarIcono.IconToImage(Foto.getIcon());
+           parAux.setFoto(AuxiliarIcono.imageToByte(image)); 
+           control.editarParticipante(parAux);
+       }
+    }//GEN-LAST:event_btnGuardarFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,8 +260,11 @@ public class HomeParticipante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Foto;
     private javax.swing.JButton btnCambiar;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnGuardarFoto;
+    private javax.swing.JButton btnImag;
     private javax.swing.JButton btnMetricas;
     private javax.swing.JButton btnUnirse;
     private javax.swing.JLabel jLabel1;

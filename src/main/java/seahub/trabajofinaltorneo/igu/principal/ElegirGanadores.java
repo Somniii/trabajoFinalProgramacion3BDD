@@ -4,8 +4,11 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Controladora;
@@ -88,6 +91,9 @@ public class ElegirGanadores extends javax.swing.JFrame {
         etapa = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
+        FotoRival2 = new javax.swing.JLabel();
+        FotoRival1 = new javax.swing.JLabel();
+        FotoGanador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +103,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(241, 241, 241));
         jLabel1.setForeground(new java.awt.Color(241, 241, 241));
         jLabel1.setText("VS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
         btnPar1.setText("Gano");
         btnPar1.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +111,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
                 btnPar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jPanel1.add(btnPar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         btnPar2.setText("Gano");
         btnPar2.addActionListener(new java.awt.event.ActionListener() {
@@ -113,9 +119,15 @@ public class ElegirGanadores extends javax.swing.JFrame {
                 btnPar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, -1));
-        jPanel1.add(nombrePar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 130, -1));
-        jPanel1.add(nombrePar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 130, 20));
+        jPanel1.add(btnPar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
+
+        nombrePar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombrePar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nombrePar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 130, -1));
+        jPanel1.add(nombrePar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 130, 20));
 
         btnConfirmar.setText("Confirmar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,14 +139,14 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Participante Ganador:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         participanteGanador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 participanteGanadorActionPerformed(evt);
             }
         });
-        jPanel1.add(participanteGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 150, -1));
+        jPanel1.add(participanteGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 150, -1));
 
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Piso:");
@@ -149,13 +161,25 @@ public class ElegirGanadores extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Etapa:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-        jPanel1.add(etapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 30, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        jPanel1.add(etapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 30, -1));
 
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("De");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
-        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 30, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        jPanel1.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 30, -1));
+
+        FotoRival2.setText("           Foto");
+        FotoRival2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel1.add(FotoRival2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 90, 90));
+
+        FotoRival1.setText("          Foto");
+        FotoRival1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel1.add(FotoRival1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 90, 90));
+
+        FotoGanador.setText("          Foto");
+        FotoGanador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel1.add(FotoGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 90, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +233,10 @@ public class ElegirGanadores extends javax.swing.JFrame {
             if(part2.getIdParticipante()==null){
                 ganador = part1;
                 participanteGanador.setText(ganador.getUsuario());
+                CargarFoto(part1,FotoGanador);
             }
+            CargarFoto(part1, FotoRival1);
+            CargarFoto(part2, FotoRival2);
             nombrePar1.setText(part1.getNombre());
             nombrePar2.setText(part2.getNombre());
         }
@@ -284,16 +311,42 @@ public class ElegirGanadores extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnConfirmarActionPerformed
+/*
+        public void CargarFoto1(Participante par){
+        if(par.getFoto()!= null){
+            if (!par.getFoto().equals(null)){
+                FotoRival1.setIcon(new ImageIcon(new ImageIcon(par.getFoto()).getImage().getScaledInstance(FotoRival1.getWidth(), FotoRival1.getHeight(), Image.SCALE_DEFAULT)));
+            }else{
+                FotoRival1.setIcon(null);
+            }
+        }
+    }
+  */      
+    public void CargarFoto(Participante par, JLabel label) {
+    if (par.getFoto() != null) {
+        ImageIcon icon = new ImageIcon(par.getFoto());
+        Image scaledImage = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);
+        label.setIcon(new ImageIcon(scaledImage));
+    } else {
+        label.setIcon(null);
+    }
+}
 
+    
     private void btnPar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar1ActionPerformed
         ganador = part1;
         participanteGanador.setText(ganador.getNombre());
+        CargarFoto(part1, FotoGanador);
     }//GEN-LAST:event_btnPar1ActionPerformed
 
     private void btnPar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar2ActionPerformed
         ganador = part2;
         participanteGanador.setText(ganador.getNombre());
     }//GEN-LAST:event_btnPar2ActionPerformed
+
+    private void nombrePar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrePar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,6 +384,9 @@ public class ElegirGanadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FotoGanador;
+    private javax.swing.JLabel FotoRival1;
+    private javax.swing.JLabel FotoRival2;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnPar1;
     private javax.swing.JButton btnPar2;

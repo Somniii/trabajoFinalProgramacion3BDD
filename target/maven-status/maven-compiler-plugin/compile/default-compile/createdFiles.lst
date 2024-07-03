@@ -44,6 +44,7 @@ seahub\trabajofinaltorneo\igu\principal\Register$3.class
 seahub\trabajofinaltorneo\TrabajoFinalTorneo.class
 seahub\trabajofinaltorneo\igu\principal\Login$5.class
 seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.class
+seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$7.class
 seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$6.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$2.class

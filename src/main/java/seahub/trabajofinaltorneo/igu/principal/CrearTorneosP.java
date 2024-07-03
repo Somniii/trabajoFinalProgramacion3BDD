@@ -60,7 +60,7 @@ public class CrearTorneosP extends javax.swing.JFrame {
                 btnCreacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jPanel1.add(btnCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jButton2.setText("Atras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class CrearTorneosP extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
         txtCrearTorneo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

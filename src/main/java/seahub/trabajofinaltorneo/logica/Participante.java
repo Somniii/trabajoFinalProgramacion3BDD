@@ -51,6 +51,7 @@ public class Participante implements Serializable {
     @Column(name = "Email")
     private String email;
     @Basic(optional = false)
+    @Lob
     @Column(name = "Imagen")
     private byte[] foto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idParticipante")
@@ -81,6 +82,7 @@ public class Participante implements Serializable {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.email = email;
+        this.foto = null;
     }
 
     public byte[] getFoto() {

@@ -356,6 +356,7 @@ public class Register extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"PARTICIPANTE CREADO");
               //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
               Participante part = new Participante(nombre,user,claveCodificada,email);
+              part.setFoto(new byte[0]);
               //System.out.println(part.toString());
               part.crearEnBase();
                 

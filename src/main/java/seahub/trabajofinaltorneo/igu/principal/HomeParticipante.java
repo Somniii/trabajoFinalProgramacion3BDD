@@ -43,8 +43,8 @@ public class HomeParticipante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(500, 500);
         this.setTitle("Menu Participante");
-        setVisible(true);      
-        
+        setVisible(true);     
+
     }
 
     /**
@@ -213,15 +213,26 @@ public class HomeParticipante extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnGuardarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFotoActionPerformed
-       if(Foto.getText().equals("")){
+    if (Foto.getIcon() == null) {
         JOptionPane.showMessageDialog(null, "Icono sin cargar");
-       } else {
-           Controladora control = new Controladora();
-           Participante parAux = control.traerParticipante(par.getIdParticipante());
-           Image image = AuxiliarIcono.IconToImage(Foto.getIcon());
-           parAux.setFoto(AuxiliarIcono.imageToByte(image)); 
-           control.editarParticipante(parAux);
-       }
+    } else {
+        try {
+            Controladora control = new Controladora();
+            Participante parAux = control.traerParticipante(par.getIdParticipante());
+
+            if (parAux != null) {
+                Image image = AuxiliarIcono.IconToImage(Foto.getIcon());
+                parAux.setFoto(AuxiliarIcono.imageToByte(image)); 
+                control.editarParticipante(parAux);
+                JOptionPane.showMessageDialog(null, "Foto guardada exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Participante no encontrado");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ocurrió un error al guardar la foto: " + e.getMessage());
+        }
+    }
     }//GEN-LAST:event_btnGuardarFotoActionPerformed
 
     /**

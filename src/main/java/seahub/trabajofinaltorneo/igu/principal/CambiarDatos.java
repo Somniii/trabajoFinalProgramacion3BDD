@@ -4,6 +4,12 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import seahub.trabajofinaltorneo.logica.Controladora;
+import seahub.trabajofinaltorneo.logica.Encriptar;
+import seahub.trabajofinaltorneo.logica.Participante;
+import static seahub.trabajofinaltorneo.logica.Encriptar.Codificar;
 /**
  *
  * @author tinov
@@ -13,8 +19,20 @@ public class CambiarDatos extends javax.swing.JFrame {
     /**
      * Creates new form CambiarDatos
      */
+    private Participante par;
     public CambiarDatos() {
         initComponents();
+    }
+    public CambiarDatos(Participante par ){
+        initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setSize(500, 500);
+        this.setTitle("");
+        setVisible(true);     
+        this.par = par;       
+        verDatosActuales();
+        
     }
 
     /**
@@ -28,14 +46,23 @@ public class CambiarDatos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        contrasenaNuevo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
+        nombreActual = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNombre2 = new javax.swing.JTextField();
-        txtNombre3 = new javax.swing.JTextField();
+        usuarioActual = new javax.swing.JTextField();
+        emailActual = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnCambiarN = new javax.swing.JButton();
+        btnCambiar = new javax.swing.JButton();
+        contrasenaActual = new javax.swing.JTextField();
+        nombreNuevo = new javax.swing.JTextField();
+        usuarioNuevo = new javax.swing.JTextField();
+        emailNuevo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,56 +70,136 @@ public class CambiarDatos extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Contrasena actual:");
+        jLabel1.setText("Escribir contrasena actual:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, -1));
+        jPanel1.add(contrasenaNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 150, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Nombre actual:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        jPanel1.add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, -1));
+        jLabel2.setText("Contrasena nuevo");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        jPanel1.add(nombreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, -1));
 
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Usuario actual:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        jPanel1.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, -1));
-        jPanel1.add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
+        jPanel1.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, -1));
+        jPanel1.add(emailActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
 
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Email actual:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        btnCambiarN.setText("jButton1");
-        btnCambiarN.addActionListener(new java.awt.event.ActionListener() {
+        btnCambiar.setText("Cambiar");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCambiarNActionPerformed(evt);
+                btnCambiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCambiarN, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+
+        contrasenaActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrasenaActualActionPerformed(evt);
+            }
+        });
+        jPanel1.add(contrasenaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 20));
+        jPanel1.add(nombreNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 150, -1));
+        jPanel1.add(usuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 150, -1));
+        jPanel1.add(emailNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("Nombre actual:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel6.setText("Nombre nuevo:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+
+        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel7.setText("Usuario nuevo:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel8.setText("Email nuevo:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
+
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void verDatosActuales(){
+        Encriptar codi = new Encriptar();
+        Controladora control = new Controladora();
+        Participante pAux = control.traerParticipante(par.getIdParticipante());
+        nombreActual.setText(par.getNombre());
+        usuarioActual.setText(par.getUsuario());
+        emailActual.setText(par.getEmail());         
+    }
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        Controladora control = new Controladora();
+        String pass = contrasenaActual.getText();        
+        String passC = Codificar(pass);
+        boolean sePuede = true;
+        Participante aux = control.traerParticipante(par.getIdParticipante());                
+        ArrayList<Participante> partArrayAux = control.traerTodoParticipante();
+        for(Participante pAux : partArrayAux){
+            if(pAux.getEmail().equals(emailNuevo.getText())||pAux.getUsuario().equals(usuarioNuevo.getText())){
+                sePuede = false;
+                break;
+            }
+        }
+        System.out.println("pass:"+passC+"|pass:"+par.getContrasena());
+        if(passC.equals(par.getContrasena()) && sePuede == true ){
+            if(!nombreNuevo.getText().isEmpty()){
+                aux.setNombre(nombreNuevo.getText());
+            }
+            if(!usuarioNuevo.getText().isEmpty()){
+                aux.setUsuario(usuarioNuevo.getText());
+            }
+            if(!emailNuevo.getText().isEmpty()){
+                aux.setEmail(emailNuevo.getText());
+            }
+            if(!contrasenaNuevo.getText().isEmpty()){
+                aux.setContrasena(contrasenaNuevo.getText());
+            }
+            if(nombreNuevo.getText().isEmpty()&&usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS ESTAN VACIOS ,NO SE CAMBIO NADA");
+            }else{
+                JOptionPane.showMessageDialog(null, "DATOS DE USUARIO CAMBIADOS");
+                control.editarParticipante(aux);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "CONTRASENA INCORRECTA O USUARIO O EMAIL YA EXISTENTE");
+        }         
+    }//GEN-LAST:event_btnCambiarActionPerformed
 
-    private void btnCambiarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarNActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        HomeParticipante homePart = new HomeParticipante(par);
+        homePart.setVisible(true);
+        this.setVisible(false);        
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void contrasenaActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCambiarNActionPerformed
+    }//GEN-LAST:event_contrasenaActualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,15 +237,24 @@ public class CambiarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCambiarN;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnCambiar;
+    private javax.swing.JTextField contrasenaActual;
+    private javax.swing.JTextField contrasenaNuevo;
+    private javax.swing.JTextField emailActual;
+    private javax.swing.JTextField emailNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre3;
+    private javax.swing.JTextField nombreActual;
+    private javax.swing.JTextField nombreNuevo;
+    private javax.swing.JTextField usuarioActual;
+    private javax.swing.JTextField usuarioNuevo;
     // End of variables declaration//GEN-END:variables
 }

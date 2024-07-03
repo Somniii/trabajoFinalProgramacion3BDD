@@ -23,9 +23,6 @@ public class HiloCantidad implements Runnable {
         this.txtCantidad = txtCantidad;
     }
 
-    public HiloCantidad(Controladora control) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
     public void run() {

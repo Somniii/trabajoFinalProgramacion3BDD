@@ -51,6 +51,7 @@ public class HomeParticipante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnMetricas = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
+        btnCambiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,14 @@ public class HomeParticipante extends javax.swing.JFrame {
         jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 150, 30));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 230, -1));
 
+        btnCambiar.setText("Cambiar Datos");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 120, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,6 +128,12 @@ public class HomeParticipante extends javax.swing.JFrame {
         metriPar.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMetricasActionPerformed
+
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        CambiarDatos cambiarDatos = new CambiarDatos(par);
+        cambiarDatos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +171,7 @@ public class HomeParticipante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnMetricas;
     private javax.swing.JButton btnUnirse;

@@ -34,6 +34,7 @@ public class HomeParticipante extends javax.swing.JFrame {
         setSize(500, 375);
         setVisible(true);
         this.setTitle("Menu Participante");
+        CargarFoto();
     }
     public HomeParticipante(Participante par) {
         this.par = par;              
@@ -43,8 +44,8 @@ public class HomeParticipante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(500, 500);
         this.setTitle("Menu Participante");
-        setVisible(true);     
-
+        setVisible(true);    
+        CargarFoto();
     }
 
     /**
@@ -235,6 +236,15 @@ public class HomeParticipante extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnGuardarFotoActionPerformed
 
+    public void CargarFoto(){
+        if(par.getFoto()!= null){
+            if (!par.getFoto().equals(null)){
+                Foto.setIcon(new ImageIcon(new ImageIcon(par.getFoto()).getImage().getScaledInstance(Foto.getWidth(), Foto.getHeight(), Image.SCALE_DEFAULT)));
+            }else{
+                Foto.setIcon(null);
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */

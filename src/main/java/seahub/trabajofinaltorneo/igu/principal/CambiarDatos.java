@@ -72,6 +72,12 @@ public class CambiarDatos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Escribir contrasena actual:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        contrasenaNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrasenaNuevoActionPerformed(evt);
+            }
+        });
         jPanel1.add(contrasenaNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 150, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
@@ -160,10 +166,13 @@ public class CambiarDatos extends javax.swing.JFrame {
         Participante aux = control.traerParticipante(par.getIdParticipante());                
         ArrayList<Participante> partArrayAux = control.traerTodoParticipante();
         for(Participante pAux : partArrayAux){
-            if(pAux.getEmail().equals(emailNuevo.getText())||pAux.getUsuario().equals(usuarioNuevo.getText())){
-                sePuede = false;
-                break;
-            }
+            if(aux.getIdParticipante().equals(pAux.getIdParticipante()) == false){
+                if(pAux.getEmail().equals(emailNuevo.getText())||pAux.getUsuario().equals(usuarioNuevo.getText())){
+                    sePuede = false;
+                    System.out.println("ENTRA CON USUARIO :"+ pAux.getUsuario() + "idPartVer :"+aux.getIdParticipante()+" idPartMover:"+aux.getIdParticipante());
+                    break;
+                }
+            }   
         }
         System.out.println("pass:"+passC+"|pass:"+par.getContrasena());
         if(passC.equals(par.getContrasena()) && sePuede == true ){
@@ -177,7 +186,9 @@ public class CambiarDatos extends javax.swing.JFrame {
                 aux.setEmail(emailNuevo.getText());
             }
             if(!contrasenaNuevo.getText().isEmpty()){
-                aux.setContrasena(contrasenaNuevo.getText());
+                String passMandar = Codificar(contrasenaNuevo.getText());
+                System.out.println("CONTRASENA NUEVA:"+passMandar);
+                aux.setContrasena(passMandar);
             }
             if(nombreNuevo.getText().isEmpty()&&usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS ESTAN VACIOS ,NO SE CAMBIO NADA");
@@ -200,6 +211,10 @@ public class CambiarDatos extends javax.swing.JFrame {
     private void contrasenaActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaActualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contrasenaActualActionPerformed
+
+    private void contrasenaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contrasenaNuevoActionPerformed
 
     /**
      * @param args the command line arguments

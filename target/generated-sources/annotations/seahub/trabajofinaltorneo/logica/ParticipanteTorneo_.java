@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import seahub.trabajofinaltorneo.logica.Participante;
 import seahub.trabajofinaltorneo.logica.Torneo;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-07-03T21:59:51", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-07-03T22:10:31", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(ParticipanteTorneo.class)
 public class ParticipanteTorneo_ { 
 

@@ -200,6 +200,8 @@ public class ElegirGanadores extends javax.swing.JFrame {
         if(tor.getPisos() == 0){
             part1 = participantes.get(0);
             part2 = participantes.get(1);
+            CargarFoto(part1, FotoRival1);            
+            CargarFoto(part2, FotoRival2);                        
             this.part1 = part1;
             this.part2 = part2;
             nombrePar1.setText(part1.getNombre());
@@ -342,6 +344,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
     private void btnPar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar2ActionPerformed
         ganador = part2;
         participanteGanador.setText(ganador.getNombre());
+        CargarFoto(part2, FotoGanador);
     }//GEN-LAST:event_btnPar2ActionPerformed
 
     private void nombrePar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePar1ActionPerformed

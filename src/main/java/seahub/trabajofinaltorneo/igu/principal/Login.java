@@ -165,15 +165,14 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Login");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 90, 30));
+        jLabel4.setText(" Login");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingrese Usuario de Administrador");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 280, 30));
 
-        txtUserAdm.setText("admin");
         txtUserAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserAdmActionPerformed(evt);
@@ -181,7 +180,11 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 240, 30));
 
-        txtClaveAdm.setText("1234");
+        txtClaveAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveAdmActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -358,6 +361,10 @@ public class Login extends javax.swing.JFrame {
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void txtClaveAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveAdmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClaveAdmActionPerformed
 
     /**
      * @param args the command line arguments

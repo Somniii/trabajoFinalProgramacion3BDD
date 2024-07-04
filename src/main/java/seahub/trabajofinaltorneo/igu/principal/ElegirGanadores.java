@@ -204,6 +204,8 @@ public class ElegirGanadores extends javax.swing.JFrame {
             this.part2 = part2;
             nombrePar1.setText(part1.getNombre());
             nombrePar2.setText(part2.getNombre());
+            CargarFoto(part1, FotoRival1);
+            CargarFoto(part2, FotoRival2);
         }else{
             ArrayList<ParticipanteEtapa> parEtaArray = control.traerTodoParticipanteEtapa();
             int cantidadParticipantesEtapa = 0;
@@ -342,6 +344,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
     private void btnPar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPar2ActionPerformed
         ganador = part2;
         participanteGanador.setText(ganador.getNombre());
+        CargarFoto(part2, FotoGanador);
     }//GEN-LAST:event_btnPar2ActionPerformed
 
     private void nombrePar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrePar1ActionPerformed

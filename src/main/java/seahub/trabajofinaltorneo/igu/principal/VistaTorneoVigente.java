@@ -29,6 +29,7 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
     private Administrador adm;
     public VistaTorneoVigente() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     public VistaTorneoVigente(Torneo tor, Administrador adm){
         Controladora control = new Controladora();       

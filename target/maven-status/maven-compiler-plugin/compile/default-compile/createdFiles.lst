@@ -50,6 +50,7 @@ seahub\trabajofinaltorneo\logica\ParticipanteEtapa.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$3.class
 seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion$1.class
 seahub\trabajofinaltorneo\persistencia\ControladoraPersistencia.class
+seahub\trabajofinaltorneo\igu\principal\Login$11.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$1.class
 seahub\trabajofinaltorneo\igu\principal\Register$2.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$7.class

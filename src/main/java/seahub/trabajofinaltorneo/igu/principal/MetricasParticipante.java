@@ -4,7 +4,10 @@
  */
 package seahub.trabajofinaltorneo.igu.principal;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import seahub.trabajofinaltorneo.logica.Controladora;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.Participante;
@@ -34,12 +37,22 @@ public class MetricasParticipante extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(400, 390);
         this.setTitle("Metricas");
         setVisible(true);
         txtNombre.setText(par.getNombre());
         txtGanados.setText(verCantidadGanador());
-        txtCantidadTor.setText(cantidadParticipados());       
+        txtCantidadTor.setText(cantidadParticipados());
+        CargarFoto(par,foto);
+    }
+     public void CargarFoto(Participante par, JLabel label) {
+        if (par.getFoto() != null) {
+            ImageIcon icon = new ImageIcon(par.getFoto());
+            Image scaledImage = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT);
+            label.setIcon(new ImageIcon(scaledImage));
+        } else {
+            label.setIcon(null);
+        }
     }
     public String verCantidadGanador(){
         Controladora control = new Controladora();
@@ -87,6 +100,7 @@ public class MetricasParticipante extends javax.swing.JFrame {
         txtGanados = new javax.swing.JTextField();
         txtCantidadTor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        foto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +129,10 @@ public class MetricasParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        foto.setText("              Foto");
+        foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel1.add(foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 120, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,6 +192,7 @@ public class MetricasParticipante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel foto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

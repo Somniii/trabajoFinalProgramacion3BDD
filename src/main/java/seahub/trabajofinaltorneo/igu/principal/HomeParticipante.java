@@ -42,7 +42,7 @@ public class HomeParticipante extends javax.swing.JFrame {
         txtNombre.setText(par.getNombre());
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(525, 425);
         this.setTitle("Menu Participante");
         setVisible(true);    
         CargarFoto();
@@ -80,7 +80,7 @@ public class HomeParticipante extends javax.swing.JFrame {
                 btnUnirseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 130, 30));
+        jPanel1.add(btnUnirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 30));
 
         btnCerrar.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         btnCerrar.setText("Cerrar sesion");
@@ -103,7 +103,7 @@ public class HomeParticipante extends javax.swing.JFrame {
                 btnMetricasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 130, 30));
+        jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 30));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +128,7 @@ public class HomeParticipante extends javax.swing.JFrame {
                 btnImagActionPerformed(evt);
             }
         });
-        jPanel1.add(btnImag, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 282, 160, 30));
+        jPanel1.add(btnImag, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 160, 30));
 
         Foto.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
         Foto.setToolTipText("");

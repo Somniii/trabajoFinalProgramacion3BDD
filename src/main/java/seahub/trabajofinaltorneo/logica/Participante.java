@@ -243,7 +243,4 @@ public class Participante implements Serializable {
     public String idUsuPass(){
         return "-------------\nID = "+idParticipante+ "\nUSUARIO : "+usuario+"\nPASSWORD : "+contrasena;
     }
-
-
-  
 }

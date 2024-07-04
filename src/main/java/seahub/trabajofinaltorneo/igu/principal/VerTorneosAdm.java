@@ -60,6 +60,8 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tablaTorneo.setBackground(new java.awt.Color(42, 42, 42));
+        tablaTorneo.setForeground(new java.awt.Color(242, 242, 242));
         tablaTorneo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

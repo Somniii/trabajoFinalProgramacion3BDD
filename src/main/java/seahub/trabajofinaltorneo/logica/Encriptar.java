@@ -25,6 +25,5 @@ public class Encriptar {
     } catch (NoSuchAlgorithmException e) {
         throw new RuntimeException(e);
     }
-}
-    
+} 
 }

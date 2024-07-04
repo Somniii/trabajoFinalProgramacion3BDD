@@ -149,8 +149,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
             UnirseTorneo unirseT = new UnirseTorneo(par);
             unirseT.setVisible(true);
             this.setVisible(false);
-        }
-        if (disponible == false) {
+        }else if (disponible == false) {
             JOptionPane.showMessageDialog(null, "EL TORNEO " + tor.getNombre() + " CERRO INSCRIPCION");
             UnirseTorneo unirseT = new UnirseTorneo(par);
             unirseT.setVisible(true);

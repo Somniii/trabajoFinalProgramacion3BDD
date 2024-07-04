@@ -32,32 +32,32 @@ public class VistaTorneoVigente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     public VistaTorneoVigente(Torneo tor, Administrador adm){
+        initComponents();
         Controladora control = new Controladora();       
         Torneo torAux = control.traerTorneo(tor.getIdTorneo());
         this.tor = torAux;
         this.adm = adm;
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(686, 530);
-        this.setTitle("Pasar etapa");
-        initComponents();
-        String pisoActual = Integer.toString(tor.getPisos());
+        setSize(685,530);
+        this.setTitle("Pasar etapa");        
+        String pisoActual = Integer.toString(torAux.getPisos());
         System.out.println("Piso : " + tor.getPisos());
-        textPisos.setText(pisoActual);
+        textPisos.setText(torAux.getPisos()+"");
         String id = Integer.toString(tor.getIdTorneo());
         textId.setText(id);
         mostrarTorneo();        
     }
     public VistaTorneoVigente(Torneo tor, Administrador adm ,boolean crear){
+        initComponents();
         Controladora control = new Controladora();       
         Torneo torAux = control.traerTorneo(tor.getIdTorneo());
         this.tor = torAux;
         this.adm = adm;        
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
-        this.setTitle("Pasar etapa");
-        initComponents();
+        setSize(685,530);
+        this.setTitle("Pasar etapa");        
         String pisoActual = Integer.toString(tor.getPisos());
         System.out.println("Piso : " + tor.getPisos());
         textPisos.setText(pisoActual);

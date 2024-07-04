@@ -27,7 +27,7 @@ public class CambiarDatos extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(535, 245);
+        setSize(535, 265);
         this.setTitle("");
         setVisible(true);     
         this.par = par;       

@@ -26,7 +26,7 @@ public class Register extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(325, 525);
         setVisible(true);
         this.setTitle("Register");
     }

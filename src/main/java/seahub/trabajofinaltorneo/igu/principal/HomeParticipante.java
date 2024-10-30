@@ -43,8 +43,9 @@ public class HomeParticipante extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(525, 425);
-        this.setTitle("Menu Participante");
-        setVisible(true);    
+        this.setTitle("Menu Participante");       
+        setVisible(true);
+        txtCantidad.setText(Integer.toString(par.getCantidad()));
         CargarFoto();
     }
 
@@ -62,11 +63,13 @@ public class HomeParticipante extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnMetricas = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
         btnCambiar = new javax.swing.JButton();
         btnImag = new javax.swing.JButton();
         Foto = new javax.swing.JLabel();
         btnGuardarFoto = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,8 +96,8 @@ public class HomeParticipante extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Bienvenido");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
+        jLabel1.setText("Personas en este grupo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 20));
 
         btnMetricas.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btnMetricas.setText("Mostrar Metricas");
@@ -105,12 +108,12 @@ public class HomeParticipante extends javax.swing.JFrame {
         });
         jPanel1.add(btnMetricas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 30));
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                txtCantidadActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
+        jPanel1.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 90, -1));
 
         btnCambiar.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btnCambiar.setText("Cambiar Datos");
@@ -143,6 +146,18 @@ public class HomeParticipante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 160, 30));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2.setText("Bienvenido");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,9 +224,9 @@ public class HomeParticipante extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnImagActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void btnGuardarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarFotoActionPerformed
     if (Foto.getIcon() == null) {
@@ -235,6 +250,10 @@ public class HomeParticipante extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_btnGuardarFotoActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     public void CargarFoto(){
         if(par.getFoto()!= null){
@@ -289,7 +308,9 @@ public class HomeParticipante extends javax.swing.JFrame {
     private javax.swing.JButton btnMetricas;
     private javax.swing.JButton btnUnirse;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

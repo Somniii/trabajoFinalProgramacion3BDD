@@ -55,7 +55,6 @@ public class CambiarDatos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnCambiar = new javax.swing.JButton();
         contrasenaActual = new javax.swing.JTextField();
-        cantidadNueva = new javax.swing.JTextField();
         usuarioNuevo = new javax.swing.JTextField();
         emailNuevo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -65,7 +64,6 @@ public class CambiarDatos extends javax.swing.JFrame {
         btnAtras = new javax.swing.JButton();
         nombreNuevo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         emailActual = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,13 +113,6 @@ public class CambiarDatos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contrasenaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, -1));
-
-        cantidadNueva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadNuevaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cantidadNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 150, -1));
         jPanel1.add(usuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 150, -1));
 
         emailNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +150,6 @@ public class CambiarDatos extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(242, 242, 242));
         jLabel9.setText("Nombre nuevo:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
-
-        jLabel10.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel10.setText("Nueva cantidad de personas");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
         jPanel1.add(emailActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,9 +192,9 @@ public class CambiarDatos extends javax.swing.JFrame {
         }
         System.out.println("pass:"+passC+"|pass:"+par.getContrasena());
         if(passC.equals(par.getContrasena()) && sePuede == true ){
-            if(!cantidadNueva.getText().isEmpty()){
+            /*if(!cantidadNueva.getText().isEmpty()){
                 aux.setNombre(cantidadNueva.getText());
-            }
+            }*/
             if(!usuarioNuevo.getText().isEmpty()){
                 aux.setUsuario(usuarioNuevo.getText());
             }
@@ -219,10 +206,10 @@ public class CambiarDatos extends javax.swing.JFrame {
                 System.out.println("CONTRASENA NUEVA:"+passMandar);
                 aux.setContrasena(passMandar);
             }           
-            if(!cantidadNueva.getText().isEmpty()){
+            /*if(!cantidadNueva.getText().isEmpty()){
                 aux.setCantidad(Integer.parseInt(cantidadNueva.getText()));
-            }
-            if(cantidadNueva.getText().isEmpty()&&usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
+            }*/
+            if(usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS ESTAN VACIOS ,NO SE CAMBIO NADA");
             }else{
                 JOptionPane.showMessageDialog(null, "DATOS DE USUARIO CAMBIADOS");
@@ -251,10 +238,6 @@ public class CambiarDatos extends javax.swing.JFrame {
     private void emailNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailNuevoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailNuevoActionPerformed
-
-    private void cantidadNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadNuevaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadNuevaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,13 +278,11 @@ public class CambiarDatos extends javax.swing.JFrame {
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCambiar;
     private javax.swing.JTextField cantidadActual;
-    private javax.swing.JTextField cantidadNueva;
     private javax.swing.JTextField contrasenaActual;
     private javax.swing.JTextField contrasenaNuevo;
     private javax.swing.JTextField emailActual;
     private javax.swing.JTextField emailNuevo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

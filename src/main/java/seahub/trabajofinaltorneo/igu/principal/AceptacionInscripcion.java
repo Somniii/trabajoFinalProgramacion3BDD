@@ -5,6 +5,7 @@
 package seahub.trabajofinaltorneo.igu.principal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,13 +28,14 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
      */
     private Torneo tor;
     private Administrador adm;
+    private boolean aleatorio;
     public AceptacionInscripcion() {
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(420, 250);
         initComponents();
     }
-    public AceptacionInscripcion(Torneo tor, Administrador adm){
+    public AceptacionInscripcion(Torneo tor, Administrador adm ,boolean aleatorio){
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -42,6 +44,8 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         setVisible(true);
         this.tor = tor;
         this.adm = adm;
+        this.aleatorio = aleatorio;
+        textArea(aleatorio);
     }
 
     /**
@@ -57,6 +61,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        textArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +74,7 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
 
         btnAtras.setText("Volver atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -77,11 +82,15 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Una vez cerrada la inscripcion no se puede volver atras, estas seguro?");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jPanel1.add(textArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,6 +301,9 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
                 aMandar.add(parTorAux.getIdParticipante());
             }
         }
+        if(aleatorio == true){
+            Collections.shuffle(aMandar);
+        }
 
    
     return aMandar;
@@ -368,7 +380,13 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
         vistaInscripcion.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
-
+    private void textArea(boolean aleatorio){
+        if(aleatorio == false){
+            textArea.setText("Competidores por orden de llegada");
+        }else{
+            textArea.setText("Competidores aleatorios");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -419,5 +437,6 @@ public class AceptacionInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }

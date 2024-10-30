@@ -20,6 +20,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
      */
     private Torneo tor;
     private Administrador adm;
+    private boolean aleatorio;
     public VistaTorneoInscripcion() {
         initComponents();
         setResizable(false);
@@ -42,6 +43,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         mostrarTabla();
         String id = Integer.toString(tor.getIdTorneo());
         txtId.setText(id);
+        aleatorio = false;
     }
 
     /**
@@ -62,6 +64,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         btnAtras = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        checkbox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +117,14 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
+        checkbox.setText("Aleatorio");
+        checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +143,12 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         if(tor.cantidadParticipantes()<2){
             JOptionPane.showMessageDialog(null, "CON 0 O 1 PARTICIPANTES , NO SE PUEDE PASAR A LA SIGUIENTE ETAPA");
         }else{
-            AceptacionInscripcion aceptar = new AceptacionInscripcion(tor ,adm);
+            if(checkbox.isSelected()){
+                aleatorio = true;
+            }else{
+                aleatorio = false;
+            }
+            AceptacionInscripcion aceptar = new AceptacionInscripcion(tor ,adm ,aleatorio);
             aceptar.setVisible(true);
             this.setVisible(false);   
         }
@@ -147,6 +163,10 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         verTor.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +212,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JTextField cantidadParticipantes;
+    private javax.swing.JCheckBox checkbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -115,6 +115,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
         boolean yaUnido = false;
         Torneo tor = null;
         boolean disponible = false;
+        boolean mismaCantidad = false;
         ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
         for (Torneo torAux : torneoArr) {
 
@@ -124,10 +125,14 @@ public class UnirseTorneo extends javax.swing.JFrame {
             } else {
                 disponible = false;
             }
+            if(torAux.getCantidadPorParticipante()==par.getCantidad()){
+                mismaCantidad = true;
+            }            
             if (contador == select) {
                 tor = torAux;
                 break;
             }            
+
             System.out.println("Torneo:"+torAux.getNombre());
             System.out.println("Disponinle =" + disponible);            
             contador++;
@@ -149,15 +154,17 @@ public class UnirseTorneo extends javax.swing.JFrame {
             UnirseTorneo unirseT = new UnirseTorneo(par);
             unirseT.setVisible(true);
             this.setVisible(false);
+        }else if(mismaCantidad == false){
+            JOptionPane.showMessageDialog(null, "TORNEO ADMITE " + tor.getCantidadPorParticipante() + " PERSONAS POR GRUPO , TU GRUPO TIENE "+ par.getCantidad() +" PERSONAS");
         }else if (disponible == false) {
             JOptionPane.showMessageDialog(null, "EL TORNEO " + tor.getNombre() + " CERRO INSCRIPCION");
             UnirseTorneo unirseT = new UnirseTorneo(par);
             unirseT.setVisible(true);
             this.setVisible(false);
             
-        } 
-
-        if(yaUnido == false && disponible == true ){
+        }
+        
+        if(yaUnido == false && disponible == true && mismaCantidad == true){
             JOptionPane.showMessageDialog(null, "TE UNISTE A :" + tor.getNombre());
             ParticipanteTorneo parTor = new ParticipanteTorneo(tor, par);
             try {

@@ -62,12 +62,14 @@ public class Register extends javax.swing.JFrame {
         panelAdm2 = new javax.swing.JLabel();
         panelAdm3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
         PasswordClave = new javax.swing.JPasswordField();
         btnRegisterUser = new javax.swing.JButton();
         panelAdm9 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         btnAtrasUser = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        panelAdm11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,7 +148,7 @@ public class Register extends javax.swing.JFrame {
         panelAdm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm.setText("Ingrese Clave");
-        panelUser.add(panelAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 150, 30));
+        panelUser.add(panelAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 150, 30));
 
         panelAdm1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm1.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,21 +158,33 @@ public class Register extends javax.swing.JFrame {
         panelAdm2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm2.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm2.setText("Ingrese Nombre");
-        panelUser.add(panelAdm2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, 30));
+        panelUser.add(panelAdm2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 150, 30));
 
         panelAdm3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm3.setForeground(new java.awt.Color(255, 255, 255));
-        panelAdm3.setText("Ingrese Email");
-        panelUser.add(panelAdm3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 150, 30));
+        panelAdm3.setText("Cantidad Personas");
+        panelUser.add(panelAdm3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 220, 30));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
-        panelUser.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 180, 30));
-        panelUser.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 180, 30));
-        panelUser.add(PasswordClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 180, 30));
+        panelUser.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 180, 30));
+
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+        panelUser.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 180, 30));
+
+        PasswordClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordClaveActionPerformed(evt);
+            }
+        });
+        panelUser.add(PasswordClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 180, 30));
 
         btnRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegisterUser.setText("Register");
@@ -184,14 +198,14 @@ public class Register extends javax.swing.JFrame {
         panelAdm9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         panelAdm9.setForeground(new java.awt.Color(255, 255, 255));
         panelAdm9.setText("Ingrese User");
-        panelUser.add(panelAdm9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 150, 30));
+        panelUser.add(panelAdm9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 150, 30));
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
-        panelUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 180, 30));
+        panelUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 180, 30));
 
         btnAtrasUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAtrasUser.setText("Atras");
@@ -201,6 +215,12 @@ public class Register extends javax.swing.JFrame {
             }
         });
         panelUser.add(btnAtrasUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 130, 40));
+        panelUser.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 180, 30));
+
+        panelAdm11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        panelAdm11.setForeground(new java.awt.Color(255, 255, 255));
+        panelAdm11.setText("Ingrese Email");
+        panelUser.add(panelAdm11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 150, 30));
 
         tableAdm.addTab("User", panelUser);
 
@@ -311,6 +331,16 @@ public class Register extends javax.swing.JFrame {
           String user = txtUser.getText();
           String email = txtEmail.getText();
           String pass = "";
+          
+          int cantidad;
+          if(txtCantidad.getText().isEmpty()){
+              cantidad = 1;
+          }    
+          else{
+              String cantidadAux = txtCantidad.getText();
+              cantidad = Integer.parseInt(cantidadAux);   
+          }
+         
           char [] password = PasswordClave.getPassword();
           for(int x = 0 ; x<password.length ; x++){
           pass += password[x];
@@ -355,9 +385,10 @@ public class Register extends javax.swing.JFrame {
                 this.setVisible(false);
               JOptionPane.showMessageDialog(null, "USUARIO Y EMAIL NO DISPONIBLES");
           }else{
+
               JOptionPane.showMessageDialog(null,"PARTICIPANTE CREADO");
               //System.out.println("encontradoEmail: " + encontradoEmail + "\nencontradoUsu: " + encontradoUsu + "\n");
-              Participante part = new Participante(nombre,user,claveCodificada,email);
+              Participante part = new Participante(nombre,user,claveCodificada,email,cantidad);
               part.setFoto(new byte[0]);
               //System.out.println(part.toString());
               part.crearEnBase();
@@ -391,6 +422,14 @@ public class Register extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
+
+    private void PasswordClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordClaveActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +479,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel panelAdm;
     private javax.swing.JLabel panelAdm1;
     private javax.swing.JLabel panelAdm10;
+    private javax.swing.JLabel panelAdm11;
     private javax.swing.JLabel panelAdm2;
     private javax.swing.JLabel panelAdm3;
     private javax.swing.JLabel panelAdm4;
@@ -450,6 +490,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel panelAdm9;
     private javax.swing.JPanel panelUser;
     private javax.swing.JTabbedPane tableAdm;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailAdm;
     private javax.swing.JTextField txtNombre;

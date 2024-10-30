@@ -1,14 +1,17 @@
 seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$4.class
 seahub\trabajofinaltorneo\logica\Torneo_.class
+seahub\trabajofinaltorneo\igu\principal\Register$9.class
 seahub\trabajofinaltorneo\igu\principal\CambiarDatos$3.class
 seahub\trabajofinaltorneo\persistencia\EtapaJpaController.class
 seahub\trabajofinaltorneo\igu\principal\UnirseTorneo$2.class
 seahub\trabajofinaltorneo\igu\principal\AceptacionInscripcion$2.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$5.class
+seahub\trabajofinaltorneo\igu\principal\Register$10.class
 seahub\trabajofinaltorneo\igu\principal\Register$6.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteJpaController.class
 seahub\trabajofinaltorneo\persistencia\TorneoJpaController.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoInscripcion$3.class
+seahub\trabajofinaltorneo\igu\principal\CambiarDatos$6.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$3.class
 seahub\trabajofinaltorneo\persistencia\GrupoJpaController.class
 seahub\trabajofinaltorneo\logica\Etapa.class
@@ -28,6 +31,7 @@ seahub\trabajofinaltorneo\logica\HiloCantidad.class
 seahub\trabajofinaltorneo\persistencia\ParticipanteTorneoJpaController.class
 seahub\trabajofinaltorneo\igu\principal\CambiarDatos$1.class
 seahub\trabajofinaltorneo\igu\principal\Login$6.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$6.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$5.class
 seahub\trabajofinaltorneo\logica\Administrador.class
 seahub\trabajofinaltorneo\igu\principal\Register$4.class
@@ -50,6 +54,7 @@ seahub\trabajofinaltorneo\persistencia\exceptions\NonexistentEntityException.cla
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$7.class
 seahub\trabajofinaltorneo\persistencia\exceptions\IllegalOrphanException.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$6.class
+seahub\trabajofinaltorneo\igu\principal\CambiarDatos$7.class
 seahub\trabajofinaltorneo\logica\ParticipanteGrupo.class
 seahub\trabajofinaltorneo\igu\principal\AdministradorHome$2.class
 seahub\trabajofinaltorneo\logica\ParticipanteEtapa.class
@@ -82,6 +87,7 @@ seahub\trabajofinaltorneo\igu\principal\AdministradorHome$3.class
 seahub\trabajofinaltorneo\igu\principal\VerTorneosAdm.class
 seahub\trabajofinaltorneo\igu\principal\MetricasParticipante$1.class
 seahub\trabajofinaltorneo\igu\principal\Register$8.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$5.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoInscripcion$4.class
 seahub\trabajofinaltorneo\igu\principal\CambiarDatos$5.class
 seahub\trabajofinaltorneo\igu\principal\Register$5.class

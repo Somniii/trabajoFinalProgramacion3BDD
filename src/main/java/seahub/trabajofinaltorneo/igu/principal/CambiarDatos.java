@@ -51,11 +51,11 @@ public class CambiarDatos extends javax.swing.JFrame {
         nombreActual = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         usuarioActual = new javax.swing.JTextField();
-        emailActual = new javax.swing.JTextField();
+        cantidadActual = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnCambiar = new javax.swing.JButton();
         contrasenaActual = new javax.swing.JTextField();
-        nombreNuevo = new javax.swing.JTextField();
+        cantidadNueva = new javax.swing.JTextField();
         usuarioNuevo = new javax.swing.JTextField();
         emailNuevo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -63,10 +63,16 @@ public class CambiarDatos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
+        nombreNuevo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        emailActual = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(41, 41, 41));
+        jPanel1.setMinimumSize(new java.awt.Dimension(500, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
@@ -78,22 +84,22 @@ public class CambiarDatos extends javax.swing.JFrame {
                 contrasenaNuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(contrasenaNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 150, -1));
+        jPanel1.add(contrasenaNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 150, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Contrasena nuevo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
-        jPanel1.add(nombreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        jPanel1.add(nombreActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, -1));
 
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Usuario actual:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        jPanel1.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 150, -1));
-        jPanel1.add(emailActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jPanel1.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 150, -1));
+        jPanel1.add(cantidadActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, -1));
 
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Email actual:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         btnCambiar.setText("Cambiar");
         btnCambiar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,33 +107,45 @@ public class CambiarDatos extends javax.swing.JFrame {
                 btnCambiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
+        jPanel1.add(btnCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
         contrasenaActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contrasenaActualActionPerformed(evt);
             }
         });
-        jPanel1.add(contrasenaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 20));
-        jPanel1.add(nombreNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 150, -1));
-        jPanel1.add(usuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 150, -1));
-        jPanel1.add(emailNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+        jPanel1.add(contrasenaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, -1));
+
+        cantidadNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadNuevaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cantidadNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 150, -1));
+        jPanel1.add(usuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 150, -1));
+
+        emailNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailNuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(emailNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 150, -1));
 
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("Nombre actual:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel6.setText("Nombre nuevo:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        jLabel6.setText("Cantidad personas actual:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Usuario nuevo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
         jLabel8.setText("Email nuevo:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -135,17 +153,27 @@ public class CambiarDatos extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        jPanel1.add(nombreNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 150, -1));
+
+        jLabel9.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel9.setText("Nombre nuevo:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
+
+        jLabel10.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel10.setText("Nueva cantidad de personas");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+        jPanel1.add(emailActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -157,6 +185,7 @@ public class CambiarDatos extends javax.swing.JFrame {
         nombreActual.setText(par.getNombre());
         usuarioActual.setText(par.getUsuario());
         emailActual.setText(par.getEmail());         
+        cantidadActual.setText(String.valueOf(par.getCantidad()));
     }
     private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
         Controladora control = new Controladora();
@@ -176,8 +205,8 @@ public class CambiarDatos extends javax.swing.JFrame {
         }
         System.out.println("pass:"+passC+"|pass:"+par.getContrasena());
         if(passC.equals(par.getContrasena()) && sePuede == true ){
-            if(!nombreNuevo.getText().isEmpty()){
-                aux.setNombre(nombreNuevo.getText());
+            if(!cantidadNueva.getText().isEmpty()){
+                aux.setNombre(cantidadNueva.getText());
             }
             if(!usuarioNuevo.getText().isEmpty()){
                 aux.setUsuario(usuarioNuevo.getText());
@@ -189,8 +218,11 @@ public class CambiarDatos extends javax.swing.JFrame {
                 String passMandar = Codificar(contrasenaNuevo.getText());
                 System.out.println("CONTRASENA NUEVA:"+passMandar);
                 aux.setContrasena(passMandar);
+            }           
+            if(!cantidadNueva.getText().isEmpty()){
+                aux.setCantidad(Integer.parseInt(cantidadNueva.getText()));
             }
-            if(nombreNuevo.getText().isEmpty()&&usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
+            if(cantidadNueva.getText().isEmpty()&&usuarioNuevo.getText().isEmpty()&&emailNuevo.getText().isEmpty()&&contrasenaNuevo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "TODOS LOS CAMPOS ESTAN VACIOS ,NO SE CAMBIO NADA");
             }else{
                 JOptionPane.showMessageDialog(null, "DATOS DE USUARIO CAMBIADOS");
@@ -215,6 +247,14 @@ public class CambiarDatos extends javax.swing.JFrame {
     private void contrasenaNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaNuevoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contrasenaNuevoActionPerformed
+
+    private void emailNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailNuevoActionPerformed
+
+    private void cantidadNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadNuevaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadNuevaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,11 +294,14 @@ public class CambiarDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCambiar;
+    private javax.swing.JTextField cantidadActual;
+    private javax.swing.JTextField cantidadNueva;
     private javax.swing.JTextField contrasenaActual;
     private javax.swing.JTextField contrasenaNuevo;
     private javax.swing.JTextField emailActual;
     private javax.swing.JTextField emailNuevo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -266,6 +309,7 @@ public class CambiarDatos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombreActual;
     private javax.swing.JTextField nombreNuevo;

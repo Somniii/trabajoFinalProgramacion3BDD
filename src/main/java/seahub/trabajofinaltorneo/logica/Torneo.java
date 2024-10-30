@@ -53,6 +53,15 @@ public class Torneo implements Serializable {
     @Basic(optional = false)
     @Column(name = "inscripcionVigente")
     private boolean inscripcionVigente;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "categoria")
+    private String categoria;
+    @Basic(optional = false)
+    @Column(name = "Cantidad")
+    private int cantidadPorParticipante;
+    //esto es el grupo
+
     @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")
     @ManyToOne(optional = false)
     private Administrador idAdministrador;
@@ -67,9 +76,11 @@ public class Torneo implements Serializable {
     public Torneo(Integer idTorneo) {
         this.idTorneo = idTorneo;
     }
-    public Torneo(String nombre ,Administrador adm){
+    public Torneo(String nombre ,Administrador adm , int cantidad , String categoria){
         this.nombre = nombre;
         this.idAdministrador = adm;
+        this.cantidadPorParticipante = cantidad;
+        this.categoria = categoria;
         this.vigente = true;
         this.inscripcionVigente = true;
     }
@@ -139,6 +150,24 @@ public class Torneo implements Serializable {
         this.idAdministrador = idAdministrador;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getCantidadPorParticipante() {
+        return cantidadPorParticipante;
+    }
+
+    public void setCantidadPorParticipante(int cantidadPorParticipante) {
+        this.cantidadPorParticipante = cantidadPorParticipante;
+    }
+    
+    
+
     public Collection<ParticipanteTorneo> getParticipanteTorneoCollection() {
         return participanteTorneoCollection;
     }
@@ -187,7 +216,7 @@ public class Torneo implements Serializable {
  public void ListaTorneoParticipante(JTable tabla , Participante par) {
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido"};
+    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido" , "cantidad personas por participante" , "categoria"};
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -207,7 +236,7 @@ public class Torneo implements Serializable {
                             break; // Salir del bucle si se encuentra al participante inscrito
                         }
                     }
-                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre() + "Inscripcion vigente :"+ trn.getInscripcionVigente());
+                    System.out.println("Torneo ID: " + trn.getIdTorneo() + ", Nombre: " + trn.getNombre() + "Inscripcion vigente :"+ trn.getInscripcionVigente() + " cantidad personas :" + trn.getCantidadPorParticipante() + " categoria :"+ trn.getCategoria());
                     String disponible = "NO";
                     if (trn.getInscripcionVigente() == true ) {
                         disponible = "SI";
@@ -219,6 +248,9 @@ public class Torneo implements Serializable {
                         trn.getIdAdministrador().getUsuario(),
                         disponible,
                         yaUnido,
+                        trn.getCantidadPorParticipante(),
+                        trn.getCategoria(),
+
                     };
                     //Que es addRow(rowData)
                     model.addRow(rowData);
@@ -236,7 +268,8 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
      //Definis la table
     //JOptionPane.showMessageDialog(null, "ENTRA" );
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","vigente","inscripcionVigente","TUYO"};
+    String[] titulo = {"idTorneo", "nombre","categoria","cantidad participantes por grupo","vigente","inscripcionVigente","TUYO"};
+    
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -262,7 +295,9 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
                 }
                     Object[] rowData = {
                         trn.getIdTorneo(),
-                        trn.getNombre(),                
+                        trn.getNombre(),     
+                        trn.getCategoria(),
+                        trn.getCantidadPorParticipante(),
                         trn.getVigente(),
                         trn.getInscripcionVigente(),  
                         tuyo

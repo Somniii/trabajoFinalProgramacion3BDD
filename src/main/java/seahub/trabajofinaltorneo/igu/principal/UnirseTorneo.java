@@ -116,6 +116,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
         Torneo tor = null;
         boolean disponible = false;
         boolean mismaCantidad = false;
+        boolean alcanzoMaximo = false;
         ArrayList<Torneo> torneoArr = control.traerTodoTorneo();
         for (Torneo torAux : torneoArr) {
 
@@ -127,11 +128,19 @@ public class UnirseTorneo extends javax.swing.JFrame {
             }
             if(torAux.getCantidadPorParticipante()==par.getCantidad()){
                 mismaCantidad = true;
+            }else{
+                mismaCantidad = false;
             }            
+            if(torAux.cantidadParticipantes()>=torAux.getMaximosParticipantes() && torAux.getMaximosParticipantes()!=0){
+                alcanzoMaximo = true;
+            }else{
+                alcanzoMaximo = false;
+            }    
             if (contador == select) {
                 tor = torAux;
                 break;
-            }            
+            }     
+
 
             System.out.println("Torneo:"+torAux.getNombre());
             System.out.println("Disponinle =" + disponible);            
@@ -162,9 +171,14 @@ public class UnirseTorneo extends javax.swing.JFrame {
             unirseT.setVisible(true);
             this.setVisible(false);
             
+        }else if(alcanzoMaximo == true){
+            JOptionPane.showMessageDialog(null, "EL TORNEO " + tor.getNombre() + "TIENE SU MAXIMO DE PARTICIPANTES");
+            UnirseTorneo unirseT = new UnirseTorneo(par);
+            unirseT.setVisible(true);
+            this.setVisible(false);
         }
         
-        if(yaUnido == false && disponible == true && mismaCantidad == true){
+        if(yaUnido == false && disponible == true && mismaCantidad == true && alcanzoMaximo != true){
             JOptionPane.showMessageDialog(null, "TE UNISTE A :" + tor.getNombre());
             ParticipanteTorneo parTor = new ParticipanteTorneo(tor, par);
             try {

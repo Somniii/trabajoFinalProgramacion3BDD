@@ -15,6 +15,7 @@ seahub\trabajofinaltorneo\igu\principal\CambiarDatos$6.class
 seahub\trabajofinaltorneo\igu\principal\HomeParticipante$3.class
 seahub\trabajofinaltorneo\persistencia\GrupoJpaController.class
 seahub\trabajofinaltorneo\logica\Etapa.class
+seahub\trabajofinaltorneo\igu\principal\CrearTorneosP$7.class
 seahub\trabajofinaltorneo\igu\principal\ElegirGanadores$2.class
 seahub\trabajofinaltorneo\igu\principal\VistaTorneoVigente$4.class
 seahub\trabajofinaltorneo\igu\principal\MetricasParticipante.class

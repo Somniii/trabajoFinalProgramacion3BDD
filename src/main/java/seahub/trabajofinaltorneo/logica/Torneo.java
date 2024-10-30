@@ -79,13 +79,14 @@ public class Torneo implements Serializable {
     public Torneo(Integer idTorneo) {
         this.idTorneo = idTorneo;
     }
-    public Torneo(String nombre ,Administrador adm , int cantidad , String categoria){
+    public Torneo(String nombre ,Administrador adm , int cantidad , String categoria , int maximosParticipantes){
         this.nombre = nombre;
         this.idAdministrador = adm;
         this.cantidadPorParticipante = cantidad;
         this.categoria = categoria;
         this.vigente = true;
         this.inscripcionVigente = true;
+        this.maximosParticipantes = maximosParticipantes;
     }
 
     public Torneo(Integer idTorneo, String nombre, int pisos, int pisosTotales, boolean vigente , boolean inscripcionVigente) {
@@ -96,6 +97,15 @@ public class Torneo implements Serializable {
         this.vigente = vigente;
         this.inscripcionVigente = inscripcionVigente;
     }
+
+    public int getMaximosParticipantes() {
+        return maximosParticipantes;
+    }
+
+    public void setMaximosParticipantes(int maximosParticipantes) {
+        this.maximosParticipantes = maximosParticipantes;
+    }
+    
 
     public Integer getIdTorneo() {
         return idTorneo;
@@ -219,7 +229,7 @@ public class Torneo implements Serializable {
  public void ListaTorneoParticipante(JTable tabla , Participante par) {
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido" , "cantidad personas por participante" , "categoria"};
+    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido" , "cantidad personas por participante" , "categoria","participantes"};
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -244,7 +254,7 @@ public class Torneo implements Serializable {
                     if (trn.getInscripcionVigente() == true ) {
                         disponible = "SI";
                     }       
-                    
+                    String auxiliar = Integer.toString(trn.cantidadParticipantes()) + "/" +trn.maximosParticipantes;
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),
@@ -253,6 +263,8 @@ public class Torneo implements Serializable {
                         yaUnido,
                         trn.getCantidadPorParticipante(),
                         trn.getCategoria(),
+                        auxiliar
+                        ,
 
                     };
                     //Que es addRow(rowData)
@@ -271,7 +283,7 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
      //Definis la table
     //JOptionPane.showMessageDialog(null, "ENTRA" );
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","categoria","cantidad participantes por grupo","vigente","inscripcionVigente","TUYO"};
+    String[] titulo = {"idTorneo", "nombre","categoria","cantidad participantes por grupo","vigente","inscripcionVigente","participantes","TUYO"};
     
     model = new DefaultTableModel(null, titulo);
 
@@ -296,6 +308,7 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
                 }else{
                     tuyo = "NO";
                 }
+                String auxiliar = Integer.toString(trn.cantidadParticipantes()) + "/" +trn.maximosParticipantes;
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),     
@@ -303,7 +316,8 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
                         trn.getCantidadPorParticipante(),
                         trn.getVigente(),
                         trn.getInscripcionVigente(),  
-                        tuyo
+                        auxiliar,
+                        tuyo,
                     };
                          //Que es addRow(rowData)
                          model.addRow(rowData);

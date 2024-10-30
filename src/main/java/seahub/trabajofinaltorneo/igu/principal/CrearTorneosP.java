@@ -46,12 +46,15 @@ public class CrearTorneosP extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnCreacion = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        txtCategoria = new javax.swing.JTextField();
+        txtMaximo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtCrearTorneo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCantidadPersonas = new javax.swing.JTextField();
+        txtCategoria = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +67,7 @@ public class CrearTorneosP extends javax.swing.JFrame {
                 btnCreacionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jPanel1.add(btnCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jButton2.setText("Atras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,46 +75,61 @@ public class CrearTorneosP extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
 
-        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+        txtMaximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCategoriaActionPerformed(evt);
+                txtMaximoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 260, -1));
+        jPanel1.add(txtMaximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 40, -1));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Categoria del torneo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jLabel1.setText("(Si se queda vacio es infinito)");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Nombre del torneo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         txtCrearTorneo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCrearTorneoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCrearTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 260, -1));
+        jPanel1.add(txtCrearTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 260, -1));
 
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel3.setText("Cantidad de personas por participante");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jLabel3.setText("Cantidad de personas por grupo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         txtCantidadPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadPersonasActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCantidadPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 260, -1));
+        jPanel1.add(txtCantidadPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 260, -1));
+
+        txtCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCategoriaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 260, -1));
+
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel4.setText("Categoria del torneo");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("Numero maximo de grupos");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,10 +141,19 @@ public class CrearTorneosP extends javax.swing.JFrame {
 
     private void btnCreacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreacionActionPerformed
         String nombreTor = txtCrearTorneo.getText();
+        int cantidad;
+        if(txtMaximo.getText().isEmpty()){
+            cantidad = 0;
+        }
+        else{
+            cantidad = Integer.parseInt(txtMaximo.getText());
+        }
         if(nombreTor.isEmpty()==true){
            JOptionPane.showMessageDialog(null, "NOMBRE VACIO DE TORNEO");
+        }else if(cantidad == 1 ){
+            JOptionPane.showMessageDialog(null, "MINIMO TIENE QUE HABER 2 GRUPOS");
         }else{
-            Torneo tor = new Torneo(nombreTor,adm , Integer.parseInt(txtCantidadPersonas.getText()), txtCategoria.getText());
+            Torneo tor = new Torneo(nombreTor,adm , Integer.parseInt(txtCantidadPersonas.getText()), txtCategoria.getText(), cantidad);
             Controladora control = new Controladora();
             try {
                 control.crearTorneo(tor);
@@ -147,9 +174,9 @@ public class CrearTorneosP extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
+    private void txtMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaximoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCategoriaActionPerformed
+    }//GEN-LAST:event_txtMaximoActionPerformed
 
     private void txtCrearTorneoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCrearTorneoActionPerformed
         // TODO add your handling code here:
@@ -158,6 +185,10 @@ public class CrearTorneosP extends javax.swing.JFrame {
     private void txtCantidadPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadPersonasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadPersonasActionPerformed
+
+    private void txtCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,9 +231,12 @@ public class CrearTorneosP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCantidadPersonas;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtCrearTorneo;
+    private javax.swing.JTextField txtMaximo;
     // End of variables declaration//GEN-END:variables
 }

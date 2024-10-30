@@ -8,12 +8,13 @@ import seahub.trabajofinaltorneo.logica.Administrador;
 import seahub.trabajofinaltorneo.logica.Etapa;
 import seahub.trabajofinaltorneo.logica.ParticipanteTorneo;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-10-30T15:40:47", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-10-30T17:21:25", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Torneo.class)
 public class Torneo_ { 
 
     public static volatile SingularAttribute<Torneo, Administrador> idAdministrador;
     public static volatile SingularAttribute<Torneo, Integer> pisos;
+    public static volatile SingularAttribute<Torneo, Integer> maximosParticipantes;
     public static volatile SingularAttribute<Torneo, String> categoria;
     public static volatile SingularAttribute<Torneo, Integer> pisosTotales;
     public static volatile SingularAttribute<Torneo, Boolean> vigente;

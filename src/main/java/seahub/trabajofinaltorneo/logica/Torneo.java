@@ -60,6 +60,9 @@ public class Torneo implements Serializable {
     @Basic(optional = false)
     @Column(name = "Cantidad")
     private int cantidadPorParticipante;
+    @Basic(optional = false)
+    @Column(name = "maximosParticipantes")
+    private int maximosParticipantes;
     //esto es el grupo
 
     @JoinColumn(name = "idAdministrador", referencedColumnName = "idAdministrador")

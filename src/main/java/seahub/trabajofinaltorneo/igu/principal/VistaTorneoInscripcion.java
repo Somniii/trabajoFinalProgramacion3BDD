@@ -86,7 +86,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 360, 210));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Participantes inscriptos:");
+        jLabel1.setText("Grupos inscriptos:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         btnCerrar.setText("Cerrar Inscripcion");

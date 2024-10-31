@@ -187,7 +187,7 @@ public class Register extends javax.swing.JFrame {
         panelUser.add(PasswordClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 180, 30));
 
         btnRegisterUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRegisterUser.setText("Register");
+        btnRegisterUser.setText("Registrarse");
         btnRegisterUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterUserActionPerformed(evt);

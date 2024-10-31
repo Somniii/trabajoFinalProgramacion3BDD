@@ -138,7 +138,7 @@ public class ElegirGanadores extends javax.swing.JFrame {
         jPanel1.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Participante Ganador:");
+        jLabel2.setText("Grupo Ganador:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         participanteGanador.addActionListener(new java.awt.event.ActionListener() {

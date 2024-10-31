@@ -108,7 +108,7 @@ public class MetricasParticipante extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Participante");
+        jLabel1.setText("Grupo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));

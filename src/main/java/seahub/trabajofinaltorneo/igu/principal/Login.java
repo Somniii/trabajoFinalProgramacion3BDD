@@ -106,7 +106,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese Usuario");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, 30));
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ingrese su clave");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         btnLog.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLog.setText("Ingresar");
@@ -153,10 +153,10 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 12, -1, 20));
 
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel7.setText("Cantidad participantes:");
+        jLabel7.setText("Cantidad total grupos:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 20));
 
-        jTabbedPane1.addTab("Participante", jPanel1);
+        jTabbedPane1.addTab("Participantes", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setMinimumSize(new java.awt.Dimension(260, 400));
@@ -166,26 +166,26 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText(" Login");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 90, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 90, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingrese Usuario de Administrador");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 280, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 280, 30));
 
         txtUserAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserAdmActionPerformed(evt);
             }
         });
-        jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 240, 30));
+        jPanel2.add(txtUserAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 240, 30));
 
         txtClaveAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClaveAdmActionPerformed(evt);
             }
         });
-        jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 240, 30));
+        jPanel2.add(txtClaveAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 240, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));

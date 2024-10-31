@@ -229,7 +229,7 @@ public class Torneo implements Serializable {
  public void ListaTorneoParticipante(JTable tabla , Participante par) {
      //Definis la table
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre" , "administrador", "disponible", "ya unido" , "cantidad personas por participante" , "categoria","participantes"};
+    String[] titulo = {"idTorneo", "nombre" , "admin", "disponible", "unido" , "grupos de" , "juego","unidos"};
     model = new DefaultTableModel(null, titulo);
 
     try {
@@ -254,7 +254,13 @@ public class Torneo implements Serializable {
                     if (trn.getInscripcionVigente() == true ) {
                         disponible = "SI";
                     }       
-                    String auxiliar = Integer.toString(trn.cantidadParticipantes()) + "/" +trn.maximosParticipantes;
+                    String auxiliar;
+                    if(trn.maximosParticipantes==0){
+                        auxiliar = Integer.toString(trn.cantidadPorParticipante);
+                    }else{
+                        auxiliar = Integer.toString(trn.cantidadParticipantes()) + "/" +trn.maximosParticipantes;
+
+                    }
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),

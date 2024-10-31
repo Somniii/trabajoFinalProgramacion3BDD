@@ -81,7 +81,7 @@ public class UnirseTorneo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaTorneo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 410, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 490, 340));
 
         btnAtras.setText("Ir atras");
         btnAtras.setMaximumSize(new java.awt.Dimension(100, 100));

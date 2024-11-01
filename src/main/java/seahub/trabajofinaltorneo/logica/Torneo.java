@@ -289,7 +289,7 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
      //Definis la table
     //JOptionPane.showMessageDialog(null, "ENTRA" );
     DefaultTableModel model;
-    String[] titulo = {"idTorneo", "nombre","categoria","cantidad participantes por grupo","vigente","inscripcionVigente","participantes","TUYO"};
+    String[] titulo = {"idTorneo", "nombre","categoria","grupos de","vigente","inscripcionVigente","participantes","TUYO"};
     
     model = new DefaultTableModel(null, titulo);
 
@@ -314,14 +314,26 @@ public void ListaTorneoAdminsitrador(JTable tabla ,Administrador adm) {
                 }else{
                     tuyo = "NO";
                 }
+                String vigente , inscripcionVigente;
+                if(trn.getVigente()==true){
+                    vigente = "si";                           
+                }else{
+                    vigente = "no";
+                }
+                if(trn.getInscripcionVigente()==true){
+                    inscripcionVigente = "si";                            
+                }else{
+                    inscripcionVigente = "no";
+                }
+                
                 String auxiliar = Integer.toString(trn.cantidadParticipantes()) + "/" +trn.maximosParticipantes;
                     Object[] rowData = {
                         trn.getIdTorneo(),
                         trn.getNombre(),     
                         trn.getCategoria(),
                         trn.getCantidadPorParticipante(),
-                        trn.getVigente(),
-                        trn.getInscripcionVigente(),  
+                        vigente,
+                        inscripcionVigente,  
                         auxiliar,
                         tuyo,
                     };

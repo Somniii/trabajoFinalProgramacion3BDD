@@ -28,7 +28,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(452, 452);
+        setSize(810, 540);
         this.setTitle("");
         setVisible(true);
         mostrarTorneo();
@@ -39,7 +39,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         this.adm = adm;
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(500, 500);
+        setSize(810, 540);
         this.setTitle("Ver Torneos Existentes");
         setVisible(true);
         mostrarTorneo();
@@ -81,7 +81,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaTorneo);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 810, 490));
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Elegir torneo");
@@ -103,9 +103,7 @@ public class VerTorneosAdm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

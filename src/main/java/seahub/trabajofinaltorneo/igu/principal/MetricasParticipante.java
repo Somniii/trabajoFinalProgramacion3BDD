@@ -132,7 +132,7 @@ public class MetricasParticipante extends javax.swing.JFrame {
 
         foto.setText("              Foto");
         foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
-        jPanel1.add(foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 120, 120));
+        jPanel1.add(foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 120, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

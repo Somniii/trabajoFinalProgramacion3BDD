@@ -25,7 +25,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(385, 320);
+        setSize(850, 570);
         this.setTitle("Inscriptos al torneo");
         setVisible(true);
     }
@@ -33,7 +33,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
-        setSize(425, 375);
+        setSize(850, 570);
         this.setTitle("Inscriptos al torneo");
         String cantidad = Integer.toString(tor.cantidadParticipantes());
         cantidadParticipantes.setText(cantidad);
@@ -83,7 +83,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaParticipantes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 360, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 820, 410));
 
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Grupos inscriptos:");
@@ -95,7 +95,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 140, 30));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 140, 30));
 
         cantidadParticipantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 130, 30));
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 130, 30));
 
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Id torneo:");
@@ -123,17 +123,17 @@ public class VistaTorneoInscripcion extends javax.swing.JFrame {
                 checkboxActionPerformed(evt);
             }
         });
-        jPanel1.add(checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel1.add(checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
 
         pack();
